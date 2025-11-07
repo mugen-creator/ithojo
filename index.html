@@ -51,7 +51,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, 'メイリオ', sans-serif;
             line-height: 1.65;
             color: var(--text-dark);
-            background: var(--bg-gray);
+            background: linear-gradient(180deg, #f0f4f8 0%, #e2e8f0 100%);
             padding: 0;
             min-height: 100vh;
         }
@@ -60,19 +60,20 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: var(--bg-white);
+            background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
             min-height: 100vh;
             overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
         }
 
         /* Header */
         header {
-            background: var(--bg-white);
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
             color: var(--primary-color);
             padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2rem);
             text-align: center;
             position: relative;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px solid #e0e7ff;
         }
 
         header h1 {
@@ -138,6 +139,8 @@
         /* Content */
         .content {
             padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2rem);
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
         }
 
         .tab-content {
@@ -624,18 +627,19 @@
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            width: clamp(44px, 7vw, 48px);
-            height: clamp(44px, 7vw, 48px);
-            background: var(--bg-white);
-            color: var(--text-dark);
-            border: 1px solid var(--border-color);
+            width: clamp(48px, 7vw, 56px);
+            height: clamp(48px, 7vw, 56px);
+            background: var(--secondary-color);
+            color: white;
+            border: 2px solid var(--secondary-color);
             border-radius: var(--radius-md);
-            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+            font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
@@ -650,12 +654,14 @@
         }
 
         .scroll-to-top:hover {
-            border-color: var(--secondary-color);
-            color: var(--secondary-color);
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+            transform: translateY(-2px);
         }
 
         .scroll-to-top:active {
-            transform: scale(0.95);
+            transform: translateY(0);
         }
 
         @media (max-width: 768px) {

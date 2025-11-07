@@ -67,8 +67,7 @@
         header {
             background: var(--bg-white);
             color: var(--primary-color);
-            padding: clamp(1.5rem, 4vw, 2rem) clamp(1.5rem, 4vw, 2rem);
-            text-align: center;
+            padding: clamp(1rem, 2vw, 1.5rem) clamp(1rem, 4vw, 2rem);
             position: fixed;
             top: 0;
             left: 0;
@@ -76,77 +75,89 @@
             z-index: 100;
             border-bottom: 2px solid var(--border-color);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
         }
 
         header h1 {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            margin-bottom: 0.75rem;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin: 0;
             font-weight: 700;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
+            text-align: left;
         }
 
         header p {
-            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            font-size: clamp(0.7rem, 1.2vw, 0.85rem);
             color: var(--text-medium);
             font-weight: 400;
+            margin: 0;
+            text-align: left;
         }
 
         /* Navigation Tabs */
         .nav-tabs {
             display: flex;
-            flex-wrap: wrap;
-            background: var(--bg-white);
-            border-bottom: 1px solid var(--border-color);
+            align-items: center;
+            gap: clamp(0.5rem, 1vw, 1rem);
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-            padding: 0 clamp(1rem, 2vw, 1.5rem);
-            position: fixed;
-            top: clamp(120px, 20vw, 140px);
-            left: 0;
-            right: 0;
-            z-index: 99;
+            scrollbar-width: none;
         }
 
         .nav-tabs::-webkit-scrollbar {
-            height: 3px;
-        }
-
-        .nav-tabs::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 10px;
+            display: none;
         }
 
         .nav-tab {
-            flex: 1 1 auto;
-            min-width: clamp(110px, 18vw, 160px);
-            padding: clamp(0.875rem, 2vw, 1.125rem) clamp(0.75rem, 2vw, 1rem);
+            padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem);
             border: none;
             background: transparent;
-            color: var(--text-light);
-            font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
+            color: var(--text-medium);
+            font-size: clamp(0.75rem, 1.3vw, 0.875rem);
             font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
-            border-bottom: 2px solid transparent;
             white-space: nowrap;
-            text-align: center;
+            border-radius: var(--radius-sm);
         }
 
         .nav-tab:hover {
+            background: var(--bg-gray);
             color: var(--secondary-color);
         }
 
         .nav-tab.active {
-            color: var(--secondary-color);
-            border-bottom-color: var(--secondary-color);
+            background: var(--secondary-color);
+            color: white;
             font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .nav-tabs {
+                width: 100%;
+                overflow-x: auto;
+            }
         }
 
         /* Content */
         .content {
             padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2rem);
-            margin-top: clamp(180px, 30vw, 200px);
+            margin-top: clamp(80px, 15vw, 100px);
         }
 
         .tab-content {
@@ -681,31 +692,33 @@
 <body>
     <div class="container">
         <header>
-            <h1>📚 IT導入補助金申請準備完全ガイド</h1>
-            <p>IT導入補助金の申請に必要な書類と手続きをすべて解説</p>
-        </header>
+            <div class="header-left">
+                <h1>📚 IT導入補助金申請準備完全ガイド</h1>
+                <p>必要な書類と手続きをすべて解説</p>
+            </div>
 
-        <!-- Navigation Tabs -->
-        <nav class="nav-tabs" role="tablist">
-            <button class="nav-tab active" onclick="showTab(0)" role="tab" aria-selected="true">
-                📋 履歴事項全部証明書
-            </button>
-            <button class="nav-tab" onclick="showTab(1)" role="tab">
-                💰 納税証明書
-            </button>
-            <button class="nav-tab" onclick="showTab(2)" role="tab">
-                📊 決算書
-            </button>
-            <button class="nav-tab" onclick="showTab(3)" role="tab">
-                🔐 gBizID
-            </button>
-            <button class="nav-tab" onclick="showTab(4)" role="tab">
-                ⭐ SECURITY ACTION
-            </button>
-            <button class="nav-tab" onclick="showTab(5)" role="tab">
-                🗺️ IT戦略マップ
-            </button>
-        </nav>
+            <!-- Navigation Tabs -->
+            <nav class="nav-tabs" role="tablist">
+                <button class="nav-tab active" onclick="showTab(0)" role="tab" aria-selected="true">
+                    📋 履歴事項全部証明書
+                </button>
+                <button class="nav-tab" onclick="showTab(1)" role="tab">
+                    💰 納税証明書
+                </button>
+                <button class="nav-tab" onclick="showTab(2)" role="tab">
+                    📊 決算書
+                </button>
+                <button class="nav-tab" onclick="showTab(3)" role="tab">
+                    🔐 gBizID
+                </button>
+                <button class="nav-tab" onclick="showTab(4)" role="tab">
+                    ⭐ SECURITY ACTION
+                </button>
+                <button class="nav-tab" onclick="showTab(5)" role="tab">
+                    🗺️ IT戦略マップ
+                </button>
+            </nav>
+        </header>
 
         <!-- Content Area -->
         <div class="content">

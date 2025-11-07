@@ -84,6 +84,27 @@
             font-size: clamp(0.95rem, 2vw, 1.1rem);
             color: var(--text-medium);
             font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(0.5rem, 2vw, 0.75rem);
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .header-item {
+            display: inline-block;
+            padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.75rem, 2vw, 1rem);
+            background: var(--bg-gray);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            color: var(--text-dark);
+            font-weight: 500;
+            white-space: nowrap;
         }
 
         /* Navigation Tabs */
@@ -672,6 +693,14 @@
         <header>
             <h1>📚 IT導入補助金申請準備完全ガイド</h1>
             <p>IT導入補助金の申請に必要な書類と手続きをすべて解説</p>
+            <div class="header-items">
+                <span class="header-item">📋 履歴事項全部証明書</span>
+                <span class="header-item">💰 納税証明書</span>
+                <span class="header-item">📊 決算書</span>
+                <span class="header-item">🔐 gBizID</span>
+                <span class="header-item">⭐ SECURITY ACTION</span>
+                <span class="header-item">🗺️ IT戦略マップ</span>
+            </div>
         </header>
 
         <!-- Navigation Tabs -->

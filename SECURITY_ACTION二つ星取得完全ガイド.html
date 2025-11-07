@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECURITY ACTION二つ星取得完全ガイド</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Meiryo, 'メイリオ', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .what-is {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin-bottom: 30px;
+        }
+
+        .what-is h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .alert-box strong {
+            color: #856404;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196F3;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .info-box h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 5px solid #4CAF50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .success-box h4 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .warning-box {
+            background: #ffebee;
+            border-left: 5px solid #f44336;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .warning-box h4 {
+            color: #c62828;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .star-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .star-card {
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .star-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(102, 126, 234, 0.3);
+        }
+
+        .star-card.one-star {
+            border-color: #FFC107;
+        }
+
+        .star-card.one-star .star-icon {
+            color: #FFC107;
+        }
+
+        .star-card.one-star h3 {
+            color: #FFC107;
+        }
+
+        .star-card.two-star {
+            border-color: #f44336;
+        }
+
+        .star-card.two-star .star-icon {
+            color: #f44336;
+        }
+
+        .star-card.two-star h3 {
+            color: #f44336;
+        }
+
+        .star-icon {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.95em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .star-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .star-card h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 1.1em;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9ff;
+        }
+
+        .steps {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-right: 20px;
+        }
+
+        .step-content h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            background: linear-gradient(transparent 60%, #ffeb3b 60%);
+            font-weight: bold;
+            padding: 2px 4px;
+        }
+
+        .tips {
+            background: #e8f5e9;
+            border-left: 5px solid #4CAF50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .tips h4 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 10px 0;
+            line-height: 1.7;
+        }
+
+        .merit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .merit-item {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .merit-item:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+        }
+
+        .merit-item h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+
+        .button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .requirement-box {
+            background: white;
+            border: 3px solid #f44336;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .requirement-box h3 {
+            color: #f44336;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .requirement-item {
+            background: #fff3f3;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #f44336;
+        }
+
+        .requirement-item h4 {
+            color: #f44336;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #f5f5f5;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.6em;
+            }
+
+            .star-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⭐⭐ SECURITY ACTION二つ星<br>取得完全ガイド</h1>
+            <p>中小企業の情報セキュリティ対策を見える化！</p>
+        </header>
+
+        <div class="content">
+            <!-- SECURITY ACTIONとは -->
+            <div class="section">
+                <h2>🤔 SECURITY ACTIONって何？</h2>
+                <div class="what-is">
+                    <h3>一言で言うと...</h3>
+                    <p><strong>「中小企業が情報セキュリティ対策に取り組んでいることを自己宣言する制度」です！</strong></p>
+                    <p style="margin-top: 15px;">IPA（独立行政法人 情報処理推進機構）が運営する制度で、<span class="highlight">企業が情報セキュリティ対策に取り組むことを宣言し、ロゴマークを使用できる</span>ようになります。</p>
+                </div>
+
+                <div class="success-box">
+                    <h4>🌟 SECURITY ACTIONのメリット</h4>
+                    <div class="merit-grid">
+                        <div class="merit-item">
+                            <h4>🛡️ 信頼性アップ</h4>
+                            <p>取引先や顧客に「セキュリティ対策をしている企業」とアピールできる</p>
+                        </div>
+                        <div class="merit-item">
+                            <h4>🎯 セキュリティ意識向上</h4>
+                            <p>社内のセキュリティ意識を高めるきっかけになる</p>
+                        </div>
+                        <div class="merit-item">
+                            <h4>📄 ロゴの使用</h4>
+                            <p>名刺、ホームページ、提案書などにロゴマークを掲載できる</p>
+                        </div>
+                        <div class="merit-item">
+                            <h4>💰 完全無料</h4>
+                            <p>申請も維持も一切費用がかからない</p>
+                        </div>
+                        <div class="merit-item">
+                            <h4>⚡ 簡単取得</h4>
+                            <p>二つ星でも数時間で取得可能</p>
+                        </div>
+                        <div class="merit-item">
+                            <h4>🏆 入札で有利</h4>
+                            <p>公共工事の入札で加点対象になる場合がある</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert-box">
+                    <strong>💡 こんな場面で役立ちます</strong>
+                    <ul>
+                        <li>大企業との取引時に「セキュリティ対策をしているか」と聞かれた時</li>
+                        <li>提案書や会社案内でセキュリティへの取り組みをアピールしたい時</li>
+                        <li>補助金申請で「セキュリティ対策の実施」を証明したい時</li>
+                        <li>ISO27001などの本格的な認証の前段階として</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 一つ星と二つ星の違い -->
+            <div class="section">
+                <h2>⭐ 一つ星 vs 二つ星</h2>
+                <p>SECURITY ACTIONには<strong>一つ星</strong>と<strong>二つ星</strong>の2種類があります。</p>
+
+                <div class="star-comparison">
+                    <!-- 一つ星 -->
+                    <div class="star-card one-star">
+                        <div class="star-icon">⭐</div>
+                        <h3>一つ星</h3>
+                        <div class="badge" style="background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%);">初級レベル</div>
+
+                        <h4>📋 必要なこと</h4>
+                        <ul>
+                            <li><strong>「情報セキュリティ5か条」に取り組むことを宣言</strong></li>
+                        </ul>
+
+                        <h4>⏱ 取得期間</h4>
+                        <p><strong>5分</strong>（即日）</p>
+
+                        <h4>💰 費用</h4>
+                        <p><strong>無料</strong></p>
+
+                        <h4>✅ こんな企業におすすめ</h4>
+                        <ul>
+                            <li>まずは簡単に始めたい</li>
+                            <li>セキュリティ対策が初めて</li>
+                            <li>すぐにロゴを使いたい</li>
+                        </ul>
+                    </div>
+
+                    <!-- 二つ星 -->
+                    <div class="star-card two-star">
+                        <div class="star-icon">⭐⭐</div>
+                        <h3>二つ星</h3>
+                        <div class="badge" style="background: linear-gradient(135deg, #f44336 0%, #e91e63 100%);">中級レベル・おすすめ！</div>
+
+                        <h4>📋 必要なこと</h4>
+                        <ul>
+                            <li><strong>「5分でできる！情報セキュリティ自社診断」を実施</strong></li>
+                            <li><strong>「情報セキュリティ基本方針」を策定・公開</strong></li>
+                        </ul>
+
+                        <h4>⏱ 取得期間</h4>
+                        <p><strong>2〜3時間</strong>（即日可能）</p>
+
+                        <h4>💰 費用</h4>
+                        <p><strong>無料</strong></p>
+
+                        <h4>✅ こんな企業におすすめ</h4>
+                        <ul>
+                            <li>取引先にしっかりアピールしたい</li>
+                            <li>セキュリティ対策を本格化したい</li>
+                            <li>補助金申請や入札で活用したい</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>🎯 どちらを取得すべき？</h4>
+                    <p><strong>迷ったら「二つ星」をおすすめします！</strong></p>
+                    <ul>
+                        <li>一つ星と二つ星の<span class="highlight">労力の差はほとんどない</span>（2〜3時間程度）</li>
+                        <li>二つ星の方が<strong>信頼性が高く、アピール力がある</strong></li>
+                        <li>大企業との取引では「二つ星以上」を求められることも</li>
+                        <li>どちらも<strong>完全無料</strong>で取得できる</li>
+                    </ul>
+                    <p style="margin-top: 15px;">※ 一つ星を取得した後、二つ星にアップグレードすることも可能です</p>
+                </div>
+            </div>
+
+            <!-- 比較表 -->
+            <div class="section">
+                <h2>📊 一つ星 vs 二つ星 比較表</h2>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>項目</th>
+                            <th>一つ星 ⭐</th>
+                            <th>二つ星 ⭐⭐</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>レベル</strong></td>
+                            <td>初級</td>
+                            <td>中級</td>
+                        </tr>
+                        <tr>
+                            <td><strong>必要な取り組み</strong></td>
+                            <td>情報セキュリティ5か条への取り組み宣言</td>
+                            <td>自社診断実施 + 基本方針策定・公開</td>
+                        </tr>
+                        <tr>
+                            <td><strong>取得にかかる時間</strong></td>
+                            <td>5分</td>
+                            <td>2〜3時間</td>
+                        </tr>
+                        <tr>
+                            <td><strong>費用</strong></td>
+                            <td>無料</td>
+                            <td>無料</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ロゴ使用</strong></td>
+                            <td>⭕ 可能</td>
+                            <td>⭕ 可能</td>
+                        </tr>
+                        <tr>
+                            <td><strong>信頼性</strong></td>
+                            <td>普通</td>
+                            <td>高い</td>
+                        </tr>
+                        <tr>
+                            <td><strong>更新</strong></td>
+                            <td>年1回</td>
+                            <td>年1回</td>
+                        </tr>
+                        <tr>
+                            <td><strong>おすすめ度</strong></td>
+                            <td>★★★☆☆</td>
+                            <td>★★★★★</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 二つ星の取得要件 -->
+            <div class="section">
+                <h2>📋 二つ星の取得要件</h2>
+
+                <div class="requirement-box">
+                    <h3>二つ星取得に必要な2つのステップ</h3>
+
+                    <div class="requirement-item">
+                        <h4>ステップ1：「5分でできる！情報セキュリティ自社診断」を実施</h4>
+                        <p><strong>IPAが提供する診断ツール（25項目）</strong>で自社のセキュリティ対策状況をチェックします。</p>
+                        <ul>
+                            <li>所要時間：約5〜10分</li>
+                            <li>診断結果をもとに、改善点を把握</li>
+                            <li>診断結果の提出は不要（自社で保管）</li>
+                        </ul>
+                    </div>
+
+                    <div class="requirement-item">
+                        <h4>ステップ2：「情報セキュリティ基本方針」を策定し、外部公開</h4>
+                        <p><strong>会社の情報セキュリティに対する基本的な方針</strong>を文書化し、ホームページなどで公開します。</p>
+                        <ul>
+                            <li>IPAが提供するテンプレートを使用できる</li>
+                            <li>自社の状況に合わせてカスタマイズ</li>
+                            <li>ホームページ、会社案内などで公開</li>
+                            <li>所要時間：1〜2時間</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="alert-box">
+                    <strong>🎉 たったこれだけ！</strong>
+                    <p>この2つのステップを完了すれば、<span class="highlight">二つ星を宣言できます</span>。<br>
+                    審査や認証機関の検査などは一切不要です。完全に<strong>自己宣言制</strong>なので、すぐに取得できます！</p>
+                </div>
+            </div>
+
+            <!-- 取得手順 -->
+            <div class="section">
+                <h2>📝 二つ星の取得手順（完全版）</h2>
+
+                <div class="steps">
+                    <h3 style="margin-bottom: 25px; color: #667eea;">ステップバイステップで解説</h3>
+
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>SECURITY ACTION公式サイトにアクセス</h4>
+                            <p>Google検索で「SECURITY ACTION」と検索し、IPA公式サイトにアクセスします。<br>
+                            URL: https://www.ipa.go.jp/security/security-action/</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>「5分でできる！情報セキュリティ自社診断」を実施</h4>
+                            <p>IPAのサイトから診断ツールにアクセスし、<strong>25項目の質問</strong>に答えます。</p>
+                            <p><strong>診断項目の例：</strong></p>
+                            <ul>
+                                <li>パスワードを適切に管理していますか？</li>
+                                <li>ウイルス対策ソフトを導入していますか？</li>
+                                <li>OSやソフトウェアを最新状態に保っていますか？</li>
+                                <li>重要なデータのバックアップを取っていますか？</li>
+                                <li>従業員へのセキュリティ教育を実施していますか？</li>
+                            </ul>
+                            <p style="margin-top: 15px;"><strong>所要時間：5〜10分</strong><br>
+                            診断結果は、自社のセキュリティ対策の現状把握に役立ちます。<br>
+                            <span class="highlight">診断結果の提出は不要</span>です（自社で保管）。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>診断結果を確認し、改善点を把握</h4>
+                            <p>診断結果をもとに、自社のセキュリティ対策の<strong>弱点</strong>を把握します。<br>
+                            この結果は、後で基本方針を策定する際の参考になります。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>「情報セキュリティ基本方針」のテンプレートをダウンロード</h4>
+                            <p>IPAが提供する<strong>基本方針テンプレート（Word形式）</strong>をダウンロードします。<br>
+                            SECURITY ACTIONのサイトからダウンロードできます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>基本方針をカスタマイズ</h4>
+                            <p>テンプレートを自社の状況に合わせて編集します。</p>
+                            <p><strong>記載する主な内容：</strong></p>
+                            <ul>
+                                <li><strong>制定日</strong></li>
+                                <li><strong>会社名・代表者名</strong></li>
+                                <li><strong>目的</strong>（情報セキュリティの重要性を認識し、適切な対策を実施する、など）</li>
+                                <li><strong>適用範囲</strong>（全従業員、協力会社を含む、など）</li>
+                                <li><strong>基本方針</strong>
+                                    <ul>
+                                        <li>情報資産の保護</li>
+                                        <li>法令・規範の遵守</li>
+                                        <li>継続的な改善</li>
+                                        <li>セキュリティ教育の実施</li>
+                                        <li>事故発生時の対応</li>
+                                    </ul>
+                                </li>
+                                <li><strong>責任者</strong>（代表取締役、情報セキュリティ責任者など）</li>
+                            </ul>
+                            <p style="margin-top: 15px;"><strong>所要時間：1〜2時間</strong><br>
+                            テンプレートがあるので、初めてでも簡単に作成できます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>基本方針を外部公開</h4>
+                            <p>作成した基本方針を<strong>外部に公開</strong>します。</p>
+                            <p><strong>公開方法の例：</strong></p>
+                            <ul>
+                                <li><strong>ホームページに掲載</strong>（最も一般的）<br>
+                                「会社情報」「セキュリティポリシー」などのページに掲載</li>
+                                <li><strong>会社案内に記載</strong></li>
+                                <li><strong>店舗やオフィスに掲示</strong></li>
+                            </ul>
+                            <p style="margin-top: 15px;"><span class="highlight">ホームページがない場合でも、印刷して取引先に配布するなど、外部に見える形で公開すればOK</span>です。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h4>SECURITY ACTIONに申し込む</h4>
+                            <p>SECURITY ACTION公式サイトの<strong>「申込フォーム」</strong>から申し込みます。</p>
+                            <p><strong>必要な情報：</strong></p>
+                            <ul>
+                                <li>会社名（商号）</li>
+                                <li>代表者名</li>
+                                <li>所在地</li>
+                                <li>メールアドレス</li>
+                                <li>電話番号</li>
+                                <li>業種</li>
+                                <li>従業員数</li>
+                                <li><strong>宣言する星の数</strong>（二つ星を選択）</li>
+                                <li><strong>基本方針の公開URL</strong>（ホームページに掲載した場合）</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <h4>自己宣言完了・ロゴ取得</h4>
+                            <p>申し込みが完了すると、<strong>SECURITY ACTIONのロゴマーク</strong>がダウンロードできるようになります。<br>
+                            <br>
+                            <span class="highlight">これで二つ星の取得完了です！</span><br>
+                            <br>
+                            登録した情報は、IPAの「SECURITY ACTION宣言事業者一覧」に掲載されます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">9</div>
+                        <div class="step-content">
+                            <h4>ロゴマークを使用する</h4>
+                            <p>取得したロゴマークを様々な場所で使用できます：</p>
+                            <ul>
+                                <li><strong>名刺</strong>（裏面に掲載する企業が多い）</li>
+                                <li><strong>ホームページ</strong></li>
+                                <li><strong>会社案内・パンフレット</strong></li>
+                                <li><strong>提案書・見積書</strong></li>
+                                <li><strong>メールの署名</strong></li>
+                                <li><strong>オフィスの掲示</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 基本方針のサンプル -->
+            <div class="section">
+                <h2>📄 情報セキュリティ基本方針のサンプル</h2>
+
+                <div class="info-box">
+                    <h4>記載例</h4>
+                    <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 15px; border: 1px solid #ddd;">
+                        <h3 style="text-align: center; margin-bottom: 20px; color: #333;">情報セキュリティ基本方針</h3>
+
+                        <p style="text-align: right; margin-bottom: 20px;">制定日：2025年○月○日<br>株式会社○○○○<br>代表取締役 ○○ ○○</p>
+
+                        <h4 style="color: #333; margin-top: 20px;">1. 目的</h4>
+                        <p>当社は、お客様からお預かりした情報や当社の事業活動において取り扱う情報を重要な資産と認識し、これらの情報を様々な脅威から守り、お客様や社会からの信頼に応えるため、情報セキュリティの確保に努めます。</p>
+
+                        <h4 style="color: #333; margin-top: 20px;">2. 適用範囲</h4>
+                        <p>本方針は、当社の全役員及び全従業員に適用されます。また、当社と取引関係にある協力会社等にも、本方針の遵守を求めます。</p>
+
+                        <h4 style="color: #333; margin-top: 20px;">3. 基本方針</h4>
+                        <p><strong>(1) 情報資産の保護</strong><br>
+                        当社が保有する情報資産を、不正アクセス、漏洩、改ざん、紛失、破壊等の脅威から保護します。</p>
+
+                        <p><strong>(2) 法令・規範の遵守</strong><br>
+                        情報セキュリティに関する法令、国が定める指針、その他の規範を遵守します。</p>
+
+                        <p><strong>(3) 継続的な改善</strong><br>
+                        情報セキュリティ対策を継続的に見直し、改善に努めます。</p>
+
+                        <p><strong>(4) セキュリティ教育の実施</strong><br>
+                        全従業員に対し、情報セキュリティに関する教育・啓発活動を実施します。</p>
+
+                        <p><strong>(5) 事故発生時の対応</strong><br>
+                        万一、情報セキュリティ事故が発生した場合は、迅速かつ適切に対応し、被害の最小化と再発防止に努めます。</p>
+
+                        <h4 style="color: #333; margin-top: 20px;">4. 推進体制</h4>
+                        <p>代表取締役を情報セキュリティ責任者とし、情報セキュリティの維持・向上に取り組みます。</p>
+
+                        <p style="text-align: right; margin-top: 30px;">以上</p>
+                    </div>
+                </div>
+
+                <div class="tips">
+                    <h4>💡 ポイント</h4>
+                    <ul>
+                        <li>テンプレートをベースに、<strong>自社の状況に合わせて調整</strong>すればOK</li>
+                        <li>難しく考えすぎず、<strong>基本的な内容</strong>で十分</li>
+                        <li>A4用紙<strong>1〜2ページ</strong>程度にまとめる</li>
+                        <li>代表者名で発行し、<strong>日付を記載</strong>する</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 料金と期間 -->
+            <div class="section">
+                <h2>💰 料金と取得期間</h2>
+
+                <div class="success-box">
+                    <h4>💰 料金</h4>
+                    <p style="font-size: 1.3em; font-weight: bold; margin: 15px 0;"><span style="font-size: 2em; color: #4CAF50;">完全無料！</span></p>
+                    <ul>
+                        <li>申し込み費用：<strong>0円</strong></li>
+                        <li>維持費用：<strong>0円</strong></li>
+                        <li>更新費用：<strong>0円</strong></li>
+                    </ul>
+                    <p style="margin-top: 15px;">一切費用はかかりません。中小企業でも安心して取得できます。</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>⏱ 取得期間</h4>
+                    <table style="width: 100%; margin-top: 15px;">
+                        <tr style="background: white;">
+                            <td style="padding: 15px; border-bottom: 1px solid #ddd;"><strong>自社診断の実施</strong></td>
+                            <td style="padding: 15px; border-bottom: 1px solid #ddd; text-align: right;"><strong>5〜10分</strong></td>
+                        </tr>
+                        <tr style="background: #f8f9ff;">
+                            <td style="padding: 15px; border-bottom: 1px solid #ddd;"><strong>基本方針の作成</strong></td>
+                            <td style="padding: 15px; border-bottom: 1px solid #ddd; text-align: right;"><strong>1〜2時間</strong></td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 15px; border-bottom: 1px solid #ddd;"><strong>ホームページへの掲載</strong></td>
+                            <td style="padding: 15px; border-bottom: 1px solid #ddd; text-align: right;"><strong>10〜30分</strong></td>
+                        </tr>
+                        <tr style="background: #f8f9ff;">
+                            <td style="padding: 15px; border-bottom: 1px solid #ddd;"><strong>申し込み手続</strong></td>
+                            <td style="padding: 15px; border-bottom: 1px solid #ddd; text-align: right;"><strong>10分</strong></td>
+                        </tr>
+                        <tr style="background: #e8f5e9;">
+                            <td style="padding: 15px; font-weight: bold;"><strong>合計</strong></td>
+                            <td style="padding: 15px; text-align: right; font-weight: bold; font-size: 1.3em; color: #4CAF50;"><strong>2〜3時間</strong></td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 15px;"><span class="highlight">最短で即日取得可能</span>です！<br>
+                    審査や承認プロセスはなく、申し込みが完了すればすぐにロゴマークが使用できます。</p>
+                </div>
+            </div>
+
+            <!-- 更新について -->
+            <div class="section">
+                <h2>🔄 更新について</h2>
+
+                <div class="alert-box">
+                    <strong>📅 年1回の更新が必要</strong>
+                    <p>SECURITY ACTIONは<strong>年1回の更新</strong>が必要です。</p>
+                    <ul>
+                        <li>更新時期：<strong>毎年、宣言した月</strong></li>
+                        <li>更新方法：<strong>マイページから更新手続</strong>を行う（5分程度）</li>
+                        <li>更新費用：<strong>無料</strong></li>
+                    </ul>
+                    <p style="margin-top: 15px;">更新を忘れると、宣言事業者一覧から削除され、ロゴマークも使用できなくなります。<br>
+                    更新時期が近づくと、登録したメールアドレスに通知が届くので安心です。</p>
+                </div>
+
+                <div class="tips">
+                    <h4>💡 更新時にやること</h4>
+                    <ul>
+                        <li>情報セキュリティ基本方針の<strong>見直し</strong>（必要に応じて更新）</li>
+                        <li>自社診断の<strong>再実施</strong>（前回から改善されたか確認）</li>
+                        <li>従業員への<strong>セキュリティ教育</strong>の実施状況確認</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- よくある質問 -->
+            <div class="section">
+                <h2>❓ よくある質問</h2>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">Q1</div>
+                        <div class="step-content">
+                            <h4>本当に無料ですか？</h4>
+                            <p><strong>はい、完全無料です。</strong><br>
+                            申し込み、維持、更新、すべて無料です。<br>
+                            IPAが中小企業の情報セキュリティ対策を支援するために提供している制度なので、一切費用はかかりません。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q2</div>
+                        <div class="step-content">
+                            <h4>審査はありますか？</h4>
+                            <p><strong>審査はありません。</strong><br>
+                            SECURITY ACTIONは<span class="highlight">自己宣言制</span>です。<br>
+                            申し込みフォームを送信すれば、すぐにロゴマークが使用できるようになります。<br>
+                            認証機関の検査なども一切ありません。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q3</div>
+                        <div class="step-content">
+                            <h4>ホームページがない場合はどうすればいいですか？</h4>
+                            <p><strong>ホームページがなくても取得できます。</strong><br>
+                            基本方針の公開方法は柔軟で、以下のような方法でもOKです：</p>
+                            <ul>
+                                <li>会社案内やパンフレットに掲載</li>
+                                <li>オフィスや店舗に掲示</li>
+                                <li>取引先に配布</li>
+                                <li>無料ブログやSNSページに掲載</li>
+                            </ul>
+                            <p style="margin-top: 10px;">「外部に見える形で公開している」ことが重要です。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q4</div>
+                        <div class="step-content">
+                            <h4>一つ星から二つ星にアップグレードできますか？</h4>
+                            <p><strong>はい、いつでもアップグレードできます。</strong><br>
+                            一つ星を取得した後、基本方針を策定・公開して、マイページから二つ星に変更できます。<br>
+                            追加費用は一切かかりません。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q5</div>
+                        <div class="step-content">
+                            <h4>個人事業主でも取得できますか？</h4>
+                            <p><strong>はい、取得できます。</strong><br>
+                            SECURITY ACTIONは、法人だけでなく<strong>個人事業主</strong>も対象です。<br>
+                            屋号または個人名で申し込むことができます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q6</div>
+                        <div class="step-content">
+                            <h4>ロゴマークはどこに使えますか？</h4>
+                            <p><strong>自社の宣伝・広報に自由に使用できます。</strong></p>
+                            <ul>
+                                <li>名刺（裏面に掲載する企業が多い）</li>
+                                <li>ホームページ</li>
+                                <li>会社案内・パンフレット</li>
+                                <li>提案書・見積書</li>
+                                <li>メールの署名</li>
+                                <li>展示会のブース</li>
+                                <li>オフィスの掲示</li>
+                            </ul>
+                            <p style="margin-top: 10px;">ただし、<strong>ロゴマークの改変は禁止</strong>されています。指定されたデザインをそのまま使用してください。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q7</div>
+                        <div class="step-content">
+                            <h4>ISO27001（ISMS）との違いは？</h4>
+                            <p><strong>SECURITY ACTIONは、ISMSの簡易版・入門版</strong>と言えます。</p>
+                            <table style="width: 100%; margin-top: 15px; border-collapse: collapse;">
+                                <tr style="background: #f8f9ff;">
+                                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>項目</strong></td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>SECURITY ACTION</strong></td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>ISO27001</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">取得難易度</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">簡単</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">難しい</td>
+                                </tr>
+                                <tr style="background: #f8f9ff;">
+                                    <td style="padding: 10px; border: 1px solid #ddd;">費用</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">無料</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">数十万円〜</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">期間</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">即日〜数時間</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">数ヶ月〜1年</td>
+                                </tr>
+                                <tr style="background: #f8f9ff;">
+                                    <td style="padding: 10px; border: 1px solid #ddd;">審査</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">なし</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">あり</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">信頼性</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">中</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">高</td>
+                                </tr>
+                            </table>
+                            <p style="margin-top: 10px;">まずはSECURITY ACTIONで始めて、将来的にISO27001を目指すのもおすすめです。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q8</div>
+                        <div class="step-content">
+                            <h4>更新を忘れたらどうなりますか？</h4>
+                            <p><strong>宣言事業者一覧から削除され、ロゴマークも使用できなくなります。</strong><br>
+                            ただし、<span class="highlight">再度申し込めば復活できます</span>（何度でもOK）。<br>
+                            更新時期が近づくとメールで通知が来るので、忘れずに更新しましょう。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q9</div>
+                        <div class="step-content">
+                            <h4>補助金申請で加点されますか？</h4>
+                            <p><strong>補助金によっては加点対象になります。</strong><br>
+                            特に以下の補助金では、SECURITY ACTIONの取得が有利に働くことがあります：</p>
+                            <ul>
+                                <li>IT導入補助金</li>
+                                <li>ものづくり補助金</li>
+                                <li>事業再構築補助金</li>
+                            </ul>
+                            <p style="margin-top: 10px;">補助金の公募要領で「情報セキュリティ対策の実施」が求められている場合、SECURITY ACTIONは有効なアピール材料になります。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q10</div>
+                        <div class="step-content">
+                            <h4>取得後、何かやらなければいけないことはありますか？</h4>
+                            <p><strong>特に義務付けられていることはありません</strong>が、以下を継続的に実施することが推奨されます：</p>
+                            <ul>
+                                <li>情報セキュリティ基本方針に沿った運用</li>
+                                <li>従業員へのセキュリティ教育</li>
+                                <li>定期的な自社診断の実施</li>
+                                <li>セキュリティ対策の継続的な改善</li>
+                            </ul>
+                            <p style="margin-top: 10px;">あくまで<strong>自己宣言制</strong>なので、厳格な義務はありませんが、宣言した以上は真摯に取り組むことが重要です。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- まとめ -->
+            <div class="section">
+                <h2>🎯 まとめ：二つ星取得のロードマップ</h2>
+
+                <div class="steps">
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; color: white;">
+                        <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.5em; color: white;">✨ 今日からできる！二つ星取得チャート</h3>
+
+                        <div style="background: white; color: #333; padding: 25px; border-radius: 10px; margin-bottom: 15px;">
+                            <h4 style="color: #667eea; margin-bottom: 15px;">📝 準備フェーズ（5〜10分）</h4>
+                            <p>✓ 「5分でできる！情報セキュリティ自社診断」を実施<br>
+                            ✓ 診断結果を確認し、改善点を把握</p>
+                        </div>
+
+                        <div style="background: white; color: #333; padding: 25px; border-radius: 10px; margin-bottom: 15px;">
+                            <h4 style="color: #667eea; margin-bottom: 15px;">📄 基本方針作成フェーズ（1〜2時間）</h4>
+                            <p>✓ IPAのテンプレートをダウンロード<br>
+                            ✓ 自社の状況に合わせてカスタマイズ<br>
+                            ✓ ホームページや会社案内に掲載</p>
+                        </div>
+
+                        <div style="background: white; color: #333; padding: 25px; border-radius: 10px; margin-bottom: 15px;">
+                            <h4 style="color: #667eea; margin-bottom: 15px;">🎉 申し込みフェーズ（10分）</h4>
+                            <p>✓ SECURITY ACTION公式サイトから申し込み<br>
+                            ✓ 二つ星を選択して必要情報を入力<br>
+                            ✓ 基本方針の公開URLを記載</p>
+                        </div>
+
+                        <div style="background: white; color: #333; padding: 25px; border-radius: 10px;">
+                            <h4 style="color: #4CAF50; margin-bottom: 15px;">⭐⭐ 完了！</h4>
+                            <p style="font-size: 1.1em;"><strong>すぐにロゴマークが使えます！</strong><br>
+                            名刺、ホームページ、提案書などに掲載して、セキュリティ対策をアピールしましょう。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-box" style="margin-top: 30px;">
+                    <h4>🚀 今すぐ始めましょう！</h4>
+                    <p style="font-size: 1.1em; margin: 15px 0;"><strong>たった2〜3時間で、会社の信頼性が向上します。</strong></p>
+                    <ul>
+                        <li>✅ 完全無料</li>
+                        <li>✅ 即日取得可能</li>
+                        <li>✅ 取引先へのアピールに最適</li>
+                        <li>✅ 補助金申請でも有利</li>
+                    </ul>
+                    <p style="margin-top: 20px; text-align: center;">
+                        <a href="https://www.ipa.go.jp/security/security-action/" class="button" target="_blank" style="font-size: 1.2em; padding: 20px 40px;">今すぐ申し込む 🚀</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- リンク -->
+            <div class="section" style="text-align: center;">
+                <h2>🔗 便利なリンク</h2>
+                <a href="https://www.ipa.go.jp/security/security-action/" class="button" target="_blank">⭐ SECURITY ACTION公式サイト</a>
+                <a href="https://www.ipa.go.jp/security/security-action/self-check.html" class="button" target="_blank">📋 5分でできる自社診断</a>
+                <a href="https://www.ipa.go.jp/security/security-action/twostar/" class="button" target="_blank">⭐⭐ 二つ星の詳細</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>📌 このガイドが役に立ったら、ぜひ周りの方にも教えてあげてください！</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">※ 情報は作成時点のものです。最新情報はIPA公式サイトでご確認ください。</p>
+        </footer>
+    </div>
+</body>
+</html>

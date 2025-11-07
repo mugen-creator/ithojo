@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT戦略マップ作成完全ガイド</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Meiryo, 'メイリオ', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .what-is {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin-bottom: 30px;
+        }
+
+        .what-is h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .alert-box strong {
+            color: #856404;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196F3;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .info-box h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 5px solid #4CAF50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .success-box h4 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .steps {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-right: 20px;
+        }
+
+        .step-content h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            background: linear-gradient(transparent 60%, #ffeb3b 60%);
+            font-weight: bold;
+            padding: 2px 4px;
+        }
+
+        .tips {
+            background: #e8f5e9;
+            border-left: 5px solid #4CAF50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .tips h4 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 10px 0;
+            line-height: 1.7;
+        }
+
+        .merit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .merit-item {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .merit-item:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+        }
+
+        .merit-item h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+
+        .button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        footer {
+            background: #f5f5f5;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.6em;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗺️ IT戦略マップ作成完全ガイド</h1>
+            <p>5分でIT活用の方向性が見える！</p>
+        </header>
+
+        <div class="content">
+            <!-- IT戦略マップとは -->
+            <div class="section">
+                <h2>🤔 IT戦略マップって何？</h2>
+                <div class="what-is">
+                    <h3>一言で言うと...</h3>
+                    <p><strong>「ITを活用してビジネスが成功するストーリーを可視化するツール」です！</strong></p>
+                    <p style="margin-top: 15px;">経営課題や業務上の課題に対し、<span class="highlight">どのようにIT活用で解決するかを整理</span>し、具体的な戦略として表現します。中小企業基盤整備機構（中小機構）が提供する無料ツールです。</p>
+                </div>
+
+                <div class="success-box">
+                    <h4>🌟 IT戦略マップの5つのメリット</h4>
+                    <div class="merit-grid">
+                        <div class="merit-item">
+                            <h4>📊 自社の立ち位置把握</h4>
+                            <p>同業他社と比較して、自社のIT化レベルがわかる</p>
+                        </div>
+                        <div class="merit-item">
+                            <h4>🎯 課題と解決策の明確化</h4>
+                            <p>経営課題とIT活用による解決策が見える化される</p>
+                        </div>
+                        <div class="merit-item">
+                            <h4>🚀 アクション化の促進</h4>
+                            <p>具体的なIT導入・運用計画に転換できる</p>
+                        </div>
+                        <div class="merit-item">
+                            <h4>🤝 経営者の意思統一</h4>
+                            <p>経営者と支援者が同じ目標を共有できる</p>
+                        </div>
+                        <div class="merit-item">
+                            <h4>💪 モチベーション向上</h4>
+                            <p>IT導入・運用への前向きな姿勢が生まれる</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert-box">
+                    <strong>💡 こんな企業におすすめ</strong>
+                    <ul>
+                        <li>「IT化を進めたいけど、何から始めればいいかわからない」</li>
+                        <li>「IT導入補助金を申請したいが、計画の立て方がわからない」</li>
+                        <li>「社内のIT化レベルが他社と比べてどうなのか知りたい」</li>
+                        <li>「経営課題をIT活用で解決したい」</li>
+                        <li>「IT投資の効果を経営者に説明したい」</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 誰のためのツール？ -->
+            <div class="section">
+                <h2>👥 誰のためのツール？</h2>
+
+                <div class="info-box">
+                    <h4>2つの利用者層</h4>
+                    <p><strong>1. 事業者（中小企業の経営者・担当者）</strong></p>
+                    <ul>
+                        <li>自社の経営状況を把握したい</li>
+                        <li>IT導入の方向性を理解したい</li>
+                        <li>IT投資の計画を立てたい</li>
+                    </ul>
+
+                    <p style="margin-top: 20px;"><strong>2. 支援機関（経営コンサルタント・商工会議所など）</strong></p>
+                    <ul>
+                        <li>中小企業への経営支援を行う専門家</li>
+                        <li>IT導入支援を行う支援団体</li>
+                        <li>補助金申請の支援を行うコンサルタント</li>
+                    </ul>
+                </div>
+
+                <div class="success-box">
+                    <h4>🤝 経営者と支援者が一緒に使えるツール</h4>
+                    <p>IT戦略マップは、<span class="highlight">経営者と支援者が意思統一できる</span>ツールとして設計されています。<br>
+                    <br>
+                    <strong>経営者：</strong>自社の課題とIT活用の方向性が見える<br>
+                    <strong>支援者：</strong>具体的な支援計画が立てやすくなる<br>
+                    <br>
+                    両者が同じ「地図」を見ながら、IT化を進めていけます。</p>
+                </div>
+            </div>
+
+            <!-- 作成にかかる時間 -->
+            <div class="section">
+                <h2>⏱ 作成にかかる時間</h2>
+
+                <div class="alert-box">
+                    <strong>⚡ たったの5分で完成！</strong>
+                    <p>IT戦略マップは、<span class="highlight">「5分で見える化！」</span>をコンセプトに設計されています。</p>
+                    <ul>
+                        <li><strong>簡単な質問に答えるだけ</strong>で自動的にマップが作成される</li>
+                        <li><strong>専門知識不要</strong>で誰でも使える</li>
+                        <li><strong>何度でも作り直し可能</strong></li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>実際の所要時間：</strong><br>
+                    初回：10〜15分（じっくり考えながら）<br>
+                    2回目以降：5分程度</p>
+                </div>
+            </div>
+
+            <!-- 作成方法・手順 -->
+            <div class="section">
+                <h2>📝 IT戦略マップの作成手順</h2>
+
+                <div class="info-box">
+                    <h4>4つのステップで完成</h4>
+                    <p>IT戦略マップは、<strong>4段階のステップ</strong>で作成します。</p>
+                </div>
+
+                <div class="steps">
+                    <h3 style="margin-bottom: 25px; color: #667eea;">ステップバイステップで解説</h3>
+
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>経営課題・業務課題のヒアリング</h4>
+                            <p><strong>自社の課題を整理します。</strong></p>
+                            <p><strong>チェック項目の例：</strong></p>
+                            <ul>
+                                <li>売上が伸び悩んでいる</li>
+                                <li>人手不足で業務が回らない</li>
+                                <li>業務効率が悪い</li>
+                                <li>顧客管理が属人化している</li>
+                                <li>在庫管理が大変</li>
+                                <li>情報共有がうまくいっていない</li>
+                                <li>リモートワークに対応できていない</li>
+                            </ul>
+                            <p style="margin-top: 15px;"><strong>提供されるツール：</strong><br>
+                            中小機構が提供する<strong>ヒアリングシート・チェックシート</strong>を使って、課題を整理できます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>IT戦略ナビwithでマップ作成</h4>
+                            <p><strong>Webツール「IT戦略ナビwith」で質問に答えていきます。</strong></p>
+                            <p><strong>質問の内容（例）：</strong></p>
+                            <ul>
+                                <li>業種・業態</li>
+                                <li>従業員数</li>
+                                <li>現在の経営課題</li>
+                                <li>現在導入しているITツール</li>
+                                <li>今後導入したいITツール</li>
+                                <li>IT化の目的</li>
+                            </ul>
+                            <p style="margin-top: 15px;">質問に答えると、<span class="highlight">自動的にIT戦略マップが生成</span>されます。<br>
+                            <strong>所要時間：5〜10分</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>IT化による課題解決策を検討・共有</h4>
+                            <p><strong>作成されたマップをもとに、具体的な解決策を検討します。</strong></p>
+                            <p><strong>マップに表示される内容：</strong></p>
+                            <ul>
+                                <li><strong>自社のIT化レベル</strong>（同業他社との比較）</li>
+                                <li><strong>推奨されるITツール</strong>（課題解決に適したツール）</li>
+                                <li><strong>導入事例</strong>（同じ課題を解決した企業の事例）</li>
+                                <li><strong>実行計画のヒント</strong>（何から始めるべきか）</li>
+                            </ul>
+                            <p style="margin-top: 15px;">経営者と支援者（または社内の関係者）で、<span class="highlight">マップを見ながら議論</span>します。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>具体的なIT導入・運用支援</h4>
+                            <p><strong>マップをもとに、実際のIT導入計画を立てます。</strong></p>
+                            <p><strong>計画に含める内容：</strong></p>
+                            <ul>
+                                <li>導入するITツールの選定</li>
+                                <li>導入スケジュール</li>
+                                <li>予算</li>
+                                <li>担当者の決定</li>
+                                <li>教育・研修計画</li>
+                                <li>効果測定の方法</li>
+                            </ul>
+                            <p style="margin-top: 15px;">この計画は、<strong>IT導入補助金の申請</strong>にも活用できます。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 詳しい使い方 -->
+            <div class="section">
+                <h2>💻 IT戦略ナビwithの使い方</h2>
+
+                <div class="steps">
+                    <h3 style="margin-bottom: 25px; color: #667eea;">実際の操作手順</h3>
+
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>公式サイトにアクセス</h4>
+                            <p>Google検索で「IT戦略ナビwith」または「digiwith」と検索し、公式サイトにアクセスします。<br>
+                            URL: https://digiwith.smrj.go.jp/it-map/</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>「マップを作成する」ボタンをクリック</h4>
+                            <p>トップページの「IT戦略マップを作成する」ボタンをクリックします。<br>
+                            <span class="highlight">会員登録は不要</span>で、すぐに使い始められます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>基本情報を入力</h4>
+                            <p>以下の情報を入力します：</p>
+                            <ul>
+                                <li><strong>業種</strong>（製造業、小売業、サービス業など）</li>
+                                <li><strong>従業員数</strong></li>
+                                <li><strong>年商</strong>（おおよそでOK）</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>経営課題を選択</h4>
+                            <p>表示される課題リストから、<strong>自社に当てはまる課題</strong>を選択します。<br>
+                            複数選択可能です。</p>
+                            <p><strong>課題の例：</strong></p>
+                            <ul>
+                                <li>売上拡大</li>
+                                <li>業務効率化</li>
+                                <li>人手不足対応</li>
+                                <li>顧客満足度向上</li>
+                                <li>コスト削減</li>
+                                <li>情報共有の改善</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>現在のIT活用状況を入力</h4>
+                            <p>現在導入している、または使用しているITツールを選択します。</p>
+                            <p><strong>ITツールの例：</strong></p>
+                            <ul>
+                                <li>会計ソフト</li>
+                                <li>販売管理システム</li>
+                                <li>顧客管理（CRM）</li>
+                                <li>在庫管理システム</li>
+                                <li>グループウェア</li>
+                                <li>Web会議ツール</li>
+                                <li>ECサイト</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>IT戦略マップが自動生成される</h4>
+                            <p>入力した情報をもとに、<strong>IT戦略マップが自動的に生成</strong>されます。</p>
+                            <p><strong>マップに表示される内容：</strong></p>
+                            <ul>
+                                <li><strong>自社のIT化レベル</strong>（4段階で表示）<br>
+                                Level 1：IT導入前<br>
+                                Level 2：部分的にIT化<br>
+                                Level 3：全社的にIT化<br>
+                                Level 4：IT活用による競争優位</li>
+                                <li><strong>同業他社の平均レベル</strong>との比較</li>
+                                <li><strong>推奨されるITツール</strong>（課題解決に適したツール）</li>
+                                <li><strong>導入の優先順位</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h4>関連情報を確認</h4>
+                            <p>マップと一緒に、以下の情報も表示されます：</p>
+                            <ul>
+                                <li><strong>導入事例</strong>：同じ課題を解決した企業の成功事例</li>
+                                <li><strong>関連アプリ</strong>：推奨されるITツールの詳細情報</li>
+                                <li><strong>補助金情報</strong>：活用できる補助金制度</li>
+                                <li><strong>支援機関</strong>：相談できる専門機関</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <h4>マップをダウンロード・共有</h4>
+                            <p>作成したIT戦略マップは、<strong>PDF形式でダウンロード</strong>できます。<br>
+                            <br>
+                            <strong>活用方法：</strong></p>
+                            <ul>
+                                <li>社内会議で共有</li>
+                                <li>補助金申請の添付資料</li>
+                                <li>支援機関への相談資料</li>
+                                <li>IT導入計画の資料</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 活用方法 -->
+            <div class="section">
+                <h2>🚀 IT戦略マップの活用方法</h2>
+
+                <div class="merit-grid">
+                    <div class="merit-item">
+                        <h4>💰 補助金申請</h4>
+                        <p><strong>IT導入補助金</strong>や<strong>ものづくり補助金</strong>の申請時に、IT導入計画の根拠資料として活用できます。</p>
+                    </div>
+
+                    <div class="merit-item">
+                        <h4>📋 経営計画の策定</h4>
+                        <p>中期経営計画や事業計画に、IT活用戦略として組み込むことができます。</p>
+                    </div>
+
+                    <div class="merit-item">
+                        <h4>🤝 社内の意識統一</h4>
+                        <p>経営者、管理職、現場担当者が同じ「地図」を見ることで、IT化の方向性を共有できます。</p>
+                    </div>
+
+                    <div class="merit-item">
+                        <h4>💼 取引先へのアピール</h4>
+                        <p>「IT活用に積極的な企業」として、取引先や顧客にアピールできます。</p>
+                    </div>
+
+                    <div class="merit-item">
+                        <h4>📊 定期的な見直し</h4>
+                        <p>年1回など定期的にマップを作り直すことで、IT化の進捗を確認できます。</p>
+                    </div>
+
+                    <div class="merit-item">
+                        <h4>🎓 従業員教育</h4>
+                        <p>なぜIT化が必要なのか、従業員に説明する資料として使えます。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- よくある質問 -->
+            <div class="section">
+                <h2>❓ よくある質問</h2>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">Q1</div>
+                        <div class="step-content">
+                            <h4>無料で使えますか？</h4>
+                            <p><strong>はい、完全無料です。</strong><br>
+                            中小企業基盤整備機構（中小機構）が提供している公的なツールなので、誰でも無料で利用できます。<br>
+                            会員登録も不要です。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q2</div>
+                        <div class="step-content">
+                            <h4>IT知識がなくても使えますか？</h4>
+                            <p><strong>はい、専門知識は不要です。</strong><br>
+                            簡単な質問に答えるだけで、自動的にマップが作成されます。<br>
+                            ITの専門用語もほとんど使われていないので、経営者でも安心して使えます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q3</div>
+                        <div class="step-content">
+                            <h4>何度でも作り直せますか？</h4>
+                            <p><strong>はい、何度でも作成できます。</strong><br>
+                            状況が変わったら、いつでも新しいマップを作成できます。<br>
+                            過去のデータは保存されないので、気軽に試してみることができます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q4</div>
+                        <div class="step-content">
+                            <h4>個人事業主でも使えますか？</h4>
+                            <p><strong>はい、使えます。</strong><br>
+                            法人だけでなく、個人事業主やフリーランスでも利用できます。<br>
+                            従業員数が「1名」でも問題ありません。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q5</div>
+                        <div class="step-content">
+                            <h4>補助金申請に本当に使えますか？</h4>
+                            <p><strong>はい、活用できます。</strong><br>
+                            IT戦略マップは、<strong>IT導入補助金</strong>の申請時に「IT導入計画」の根拠資料として提出できます。<br>
+                            特に、「なぜそのITツールが必要なのか」を説明する際に有効です。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q6</div>
+                        <div class="step-content">
+                            <h4>作成したマップは保存されますか？</h4>
+                            <p><strong>自動保存はされません。</strong><br>
+                            マップを保存したい場合は、<span class="highlight">PDF形式でダウンロード</span>してください。<br>
+                            ブラウザを閉じると、作成したマップは消えてしまいます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q7</div>
+                        <div class="step-content">
+                            <h4>支援機関に相談したい場合は？</h4>
+                            <p><strong>IT戦略ナビwithのサイトから相談先を探せます。</strong><br>
+                            全国の商工会議所、商工会、よろず支援拠点など、IT導入支援を行っている機関が紹介されています。<br>
+                            作成したマップを持って相談に行くと、スムーズに話が進みます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q8</div>
+                        <div class="step-content">
+                            <h4>同業他社と比較する機能はありますか？</h4>
+                            <p><strong>はい、あります。</strong><br>
+                            マップには、<strong>同業他社の平均的なIT化レベル</strong>が表示されます。<br>
+                            自社が業界の中でどのくらいのレベルにあるのか、一目でわかります。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- まとめ -->
+            <div class="section">
+                <h2>🎯 まとめ：今すぐ始めよう！</h2>
+
+                <div class="success-box">
+                    <h4>🚀 IT戦略マップ作成の5つのステップ</h4>
+                    <ol style="font-size: 1.1em; line-height: 2;">
+                        <li><strong>公式サイトにアクセス</strong>（https://digiwith.smrj.go.jp/it-map/）</li>
+                        <li><strong>「マップを作成する」ボタンをクリック</strong></li>
+                        <li><strong>基本情報と経営課題を入力</strong>（5分）</li>
+                        <li><strong>IT戦略マップが自動生成される</strong></li>
+                        <li><strong>PDFでダウンロード・活用</strong></li>
+                    </ol>
+                </div>
+
+                <div class="alert-box">
+                    <strong>💡 こんな時に使おう</strong>
+                    <ul>
+                        <li>✅ IT導入補助金を申請する前に</li>
+                        <li>✅ 社内でIT化の議論をする前に</li>
+                        <li>✅ 経営計画を策定する時に</li>
+                        <li>✅ 支援機関に相談に行く前に</li>
+                        <li>✅ ITツールの導入を検討している時に</li>
+                    </ul>
+                </div>
+
+                <div class="tips">
+                    <h4>💡 活用のコツ</h4>
+                    <ul>
+                        <li><strong>年1回は作り直す</strong>：IT化の進捗を確認するため、定期的に作成しましょう</li>
+                        <li><strong>社内で共有する</strong>：経営者だけでなく、管理職や現場担当者とも共有しましょう</li>
+                        <li><strong>導入事例を参考にする</strong>：マップに表示される導入事例を読んで、具体的なイメージを持ちましょう</li>
+                        <li><strong>支援機関に相談する</strong>：マップを持って専門家に相談すると、より具体的なアドバイスがもらえます</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <p style="font-size: 1.3em; font-weight: bold; margin-bottom: 20px;">たった5分で、IT活用の方向性が見えてきます！</p>
+                    <a href="https://digiwith.smrj.go.jp/it-map/" class="button" target="_blank" style="font-size: 1.2em; padding: 20px 40px;">今すぐマップを作成する 🗺️</a>
+                </div>
+            </div>
+
+            <!-- リンク -->
+            <div class="section" style="text-align: center;">
+                <h2>🔗 便利なリンク</h2>
+                <a href="https://digiwith.smrj.go.jp/it-map/" class="button" target="_blank">🗺️ IT戦略ナビwith</a>
+                <a href="https://www.smrj.go.jp/" class="button" target="_blank">🏢 中小企業基盤整備機構</a>
+                <a href="https://www.it-hojo.jp/" class="button" target="_blank">💰 IT導入補助金</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>📌 このガイドが役に立ったら、ぜひ周りの方にも教えてあげてください！</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">※ 情報は作成時点のものです。最新情報は公式サイトでご確認ください。</p>
+        </footer>
+    </div>
+</body>
+</html>

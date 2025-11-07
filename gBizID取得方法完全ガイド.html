@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gBizID取得方法完全ガイド - 初心者向け</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Meiryo, 'メイリオ', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .what-is {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin-bottom: 30px;
+        }
+
+        .what-is h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .alert-box strong {
+            color: #856404;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196F3;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .info-box h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 5px solid #4CAF50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .success-box h4 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .warning-box {
+            background: #ffebee;
+            border-left: 5px solid #f44336;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .warning-box h4 {
+            color: #c62828;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .account-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .account-card {
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .account-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(102, 126, 234, 0.3);
+        }
+
+        .account-card.prime {
+            border-color: #f44336;
+        }
+
+        .account-card.prime .badge {
+            background: linear-gradient(135deg, #f44336 0%, #e91e63 100%);
+        }
+
+        .account-card.prime h3 {
+            color: #f44336;
+        }
+
+        .account-card.member {
+            border-color: #2196F3;
+        }
+
+        .account-card.member .badge {
+            background: linear-gradient(135deg, #2196F3 0%, #00BCD4 100%);
+        }
+
+        .account-card.member h3 {
+            color: #2196F3;
+        }
+
+        .account-card.entry {
+            border-color: #4CAF50;
+        }
+
+        .account-card.entry .badge {
+            background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+        }
+
+        .account-card.entry h3 {
+            color: #4CAF50;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.95em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .account-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .account-card .description {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        .account-card h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 1.1em;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9ff;
+        }
+
+        .steps {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-right: 20px;
+        }
+
+        .step-content h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            background: linear-gradient(transparent 60%, #ffeb3b 60%);
+            font-weight: bold;
+            padding: 2px 4px;
+        }
+
+        .tips {
+            background: #e8f5e9;
+            border-left: 5px solid #4CAF50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .tips h4 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 10px 0;
+            line-height: 1.7;
+        }
+
+        .method-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .method-card {
+            background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .method-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .method-card h3 {
+            color: #667eea;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .service-item {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+        }
+
+        .service-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+
+        .button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        footer {
+            background: #f5f5f5;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.6em;
+            }
+
+            .account-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .method-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 gBizID取得方法完全ガイド</h1>
+            <p>1つのIDで行政サービスがすべて使える！</p>
+        </header>
+
+        <div class="content">
+            <!-- gBizIDとは -->
+            <div class="section">
+                <h2>🤔 gBizIDって何？</h2>
+                <div class="what-is">
+                    <h3>一言で言うと...</h3>
+                    <p><strong>「行政サービス専用の共通ID」です！</strong></p>
+                    <p style="margin-top: 15px;"><span class="highlight">1つのID・パスワードで様々な行政サービスにログイン</span>できるようになります。補助金申請、社会保険手続、各種認可申請などの電子届出や申請に使用できます。</p>
+                </div>
+
+                <div class="success-box">
+                    <h4>🌟 gBizIDのメリット</h4>
+                    <ul>
+                        <li><strong>1つのIDで複数のサービスが使える</strong><br>
+                        補助金申請（jGrants）、社会保険手続（e-Gov）など、サービスごとにIDを作る必要がありません</li>
+                        <li><strong>初回の身元確認後、以後の手続で本人確認書類が不要</strong><br>
+                        何度も書類を提出する手間が省けます</li>
+                        <li><strong>24時間いつでも申請・手続ができる</strong><br>
+                        窓口に行く必要がなく、夜間や休日でもOK</li>
+                        <li><strong>無料で利用できる</strong><br>
+                        取得も利用も完全無料です</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>📱 gBizIDで使えるサービス（一例）</h4>
+                    <div class="service-grid">
+                        <div class="service-item">
+                            <strong>jGrants</strong>
+                            <p>補助金申請</p>
+                        </div>
+                        <div class="service-item">
+                            <strong>e-Gov</strong>
+                            <p>社会保険・労働保険手続</p>
+                        </div>
+                        <div class="service-item">
+                            <strong>ミラサポplus</strong>
+                            <p>経営支援</p>
+                        </div>
+                        <div class="service-item">
+                            <strong>各種補助金</strong>
+                            <p>ものづくり補助金、IT導入補助金など</p>
+                        </div>
+                        <div class="service-item">
+                            <strong>各省庁システム</strong>
+                            <p>経済産業省、厚生労働省など</p>
+                        </div>
+                        <div class="service-item">
+                            <strong>その他多数</strong>
+                            <p>対応サービスは増加中</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3つのアカウント種類 -->
+            <div class="section">
+                <h2>🎯 gBizIDには3つの種類がある</h2>
+                <p>利用目的に応じて3種類から選べます。<span class="highlight">ほとんどの場合は「gBizIDプライム」が必要</span>です。</p>
+
+                <div class="account-cards">
+                    <!-- プライム -->
+                    <div class="account-card prime">
+                        <div class="badge">おすすめ！</div>
+                        <h3>gBizIDプライム</h3>
+
+                        <div class="description">
+                            <strong>法人代表者・個人事業主向け</strong><br>
+                            すべての行政サービスが利用可能
+                        </div>
+
+                        <h4>✅ できること</h4>
+                        <ul>
+                            <li><strong>すべての行政サービス</strong>にログイン可能</li>
+                            <li>補助金申請</li>
+                            <li>社会保険・労働保険手続</li>
+                            <li>各種認可申請</li>
+                            <li><strong>メンバーアカウント</strong>の作成（従業員用）</li>
+                        </ul>
+
+                        <h4>📋 取得に必要なもの</h4>
+                        <ul>
+                            <li>印鑑証明書（法人：法務局発行、個人：市区町村発行）</li>
+                            <li>審査期間が必要</li>
+                        </ul>
+
+                        <h4>⏱ 取得期間</h4>
+                        <p><strong>オンライン申請（マイナンバーカード）：</strong>即日発行<br>
+                        <strong>書類郵送申請：</strong>2週間程度</p>
+
+                        <h4>💰 料金</h4>
+                        <p><strong>無料</strong></p>
+                    </div>
+
+                    <!-- メンバー -->
+                    <div class="account-card member">
+                        <div class="badge">従業員向け</div>
+                        <h3>gBizIDメンバー</h3>
+
+                        <div class="description">
+                            <strong>従業員向け</strong><br>
+                            プライムが作成するアカウント
+                        </div>
+
+                        <h4>✅ できること</h4>
+                        <ul>
+                            <li>一部の行政サービスにログイン可能</li>
+                            <li>補助金申請（プライムが権限付与）</li>
+                            <li>社会保険手続（プライムが権限付与）</li>
+                        </ul>
+
+                        <h4>📋 取得方法</h4>
+                        <ul>
+                            <li><strong>gBizIDプライムを持つ代表者</strong>が作成</li>
+                            <li>メールアドレスがあればすぐに作成可能</li>
+                            <li>審査不要</li>
+                        </ul>
+
+                        <h4>⏱ 取得期間</h4>
+                        <p><strong>即時</strong>（プライムが作成）</p>
+
+                        <h4>💰 料金</h4>
+                        <p><strong>無料</strong></p>
+                    </div>
+
+                    <!-- エントリー -->
+                    <div class="account-card entry">
+                        <div class="badge">お試し</div>
+                        <h3>gBizIDエントリー</h3>
+
+                        <div class="description">
+                            <strong>誰でもすぐに作成可能</strong><br>
+                            利用できるサービスは限定的
+                        </div>
+
+                        <h4>✅ できること</h4>
+                        <ul>
+                            <li><strong>一部の行政サービス</strong>のみ利用可能</li>
+                            <li>ミラサポplusなど限定的なサービス</li>
+                            <li>gBizINFO（企業情報検索）</li>
+                        </ul>
+
+                        <h4>❌ できないこと</h4>
+                        <ul>
+                            <li>補助金申請</li>
+                            <li>社会保険手続</li>
+                            <li>各種認可申請</li>
+                        </ul>
+
+                        <h4>📋 取得方法</h4>
+                        <ul>
+                            <li><strong>メールアドレスだけ</strong>ですぐに作成</li>
+                            <li>審査不要</li>
+                            <li>書類提出不要</li>
+                        </ul>
+
+                        <h4>⏱ 取得期間</h4>
+                        <p><strong>即時</strong></p>
+
+                        <h4>💰 料金</h4>
+                        <p><strong>無料</strong></p>
+                    </div>
+                </div>
+
+                <div class="alert-box">
+                    <strong>🎯 どれを取得すべき？</strong>
+                    <ul>
+                        <li><strong>法人代表者・個人事業主</strong> → <span class="highlight">gBizIDプライム</span>（必須！）</li>
+                        <li><strong>従業員（経理・総務担当者など）</strong> → gBizIDメンバー（代表者に作ってもらう）</li>
+                        <li><strong>とりあえず試したい</strong> → gBizIDエントリー（後でプライムに変更可能）</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>補助金申請や社会保険手続をするなら、必ず「gBizIDプライム」が必要です！</strong></p>
+                </div>
+            </div>
+
+            <!-- 比較表 -->
+            <div class="section">
+                <h2>📊 3つのアカウント比較表</h2>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>項目</th>
+                            <th>プライム</th>
+                            <th>メンバー</th>
+                            <th>エントリー</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>対象者</strong></td>
+                            <td>法人代表者・個人事業主</td>
+                            <td>従業員</td>
+                            <td>誰でも</td>
+                        </tr>
+                        <tr>
+                            <td><strong>利用可能サービス</strong></td>
+                            <td>すべて</td>
+                            <td>制限あり（小）</td>
+                            <td>制限あり（大）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>補助金申請</strong></td>
+                            <td>⭕ 可能</td>
+                            <td>⭕ 可能（権限付与が必要）</td>
+                            <td>❌ 不可</td>
+                        </tr>
+                        <tr>
+                            <td><strong>社会保険手続</strong></td>
+                            <td>⭕ 可能</td>
+                            <td>⭕ 可能（権限付与が必要）</td>
+                            <td>❌ 不可</td>
+                        </tr>
+                        <tr>
+                            <td><strong>メンバー作成</strong></td>
+                            <td>⭕ 可能</td>
+                            <td>❌ 不可</td>
+                            <td>❌ 不可</td>
+                        </tr>
+                        <tr>
+                            <td><strong>審査</strong></td>
+                            <td>あり</td>
+                            <td>なし</td>
+                            <td>なし</td>
+                        </tr>
+                        <tr>
+                            <td><strong>必要書類</strong></td>
+                            <td>印鑑証明書など</td>
+                            <td>なし</td>
+                            <td>なし</td>
+                        </tr>
+                        <tr>
+                            <td><strong>取得期間</strong></td>
+                            <td>即日〜2週間</td>
+                            <td>即時</td>
+                            <td>即時</td>
+                        </tr>
+                        <tr>
+                            <td><strong>料金</strong></td>
+                            <td>無料</td>
+                            <td>無料</td>
+                            <td>無料</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- gBizIDプライムの取得方法 -->
+            <div class="section">
+                <h2>📝 gBizIDプライムの取得方法</h2>
+                <p>gBizIDプライムの取得方法は2つあります。<span class="highlight">マイナンバーカードを持っているなら、オンライン申請が断然おすすめ</span>です！</p>
+
+                <div class="method-comparison">
+                    <!-- オンライン申請 -->
+                    <div class="method-card" style="border-color: #f44336;">
+                        <div class="icon">💻</div>
+                        <h3>オンライン申請</h3>
+                        <div class="badge" style="background: linear-gradient(135deg, #f44336 0%, #e91e63 100%);">おすすめ！</div>
+
+                        <h4 style="color: #f44336; margin-top: 20px;">✅ メリット</h4>
+                        <ul>
+                            <li><strong>即日発行</strong>されます</li>
+                            <li>書類を郵送する必要がない</li>
+                            <li>24時間申請可能</li>
+                            <li>印鑑証明書の郵送不要</li>
+                        </ul>
+
+                        <h4 style="color: #f44336;">📋 必要なもの</h4>
+                        <ul>
+                            <li><strong>マイナンバーカード</strong>（必須）</li>
+                            <li>スマートフォン（マイナンバーカード読み取り対応）<br>
+                            または ICカードリーダー</li>
+                            <li>メールアドレス</li>
+                        </ul>
+
+                        <h4 style="color: #f44336;">⏱ 取得期間</h4>
+                        <p><strong>即日</strong>（申請後すぐに利用可能）</p>
+                    </div>
+
+                    <!-- 書類郵送申請 -->
+                    <div class="method-card" style="border-color: #2196F3;">
+                        <div class="icon">📮</div>
+                        <h3>書類郵送申請</h3>
+                        <div class="badge" style="background: linear-gradient(135deg, #2196F3 0%, #00BCD4 100%);">マイナンバーカードがない方</div>
+
+                        <h4 style="color: #2196F3; margin-top: 20px;">✅ メリット</h4>
+                        <ul>
+                            <li>マイナンバーカード不要</li>
+                            <li>スマートフォンやICカードリーダー不要</li>
+                        </ul>
+
+                        <h4 style="color: #2196F3;">📋 必要なもの</h4>
+                        <ul>
+                            <li><strong>印鑑証明書</strong>（原本）<br>
+                            法人：法務局発行（発行から3ヶ月以内）<br>
+                            個人事業主：市区町村発行（発行から3ヶ月以内）</li>
+                            <li>申請書（ウェブで作成後印刷）</li>
+                            <li>メールアドレス</li>
+                        </ul>
+
+                        <h4 style="color: #2196F3;">⏱ 取得期間</h4>
+                        <p><strong>約2週間</strong>（書類到着後、審査を経て発行）</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ 重要な注意点</h4>
+                    <ul>
+                        <li><strong>印鑑証明書の住所と申請内容が完全一致している必要があります</strong><br>
+                        特に個人事業主は、印鑑登録証明書に記載されている住所と完全に同じ表記で入力してください。</li>
+                        <li><strong>法人の場合、法務局発行の印鑑証明書が必要です</strong><br>
+                        市区町村の印鑑証明書ではありません。</li>
+                        <li><strong>印鑑証明書は発行から3ヶ月以内のもの</strong>が必要です。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 方法1: オンライン申請 -->
+            <div class="section">
+                <h2>💻 方法1：オンライン申請（マイナンバーカード使用）</h2>
+
+                <div class="success-box">
+                    <h4>🌟 こんな人におすすめ</h4>
+                    <ul>
+                        <li>マイナンバーカードを持っている</li>
+                        <li>すぐに使いたい（即日発行）</li>
+                        <li>書類を郵送するのが面倒</li>
+                        <li>印鑑証明書を取りに行く時間がない</li>
+                    </ul>
+                </div>
+
+                <div class="steps">
+                    <h3 style="margin-bottom: 25px; color: #667eea;">📝 申請手順</h3>
+
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>gBizID公式サイトにアクセス</h4>
+                            <p>Google検索で「gBizID」と検索し、公式サイト（https://gbiz-id.go.jp/）にアクセスします。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>「gBizIDプライム作成」を選択</h4>
+                            <p>トップページから「<strong>gBizIDプライム作成</strong>」ボタンをクリックします。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>「マイナンバーカードで申請」を選択</h4>
+                            <p>申請方法の選択画面で「<strong>マイナンバーカードで申請</strong>」を選びます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>事業区分を選択</h4>
+                            <p>以下から選択します：</p>
+                            <ul>
+                                <li><strong>法人</strong>（株式会社、合同会社、NPO法人など）</li>
+                                <li><strong>個人事業主</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>法人情報・事業者情報を入力</h4>
+                            <p><strong>法人の場合：</strong></p>
+                            <ul>
+                                <li>法人番号（13桁）</li>
+                                <li>法人名（正式名称）</li>
+                                <li>本店所在地</li>
+                                <li>代表者氏名</li>
+                            </ul>
+                            <p><strong>個人事業主の場合：</strong></p>
+                            <ul>
+                                <li>屋号（任意）</li>
+                                <li>氏名</li>
+                                <li><strong>事業所所在地</strong>（印鑑登録証明書の住所と完全一致させる）</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>アカウント情報を入力</h4>
+                            <p>以下の情報を入力します：</p>
+                            <ul>
+                                <li><strong>メールアドレス</strong>（ログインID兼連絡先）</li>
+                                <li><strong>SMS受信可能な電話番号</strong>（本人確認用）</li>
+                                <li>パスワード</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h4>マイナンバーカードで本人確認</h4>
+                            <p><strong>スマートフォンの場合：</strong></p>
+                            <ul>
+                                <li>マイナンバーカードをスマホにかざす</li>
+                                <li>マイナンバーカードの<strong>署名用電子証明書パスワード</strong>（6〜16桁）を入力</li>
+                            </ul>
+                            <p><strong>パソコン＋ICカードリーダーの場合：</strong></p>
+                            <ul>
+                                <li>ICカードリーダーにマイナンバーカードをセット</li>
+                                <li>署名用電子証明書パスワードを入力</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <h4>SMS認証</h4>
+                            <p>入力した電話番号にSMSで認証コードが送られてくるので、画面に入力します。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">9</div>
+                        <div class="step-content">
+                            <h4>申請完了・即日発行</h4>
+                            <p><span class="highlight">申請が完了すると、すぐにgBizIDが発行</span>されます！<br>
+                            登録したメールアドレスに通知が届きます。<br>
+                            <br>
+                            <strong>これで各種行政サービスが利用可能になります！</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tips">
+                    <h4>💡 マイナンバーカードのパスワードを忘れた場合</h4>
+                    <p>署名用電子証明書パスワードを忘れた場合は、<strong>市区町村の窓口</strong>で再設定できます。<br>
+                    以下を持参してください：</p>
+                    <ul>
+                        <li>マイナンバーカード</li>
+                        <li>本人確認書類（運転免許証など）</li>
+                        <li>通知カード（持っている場合）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 方法2: 書類郵送申請 -->
+            <div class="section">
+                <h2>📮 方法2：書類郵送申請</h2>
+
+                <div class="info-box">
+                    <h4>こんな人におすすめ</h4>
+                    <ul>
+                        <li>マイナンバーカードを持っていない</li>
+                        <li>スマートフォンやICカードリーダーがない</li>
+                        <li>2週間程度の取得期間があっても問題ない</li>
+                    </ul>
+                </div>
+
+                <div class="steps">
+                    <h3 style="margin-bottom: 25px; color: #667eea;">📝 申請手順</h3>
+
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>印鑑証明書を取得</h4>
+                            <p><strong>法人の場合：</strong></p>
+                            <ul>
+                                <li><strong>法務局</strong>で「印鑑証明書」を取得（発行から3ヶ月以内）</li>
+                                <li>手数料：450円（窓口・郵送）、410円（オンライン）</li>
+                            </ul>
+                            <p><strong>個人事業主の場合：</strong></p>
+                            <ul>
+                                <li><strong>市区町村</strong>で「印鑑登録証明書」を取得（発行から3ヶ月以内）</li>
+                                <li>手数料：200円〜300円程度（自治体により異なる）</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>gBizID公式サイトで申請書を作成</h4>
+                            <p>gBizID公式サイト（https://gbiz-id.go.jp/）にアクセスし、「<strong>gBizIDプライム作成</strong>」→「<strong>書類で申請</strong>」を選択します。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>事業区分を選択</h4>
+                            <ul>
+                                <li><strong>法人</strong></li>
+                                <li><strong>個人事業主</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>法人情報・事業者情報を入力</h4>
+                            <p><strong>⚠️ 重要：印鑑証明書の記載内容と完全一致させてください</strong></p>
+                            <p><strong>法人の場合：</strong></p>
+                            <ul>
+                                <li>法人番号</li>
+                                <li>法人名（印鑑証明書と同じ表記）</li>
+                                <li>本店所在地（印鑑証明書と同じ表記）</li>
+                                <li>代表者氏名（印鑑証明書と同じ表記）</li>
+                            </ul>
+                            <p><strong>個人事業主の場合：</strong></p>
+                            <ul>
+                                <li>屋号（任意）</li>
+                                <li>氏名（印鑑登録証明書と同じ表記）</li>
+                                <li><strong>事業所所在地（印鑑登録証明書と完全一致）</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>アカウント情報を入力</h4>
+                            <ul>
+                                <li><strong>メールアドレス</strong>（ログインID）</li>
+                                <li><strong>SMS受信可能な電話番号</strong></li>
+                                <li>パスワード</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>申請書を印刷</h4>
+                            <p>入力が完了すると、<strong>申請書（PDF）</strong>が表示されます。<br>
+                            これを印刷してください。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h4>申請書に署名・押印</h4>
+                            <p><strong>法人の場合：</strong></p>
+                            <ul>
+                                <li>代表者が署名</li>
+                                <li><strong>印鑑証明書に登録されている代表者印</strong>を押印</li>
+                            </ul>
+                            <p><strong>個人事業主の場合：</strong></p>
+                            <ul>
+                                <li>本人が署名</li>
+                                <li><strong>印鑑登録証明書に登録されている実印</strong>を押印</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <h4>書類を郵送</h4>
+                            <p>以下の書類を封筒に入れて、<strong>gBizID運用センター</strong>に郵送します：</p>
+                            <ul>
+                                <li>署名・押印済みの申請書</li>
+                                <li><strong>印鑑証明書（原本）</strong></li>
+                            </ul>
+                            <p style="margin-top: 10px;"><strong>送付先：</strong><br>
+                            〒530-8532<br>
+                            gBizID運用センター<br>
+                            ※住所の記載は不要です</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">9</div>
+                        <div class="step-content">
+                            <h4>審査完了を待つ</h4>
+                            <p>書類が到着後、<span class="highlight">約2週間</span>で審査が完了します。<br>
+                            審査が完了すると、登録したメールアドレスに通知が届きます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">10</div>
+                        <div class="step-content">
+                            <h4>gBizID発行完了</h4>
+                            <p>メール通知が届いたら、gBizIDが発行完了です！<br>
+                            <strong>各種行政サービスが利用可能</strong>になります。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ よくある審査落ちの原因</h4>
+                    <ul>
+                        <li><strong>印鑑証明書と申請内容が一致していない</strong><br>
+                        住所の表記（番地、ハイフン、番など）が完全一致していない</li>
+                        <li><strong>印鑑証明書が古い</strong><br>
+                        発行から3ヶ月を超えている</li>
+                        <li><strong>押印が印鑑証明書の印影と一致しない</strong><br>
+                        別の印鑑を押してしまった、印影が不鮮明</li>
+                        <li><strong>印鑑証明書がコピー</strong><br>
+                        原本が必要です</li>
+                    </ul>
+                    <p style="margin-top: 15px;">審査に落ちた場合は、修正して再申請できます。</p>
+                </div>
+            </div>
+
+            <!-- gBizIDエントリーの作成 -->
+            <div class="section">
+                <h2>⚡ gBizIDエントリーの作成（即時）</h2>
+
+                <div class="info-box">
+                    <h4>こんな人におすすめ</h4>
+                    <ul>
+                        <li>とりあえず試しに使ってみたい</li>
+                        <li>すぐにアカウントが欲しい</li>
+                        <li>ミラサポplusなど限定的なサービスだけ使いたい</li>
+                    </ul>
+                </div>
+
+                <div class="alert-box">
+                    <strong>⚠️ 注意</strong>
+                    <p>gBizIDエントリーでは<strong>補助金申請や社会保険手続はできません</strong>。<br>
+                    これらのサービスを使いたい場合は、必ず「gBizIDプライム」を取得してください。</p>
+                </div>
+
+                <div class="steps">
+                    <h3 style="margin-bottom: 25px; color: #667eea;">📝 作成手順（3分で完了）</h3>
+
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>gBizID公式サイトにアクセス</h4>
+                            <p>https://gbiz-id.go.jp/ にアクセスします。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>「gBizIDエントリー作成」を選択</h4>
+                            <p>トップページから「gBizIDエントリー作成」ボタンをクリックします。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>メールアドレスとパスワードを入力</h4>
+                            <ul>
+                                <li>メールアドレス（ログインID）</li>
+                                <li>パスワード</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>メール認証</h4>
+                            <p>入力したメールアドレスに認証メールが届くので、記載されているURLをクリックします。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>作成完了</h4>
+                            <p><strong>すぐに利用開始できます！</strong><br>
+                            ただし、利用できるサービスは限定的です。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tips">
+                    <h4>💡 エントリーからプライムへのアップグレード</h4>
+                    <p>gBizIDエントリーを作成した後、<strong>プライムにアップグレード</strong>することができます。<br>
+                    アップグレードする場合は、プライムの申請手続（印鑑証明書の提出など）が必要になります。</p>
+                </div>
+            </div>
+
+            <!-- よくある質問 -->
+            <div class="section">
+                <h2>❓ よくある質問</h2>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">Q1</div>
+                        <div class="step-content">
+                            <h4>gBizIDは無料ですか？</h4>
+                            <p><strong>はい、完全無料です。</strong><br>
+                            取得も利用も一切費用はかかりません。<br>
+                            ただし、印鑑証明書を取得する際の手数料（450円程度）は必要です。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q2</div>
+                        <div class="step-content">
+                            <h4>マイナンバーカードは必須ですか？</h4>
+                            <p><strong>必須ではありません</strong>が、マイナンバーカードがあれば<span class="highlight">即日発行</span>できます。<br>
+                            マイナンバーカードがない場合は、書類郵送申請（約2週間）になります。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q3</div>
+                        <div class="step-content">
+                            <h4>個人でも取得できますか？</h4>
+                            <p><strong>個人事業主であれば取得できます。</strong><br>
+                            ただし、給与所得者などの一般個人は取得できません。<br>
+                            gBizIDは<span class="highlight">事業者向け</span>のサービスです。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q4</div>
+                        <div class="step-content">
+                            <h4>従業員も取得する必要がありますか？</h4>
+                            <p><strong>従業員は「gBizIDメンバー」を取得します。</strong><br>
+                            まず代表者が「gBizIDプライム」を取得した後、プライムのアカウントから<strong>メンバーアカウントを作成</strong>できます。<br>
+                            従業員が個別にプライムを取得する必要はありません。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q5</div>
+                        <div class="step-content">
+                            <h4>複数のメールアドレスで複数のアカウントを作れますか？</h4>
+                            <p><strong>1つの法人・個人事業主につき、gBizIDプライムは1つだけ</strong>作成できます。<br>
+                            従業員用には「gBizIDメンバー」を作成してください（複数作成可能）。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q6</div>
+                        <div class="step-content">
+                            <h4>審査に落ちた場合はどうすればいいですか？</h4>
+                            <p><strong>再申請できます。</strong><br>
+                            審査に落ちた場合は、メールで理由が通知されます。<br>
+                            原因を修正して、再度申請してください。<br>
+                            よくある原因：印鑑証明書と申請内容の不一致、印鑑証明書が古い、など</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q7</div>
+                        <div class="step-content">
+                            <h4>パスワードを忘れた場合は？</h4>
+                            <p><strong>パスワード再設定ができます。</strong><br>
+                            gBizIDのログイン画面から「パスワードを忘れた方」をクリックし、登録したメールアドレスを入力すると、再設定用のURLが送られてきます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q8</div>
+                        <div class="step-content">
+                            <h4>gBizIDで使える行政サービスは？</h4>
+                            <p>主なサービス：</p>
+                            <ul>
+                                <li><strong>jGrants</strong>（補助金申請）</li>
+                                <li><strong>e-Gov</strong>（社会保険・労働保険手続）</li>
+                                <li><strong>ミラサポplus</strong>（経営支援）</li>
+                                <li><strong>各種補助金</strong>（ものづくり補助金、IT導入補助金など）</li>
+                                <li><strong>各省庁の電子申請システム</strong></li>
+                            </ul>
+                            <p style="margin-top: 10px;">対応サービスは随時増えています。最新情報はgBizID公式サイトで確認できます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q9</div>
+                        <div class="step-content">
+                            <h4>有効期限はありますか？</h4>
+                            <p><strong>有効期限はありません。</strong><br>
+                            ただし、<span class="highlight">2年間ログインがない場合、アカウントが削除</span>されることがあります。<br>
+                            定期的にログインして利用状況を確認しましょう。</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Q10</div>
+                        <div class="step-content">
+                            <h4>代表者が変わった場合は？</h4>
+                            <p><strong>再申請が必要です。</strong><br>
+                            代表者が変わった場合は、旧アカウントを削除し、新代表者名義で新しくgBizIDプライムを取得してください。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- まとめ -->
+            <div class="section">
+                <h2>🎯 まとめ：取得方法フローチャート</h2>
+
+                <div class="steps">
+                    <div style="background: white; padding: 30px; border-radius: 15px; border: 3px solid #667eea;">
+                        <h3 style="color: #667eea; text-align: center; margin-bottom: 30px; font-size: 1.5em;">どの取得方法を選ぶ？</h3>
+
+                        <div style="background: #f8f9ff; padding: 25px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #f44336;">
+                            <h4 style="color: #f44336; margin-bottom: 15px;">✅ 法人代表者・個人事業主の場合</h4>
+                            <p style="margin-bottom: 15px; font-size: 1.1em;"><strong>→ gBizIDプライムを取得</strong></p>
+
+                            <div style="margin-left: 20px;">
+                                <p style="margin: 10px 0; font-weight: bold;">マイナンバーカードを持っている？</p>
+                                <div style="margin-left: 20px; padding: 15px; background: white; border-radius: 8px; margin-top: 10px;">
+                                    <p><strong style="color: #4CAF50;">✓ YES</strong> → <span class="highlight">オンライン申請（即日発行）</span> ⚡おすすめ！</p>
+                                </div>
+                                <div style="margin-left: 20px; padding: 15px; background: white; border-radius: 8px; margin-top: 10px;">
+                                    <p><strong style="color: #f44336;">✗ NO</strong> → 書類郵送申請（約2週間）</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: #f8f9ff; padding: 25px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #2196F3;">
+                            <h4 style="color: #2196F3; margin-bottom: 15px;">👥 従業員の場合</h4>
+                            <p style="font-size: 1.1em;"><strong>→ gBizIDメンバー</strong>を代表者に作ってもらう（即時）</p>
+                        </div>
+
+                        <div style="background: #f8f9ff; padding: 25px; border-radius: 10px; border-left: 5px solid #4CAF50;">
+                            <h4 style="color: #4CAF50; margin-bottom: 15px;">🆓 とりあえず試したい場合</h4>
+                            <p style="font-size: 1.1em;"><strong>→ gBizIDエントリー</strong>を作成（即時・書類不要）</p>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">※ただし補助金申請・社会保険手続は不可</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- チェックリスト -->
+            <div class="section">
+                <h2>✅ 取得前チェックリスト</h2>
+
+                <div class="steps">
+                    <div style="background: white; padding: 25px; border-radius: 10px; border: 2px solid #667eea;">
+                        <h3 style="color: #667eea; margin-bottom: 20px;">申請前に確認しよう！</h3>
+
+                        <div style="margin-bottom: 15px; padding: 15px; background: #f8f9ff; border-radius: 8px;">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" style="margin-right: 15px; width: 20px; height: 20px;">
+                                <span><strong>取得するアカウントの種類を決めた</strong>（プライム／メンバー／エントリー）</span>
+                            </label>
+                        </div>
+
+                        <div style="margin-bottom: 15px; padding: 15px; background: #f8f9ff; border-radius: 8px;">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" style="margin-right: 15px; width: 20px; height: 20px;">
+                                <span><strong>申請方法を決めた</strong>（オンライン／書類郵送）</span>
+                            </label>
+                        </div>
+
+                        <div style="margin-bottom: 15px; padding: 15px; background: #f8f9ff; border-radius: 8px;">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" style="margin-right: 15px; width: 20px; height: 20px;">
+                                <span><strong>メールアドレスを準備した</strong></span>
+                            </label>
+                        </div>
+
+                        <div style="margin-bottom: 15px; padding: 15px; background: #f8f9ff; border-radius: 8px;">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" style="margin-right: 15px; width: 20px; height: 20px;">
+                                <span><strong>SMS受信可能な電話番号を準備した</strong></span>
+                            </label>
+                        </div>
+
+                        <div style="margin-bottom: 15px; padding: 15px; background: #fff3cd; border-radius: 8px; border: 2px solid #ffc107;">
+                            <p style="font-weight: bold; margin-bottom: 10px; color: #856404;">📱 オンライン申請の場合</p>
+                            <label style="display: flex; align-items: center; cursor: pointer; margin-top: 10px;">
+                                <input type="checkbox" style="margin-right: 15px; width: 20px; height: 20px;">
+                                <span><strong>マイナンバーカードを準備した</strong></span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer; margin-top: 10px;">
+                                <input type="checkbox" style="margin-right: 15px; width: 20px; height: 20px;">
+                                <span><strong>署名用電子証明書パスワードを確認した</strong></span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer; margin-top: 10px;">
+                                <input type="checkbox" style="margin-right: 15px; width: 20px; height: 20px;">
+                                <span><strong>スマートフォンまたはICカードリーダーを準備した</strong></span>
+                            </label>
+                        </div>
+
+                        <div style="padding: 15px; background: #e3f2fd; border-radius: 8px; border: 2px solid #2196F3;">
+                            <p style="font-weight: bold; margin-bottom: 10px; color: #1976D2;">📮 書類郵送申請の場合</p>
+                            <label style="display: flex; align-items: center; cursor: pointer; margin-top: 10px;">
+                                <input type="checkbox" style="margin-right: 15px; width: 20px; height: 20px;">
+                                <span><strong>印鑑証明書を取得した</strong>（発行から3ヶ月以内）</span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer; margin-top: 10px;">
+                                <input type="checkbox" style="margin-right: 15px; width: 20px; height: 20px;">
+                                <span><strong>印鑑証明書の住所と申請内容が完全一致するか確認した</strong></span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer; margin-top: 10px;">
+                                <input type="checkbox" style="margin-right: 15px; width: 20px; height: 20px;">
+                                <span><strong>実印を準備した</strong>（印鑑証明書に登録されている印鑑）</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- リンク -->
+            <div class="section" style="text-align: center;">
+                <h2>🔗 便利なリンク</h2>
+                <a href="https://gbiz-id.go.jp/" class="button" target="_blank">🔐 gBizID公式サイト</a>
+                <a href="https://gbiz-id.go.jp/top/service/" class="button" target="_blank">📱 利用可能サービス一覧</a>
+                <a href="https://gbiz-id.go.jp/top/faq/" class="button" target="_blank">❓ よくある質問（公式）</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>📌 このガイドが役に立ったら、ぜひ周りの方にも教えてあげてください！</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">※ 情報は作成時点のものです。最新情報はgBizID公式サイトでご確認ください。</p>
+        </footer>
+    </div>
+</body>
+</html>

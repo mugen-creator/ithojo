@@ -51,7 +51,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, 'メイリオ', sans-serif;
             line-height: 1.65;
             color: var(--text-dark);
-            background: linear-gradient(180deg, #f0f4f8 0%, #e2e8f0 100%);
+            background: var(--bg-gray);
             padding: 0;
             min-height: 100vh;
         }
@@ -60,20 +60,17 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
-            min-height: 100vh;
-            overflow: hidden;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+            background: var(--bg-white);
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+            background: var(--bg-white);
             color: var(--primary-color);
             padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2rem);
             text-align: center;
             position: relative;
-            border-bottom: 2px solid #e0e7ff;
+            border-bottom: 2px solid var(--border-color);
         }
 
         header h1 {
@@ -139,8 +136,6 @@
         /* Content */
         .content {
             padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2rem);
-            max-height: calc(100vh - 200px);
-            overflow-y: auto;
         }
 
         .tab-content {
@@ -688,12 +683,15 @@
                 💰 納税証明書
             </button>
             <button class="nav-tab" onclick="showTab(2)" role="tab">
-                🔐 gBizID
+                📊 決算書
             </button>
             <button class="nav-tab" onclick="showTab(3)" role="tab">
-                ⭐ SECURITY ACTION
+                🔐 gBizID
             </button>
             <button class="nav-tab" onclick="showTab(4)" role="tab">
+                ⭐ SECURITY ACTION
+            </button>
+            <button class="nav-tab" onclick="showTab(5)" role="tab">
                 🗺️ IT戦略マップ
             </button>
         </nav>
@@ -1293,7 +1291,155 @@
                 </div>
             </div>
 
-            <!-- Tab 3: gBizID -->
+            <!-- Tab 3: 決算書 -->
+            <div class="tab-content" role="tabpanel">
+                <div class="section">
+                    <h2>📊 決算書の準備</h2>
+
+                    <div class="what-is">
+                        <h3>一言で言うと...</h3>
+                        <p><strong>「会社の財務状況を示す書類」です！</strong></p>
+                        <p class="mt-small">決算書は、会社の<span class="highlight">売上や利益、資産状況</span>を示す重要な書類で、IT導入補助金の申請時に提出が必要です。</p>
+                    </div>
+
+                    <div class="alert-box">
+                        <strong>💡 IT導入補助金申請での役割</strong>
+                        <p><span class="highlight">申請企業の財務健全性を確認</span>するために必要な書類です。</p>
+                        <ul>
+                            <li><strong>経営状況の確認</strong>：会社が健全に運営されているか</li>
+                            <li><strong>補助金額の算定</strong>：適切な補助金額を決定するための基礎資料</li>
+                            <li><strong>事業継続性の判断</strong>：補助金を受けて事業を継続できるか</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📋 必要な決算書類</h2>
+
+                    <div class="info-box">
+                        <h4>✅ IT導入補助金申請に必要な書類</h4>
+                        <p>以下の<strong>3つの書類</strong>が含まれた決算書を準備してください：</p>
+                    </div>
+
+                    <div class="card-grid mt-medium">
+                        <div class="card border-primary">
+                            <div class="icon">📄</div>
+                            <h3>貸借対照表</h3>
+                            <p><strong>（たいしゃくたいしょうひょう）</strong></p>
+                            <p class="mt-small">会社の資産・負債・純資産を示す書類。会社が<span class="highlight">何を持っていて、どれだけ借金があるか</span>がわかります。</p>
+                            <div class="alert-box mt-small">
+                                <p><strong>英語名：</strong>Balance Sheet（B/S）</p>
+                            </div>
+                        </div>
+
+                        <div class="card border-primary">
+                            <div class="icon">📈</div>
+                            <h3>損益計算書</h3>
+                            <p><strong>（そんえきけいさんしょ）</strong></p>
+                            <p class="mt-small">会社の売上・費用・利益を示す書類。<span class="highlight">いくら売れて、いくら儲かったか</span>がわかります。</p>
+                            <div class="alert-box mt-small">
+                                <p><strong>英語名：</strong>Profit and Loss Statement（P/L）</p>
+                            </div>
+                        </div>
+
+                        <div class="card border-primary">
+                            <div class="icon">💰</div>
+                            <h3>販売費及び一般管理費</h3>
+                            <p><strong>（はんばいひおよびいっぱんかんりひ）</strong></p>
+                            <p class="mt-small">商品を売るためにかかった費用や、会社運営にかかった費用の<span class="highlight">明細</span>です。</p>
+                            <div class="alert-box mt-small">
+                                <p><strong>通称：</strong>販管費（はんかんひ）</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert-box mt-medium">
+                        <strong>⚠️ 重要ポイント</strong>
+                        <ul>
+                            <li><strong>直近の決算書</strong>を用意してください（最新の事業年度分）</li>
+                            <li><strong>3つすべて</strong>が記載されている必要があります</li>
+                            <li>税理士が作成した決算書であれば、通常これらはすべて含まれています</li>
+                            <li>販売費及び一般管理費は、損益計算書の<strong>内訳明細</strong>として含まれていることが多いです</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📂 決算書の入手方法</h2>
+
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>税理士・会計事務所に依頼</h4>
+                                <p><strong>最も確実な方法</strong>です。顧問税理士がいる場合は、「IT導入補助金申請に使う決算書が欲しい」と伝えれば、<span class="highlight">必要な書類一式</span>を用意してくれます。</p>
+                                <div class="success-box mt-small">
+                                    <p><strong>💡 おすすめ！</strong>税理士に依頼すれば、貸借対照表・損益計算書・販管費の明細がすべて揃った正式な決算書がもらえます。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>会計ソフトから出力</h4>
+                                <p>freee、弥生会計、マネーフォワードなどの会計ソフトを使っている場合は、ソフトから決算書を出力できます。</p>
+                                <ul class="mt-small">
+                                    <li><strong>貸借対照表</strong>：資産・負債の状況</li>
+                                    <li><strong>損益計算書</strong>：売上・費用・利益</li>
+                                    <li><strong>販管費明細</strong>：販売費及び一般管理費の内訳</li>
+                                </ul>
+                                <p class="mt-small">各ソフトの「決算書出力」または「財務諸表出力」機能から印刷・PDF保存できます。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>過去の法人税申告書から確認</h4>
+                                <p>法人税の確定申告時に税務署に提出した<strong>別表</strong>に、決算書が添付されています。</p>
+                                <ul class="mt-small">
+                                    <li>確定申告書の控えを確認</li>
+                                    <li>貸借対照表・損益計算書が含まれている</li>
+                                    <li>販管費の明細も含まれていることが多い</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>⚠️ よくある質問</h2>
+
+                    <div class="info-box">
+                        <h4>❓ 創業1期目で決算書がない場合は？</h4>
+                        <p>創業1期目で決算を迎えていない場合は、<strong>事業計画書</strong>または<strong>収支計画書</strong>で代用できる場合があります。詳細は<strong>IT導入補助金の公募要項</strong>で確認するか、事務局に問い合わせてください。</p>
+                    </div>
+
+                    <div class="info-box mt-medium">
+                        <h4>❓ 販売費及び一般管理費の明細が見当たらない場合は？</h4>
+                        <p>損益計算書に「販売費及び一般管理費」という項目があれば、その<strong>内訳明細</strong>が必要です。税理士に依頼するか、会計ソフトで「販管費明細」または「一般管理費明細」を出力してください。</p>
+                    </div>
+
+                    <div class="info-box mt-medium">
+                        <h4>❓ 個人事業主の場合は？</h4>
+                        <p>個人事業主の場合は、<strong>確定申告書（青色申告決算書または収支内訳書）</strong>を提出します。こちらにも売上や経費の明細が記載されています。</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="success-box">
+                        <h4>📌 まとめ</h4>
+                        <ul>
+                            <li><strong>必要な書類：</strong>貸借対照表、損益計算書、販売費及び一般管理費の明細</li>
+                            <li><strong>入手方法：</strong>税理士に依頼するのが最も確実</li>
+                            <li><strong>準備のコツ：</strong>「IT導入補助金申請用」と伝えれば必要な書類が揃います</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: gBizID -->
             <div class="tab-content" role="tabpanel">
                 <div class="section">
                     <h2>🔐 gBizID取得方法完全ガイド</h2>

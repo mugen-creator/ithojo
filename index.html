@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会社設立完全ガイド - 統合版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f44336;
+            --success-color: #4CAF50;
+            --warning-color: #ffc107;
+            --info-color: #2196F3;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f8f9ff;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-md: 0 5px 20px rgba(102, 126, 234, 0.2);
+            --shadow-lg: 0 10px 35px rgba(102, 126, 234, 0.3);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 480px) {
+            html { font-size: 14px; }
+        }
+
+        @media (min-width: 1200px) {
+            html { font-size: 18px; }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, 'メイリオ', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: clamp(0.5rem, 2vw, 1.25rem);
+            min-height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: clamp(1.5rem, 5vw, 2.5rem) clamp(1rem, 4vw, 2rem);
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            opacity: 0.9;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            background: var(--bg-white);
+            border-bottom: 2px solid var(--border-color);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+
+        .nav-tabs::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .nav-tabs::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .nav-tab {
+            flex: 1 1 auto;
+            min-width: clamp(120px, 20vw, 180px);
+            padding: clamp(0.75rem, 2vw, 1rem) clamp(0.5rem, 2vw, 1.25rem);
+            border: none;
+            background: transparent;
+            color: var(--text-light);
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .nav-tab:hover {
+            background: var(--bg-light);
+            color: var(--primary-color);
+        }
+
+        .nav-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+            background: var(--bg-light);
+        }
+
+        /* Content */
+        .content {
+            padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2rem);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: clamp(2rem, 5vw, 3rem);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+            padding-bottom: clamp(0.5rem, 1vw, 0.625rem);
+            border-bottom: 3px solid var(--primary-color);
+            font-weight: 700;
+        }
+
+        .section h3 {
+            color: var(--text-dark);
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin: clamp(1rem, 2vw, 1.5rem) 0 clamp(0.5rem, 1vw, 0.75rem) 0;
+            font-weight: 600;
+        }
+
+        .section h4 {
+            color: var(--text-dark);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin: clamp(0.75rem, 1.5vw, 1rem) 0 clamp(0.5rem, 1vw, 0.625rem) 0;
+            font-weight: 600;
+        }
+
+        .section p {
+            margin: clamp(0.5rem, 1.5vw, 0.75rem) 0;
+            line-height: 1.8;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+        }
+
+        /* Box Styles */
+        .what-is, .alert-box, .info-box, .success-box, .warning-box, .tips {
+            padding: clamp(1rem, 3vw, 1.5rem);
+            border-radius: var(--radius-md);
+            margin: clamp(1rem, 2vw, 1.25rem) 0;
+            border-left: 5px solid;
+        }
+
+        .what-is {
+            background: var(--bg-light);
+            border-left-color: var(--primary-color);
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border-left-color: var(--warning-color);
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left-color: var(--info-color);
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left-color: var(--success-color);
+        }
+
+        .warning-box {
+            background: #ffebee;
+            border-left-color: var(--accent-color);
+        }
+
+        .tips {
+            background: #e8f5e9;
+            border-left-color: var(--success-color);
+        }
+
+        .what-is h3, .alert-box strong, .info-box h4, .success-box h4, .warning-box h4, .tips h4 {
+            margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: clamp(0.75rem, 1.5vw, 1rem) 0;
+            padding-left: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        li {
+            margin: clamp(0.5rem, 1vw, 0.625rem) 0;
+            line-height: 1.7;
+        }
+
+        /* Steps */
+        .steps {
+            background: var(--bg-light);
+            padding: clamp(1.25rem, 3vw, 1.75rem);
+            border-radius: var(--radius-md);
+            margin: clamp(1rem, 2vw, 1.25rem) 0;
+        }
+
+        .step {
+            display: flex;
+            gap: clamp(0.75rem, 2vw, 1.25rem);
+            margin-bottom: clamp(1.25rem, 2vw, 1.5rem);
+            padding-bottom: clamp(1.25rem, 2vw, 1.5rem);
+            border-bottom: 1px dashed var(--border-color);
+            align-items: flex-start;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-number {
+            background: var(--primary-color);
+            color: white;
+            width: clamp(2.5rem, 8vw, 3rem);
+            height: clamp(2.5rem, 8vw, 3rem);
+            min-width: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h4 {
+            margin-top: 0;
+        }
+
+        @media (max-width: 480px) {
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                align-self: flex-start;
+            }
+        }
+
+        /* Cards & Grids */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: clamp(1rem, 3vw, 1.5rem);
+            margin: clamp(1rem, 2vw, 1.5rem) 0;
+        }
+
+        @media (max-width: 480px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: clamp(1.25rem, 3vw, 1.75rem);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+            text-align: center;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: clamp(1rem, 2vw, 1.25rem) 0;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: clamp(0.75rem, 2vw, 1rem);
+            text-align: left;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            font-weight: 600;
+        }
+
+        td {
+            padding: clamp(0.75rem, 2vw, 1rem);
+            border-bottom: 1px solid var(--border-color);
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 1rem);
+            border-radius: 20px;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            font-weight: 600;
+            margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+        }
+
+        /* Highlight */
+        .highlight {
+            background: linear-gradient(transparent 60%, #ffeb3b 60%);
+            font-weight: 600;
+            padding: 2px 4px;
+        }
+
+        /* Button */
+        .button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            transition: var(--transition);
+            margin: clamp(0.5rem, 1vw, 0.625rem);
+            text-align: center;
+        }
+
+        .button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #f5f5f5;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            text-align: center;
+            color: var(--text-light);
+            font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+        }
+
+        footer p {
+            margin: clamp(0.5rem, 1vw, 0.75rem) 0;
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            body {
+                line-height: 1.6;
+            }
+        }
+
+        /* Smooth Scrolling for Mobile */
+        @media (max-width: 768px) {
+            .nav-tabs {
+                scrollbar-width: none;
+            }
+
+            .nav-tabs::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .nav-tabs {
+                display: none;
+            }
+
+            .tab-content {
+                display: block !important;
+                page-break-after: always;
+            }
+
+            .card:hover {
+                transform: none;
+            }
+        }
+
+        /* Accessibility */
+        .nav-tab:focus,
+        .button:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Loading Animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Custom Scrollbar for Content */
+        .content {
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--bg-light);
+        }
+
+        .content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        /* Icon Styles */
+        .icon {
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: clamp(0.75rem, 2vw, 1rem);
+        }
+
+        /* Price Display */
+        .price {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin: clamp(0.5rem, 1vw, 0.75rem) 0;
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: clamp(1.25rem, 3vw, 1.75rem);
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        @media (max-width: 480px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Vertical Spacing Utilities */
+        .mb-small { margin-bottom: clamp(0.5rem, 1vw, 0.75rem); }
+        .mb-medium { margin-bottom: clamp(1rem, 2vw, 1.5rem); }
+        .mb-large { margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+
+        .mt-small { margin-top: clamp(0.5rem, 1vw, 0.75rem); }
+        .mt-medium { margin-top: clamp(1rem, 2vw, 1.5rem); }
+        .mt-large { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+
+        /* Text Utilities */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+
+        /* Color Utilities */
+        .text-primary { color: var(--primary-color); }
+        .text-success { color: var(--success-color); }
+        .text-warning { color: var(--warning-color); }
+        .text-danger { color: var(--accent-color); }
+
+        /* Background Utilities */
+        .bg-light { background: var(--bg-light); }
+        .bg-white { background: var(--bg-white); }
+
+        /* Border Utilities */
+        .border-primary { border-color: var(--primary-color) !important; }
+        .border-success { border-color: var(--success-color) !important; }
+        .border-warning { border-color: var(--warning-color) !important; }
+
+        /* Extra Small Devices (275px - 360px) */
+        @media (max-width: 360px) {
+            .nav-tab {
+                min-width: 100px;
+                font-size: 0.8rem;
+            }
+
+            .step-number {
+                width: 2rem;
+                height: 2rem;
+                min-width: 2rem;
+                font-size: 0.9rem;
+            }
+
+            .card-grid,
+            .comparison-grid {
+                gap: 0.75rem;
+            }
+
+            table {
+                min-width: 450px;
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+
+        /* Large Devices (1200px+) */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1440px;
+            }
+
+            .content {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .comparison-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+
+        /* Ultra Wide (1440px+) */
+        @media (min-width: 1440px) {
+            .content {
+                padding-left: 5rem;
+                padding-right: 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 会社設立完全ガイド</h1>
+            <p>起業に必要なすべての手続きをわかりやすく解説</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs" role="tablist">
+            <button class="nav-tab active" onclick="showTab(0)" role="tab" aria-selected="true">
+                📋 履歴事項全部証明書
+            </button>
+            <button class="nav-tab" onclick="showTab(1)" role="tab">
+                💰 納税証明書
+            </button>
+            <button class="nav-tab" onclick="showTab(2)" role="tab">
+                🔐 gBizID
+            </button>
+            <button class="nav-tab" onclick="showTab(3)" role="tab">
+                ⭐ SECURITY ACTION
+            </button>
+            <button class="nav-tab" onclick="showTab(4)" role="tab">
+                🗺️ IT戦略マップ
+            </button>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Tab 1: 履歴事項全部証明書 -->
+            <div class="tab-content active" role="tabpanel">
+                <div class="section">
+                    <h2>📋 履歴事項全部証明書の取得方法</h2>
+
+                    <div class="what-is">
+                        <h3>一言で言うと...</h3>
+                        <p><strong>「会社の戸籍謄本」のようなものです！</strong></p>
+                        <p class="mt-small">会社の基本情報（名前、住所、代表者、資本金など）や、これまでの変更履歴がすべて書かれた<span class="highlight">公式な証明書</span>です。</p>
+                    </div>
+
+                    <div class="alert-box">
+                        <strong>💡 どんな時に必要？</strong>
+                        <ul>
+                            <li>銀行で法人口座を開設する時</li>
+                            <li>会社の契約をする時</li>
+                            <li>融資を受ける時</li>
+                            <li>許認可の申請をする時</li>
+                            <li>入札に参加する時</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📍 3つの取得方法</h2>
+                    <p>自分に合った方法を選びましょう！</p>
+
+                    <div class="card-grid">
+                        <div class="card border-primary">
+                            <div class="badge">⚡ 最速・便利</div>
+                            <h3>オンライン申請</h3>
+                            <p><strong>所要時間：</strong>最短即日</p>
+                            <p><strong>おすすめ度：</strong>★★★★★</p>
+                            <p class="mt-small">自宅やオフィスから24時間申請可能！</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="badge">🏢 確実</div>
+                            <h3>窓口申請</h3>
+                            <p><strong>所要時間：</strong>当日中</p>
+                            <p><strong>おすすめ度：</strong>★★★★☆</p>
+                            <p class="mt-small">法務局で直接申請してその場で受け取れます</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="badge">📮 遠方OK</div>
+                            <h3>郵送申請</h3>
+                            <p><strong>所要時間：</strong>1週間程度</p>
+                            <p><strong>おすすめ度：</strong>★★★☆☆</p>
+                            <p class="mt-small">法務局が遠い場合に便利</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>💰 料金</h2>
+                    <div class="card-grid">
+                        <div class="card bg-light border-success">
+                            <h3 class="text-success">オンライン申請</h3>
+                            <div class="price text-success">600円</div>
+                            <p class="text-center">1通あたり</p>
+                        </div>
+                        <div class="card bg-light">
+                            <h3>窓口・郵送申請</h3>
+                            <div class="price">600円</div>
+                            <p class="text-center">1通あたり</p>
+                        </div>
+                    </div>
+
+                    <div class="tips">
+                        <h4>💡 お得情報</h4>
+                        <p>オンライン申請して<strong>郵送で受け取る場合は500円</strong>、<strong>オンラインで受け取る（PDF）場合は480円</strong>とさらにお得です！</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📝 オンライン申請の手順</h2>
+
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>「登記ねっと」にアクセス</h4>
+                                <p>Google検索で「登記ねっと」と検索すると出てきます。正式名称：<strong>登記・供託オンライン申請システム（登記ねっと）</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>申請者情報の登録（初回のみ）</h4>
+                                <p>初めて利用する場合は、メールアドレスとパスワードで申請者IDを作成します。<span class="highlight">登録は無料で、5分程度</span>で完了します。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>会社情報を入力</h4>
+                                <p>証明書が欲しい会社の情報を入力します：</p>
+                                <ul>
+                                    <li><strong>会社名（商号）</strong>：正式名称で入力</li>
+                                    <li><strong>会社の本店所在地</strong></li>
+                                    <li><strong>会社法人等番号</strong>（12桁）</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>受取方法を選択</h4>
+                                <p>窓口受取・郵送受取・電子受取（PDF）から選択できます。電子受取が最安＆最速です！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section text-center">
+                    <h2>🔗 便利なリンク</h2>
+                    <a href="https://www.touki-kyoutaku-online.moj.go.jp/" class="button" target="_blank">📱 登記ねっと</a>
+                    <a href="https://houmukyoku.moj.go.jp/homu/static/" class="button" target="_blank">🏢 法務局一覧</a>
+                </div>
+            </div>
+
+            <!-- Tab 2: 納税証明書 -->
+            <div class="tab-content" role="tabpanel">
+                <div class="section">
+                    <h2>💰 納税証明書「その1」「その2」完全ガイド</h2>
+
+                    <div class="what-is">
+                        <h3>一言で言うと...</h3>
+                        <p><strong>「税金をちゃんと払っていることの証明書」です！</strong></p>
+                        <p class="mt-small">税務署が発行する公式な証明書で、主に<span class="highlight">融資を受ける時や入札に参加する時</span>に必要になります。</p>
+                    </div>
+
+                    <div class="alert-box">
+                        <strong>📌 重要！「その1」と「その2」は別物です</strong>
+                        <p>同じ「納税証明書」でも、証明する内容が全く違います。銀行から融資を受ける際は、<span class="highlight">両方とも必要</span>になることが多いです。</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>⚖️ 「その1」と「その2」の違い</h2>
+
+                    <div class="comparison-grid">
+                        <div class="card border-primary">
+                            <div class="badge bg-light text-primary">その1</div>
+                            <h3 class="text-primary">納税額を証明</h3>
+                            <div class="bg-light" style="padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                                <p><strong>税金をいくら払ったか、未納がないかを証明</strong></p>
+                            </div>
+                            <h4>📝 証明される内容</h4>
+                            <ul>
+                                <li>納付すべき税額</li>
+                                <li>納付した税額</li>
+                                <li>未納税額</li>
+                            </ul>
+                        </div>
+
+                        <div class="card border-success">
+                            <div class="badge bg-light text-success">その2</div>
+                            <h3 class="text-success">所得金額を証明</h3>
+                            <div class="bg-light" style="padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                                <p><strong>会社がどれだけ利益を出しているかを証明</strong></p>
+                            </div>
+                            <h4>📝 証明される内容</h4>
+                            <ul>
+                                <li>所得金額</li>
+                                <li>法人税の課税標準</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📊 一目でわかる比較表</h2>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>項目</th>
+                                    <th>その1</th>
+                                    <th>その2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>証明内容</strong></td>
+                                    <td>納税額・未納額</td>
+                                    <td>所得金額</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>何を示す？</strong></td>
+                                    <td>納税義務を果たしているか</td>
+                                    <td>会社の収益性</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>手数料（オンライン）</strong></td>
+                                    <td>370円</td>
+                                    <td>370円</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>手数料（書面）</strong></td>
+                                    <td>400円</td>
+                                    <td>400円</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>💰 料金</h2>
+
+                    <div class="card-grid">
+                        <div class="card bg-light border-primary">
+                            <h3 class="text-primary">オンライン（e-Tax）</h3>
+                            <div class="price text-primary">370円</div>
+                            <p class="text-center">1通あたり</p>
+                            <p class="mt-small text-center">✨ 書面より安い！</p>
+                        </div>
+
+                        <div class="card bg-light border-success">
+                            <h3 class="text-success">書面（窓口・郵送）</h3>
+                            <div class="price text-success">400円</div>
+                            <p class="text-center">1通あたり</p>
+                            <p class="mt-small text-center">収入印紙で支払い</p>
+                        </div>
+                    </div>
+
+                    <div class="tips">
+                        <h4>💡 お得情報</h4>
+                        <p><strong>オンライン申請（e-Tax）の方が30円安い</strong>です！「その1」と「その2」の両方が必要な場合、<span class="highlight">差額60円</span>もお得になります！</p>
+                    </div>
+                </div>
+
+                <div class="section text-center">
+                    <h2>🔗 便利なリンク</h2>
+                    <a href="https://www.e-tax.nta.go.jp/" class="button" target="_blank">💻 e-Tax</a>
+                    <a href="https://www.nta.go.jp/about/organization/access/map.htm" class="button" target="_blank">🏢 税務署を調べる</a>
+                </div>
+            </div>
+
+            <!-- Tab 3: gBizID -->
+            <div class="tab-content" role="tabpanel">
+                <div class="section">
+                    <h2>🔐 gBizID取得方法完全ガイド</h2>
+
+                    <div class="what-is">
+                        <h3>一言で言うと...</h3>
+                        <p><strong>「行政サービス専用の共通ID」です！</strong></p>
+                        <p class="mt-small"><span class="highlight">1つのID・パスワードで様々な行政サービスにログイン</span>できるようになります。補助金申請、社会保険手続、各種認可申請などに使用できます。</p>
+                    </div>
+
+                    <div class="success-box">
+                        <h4>🌟 gBizIDのメリット</h4>
+                        <ul>
+                            <li><strong>1つのIDで複数のサービスが使える</strong></li>
+                            <li><strong>初回の身元確認後、以後の手続で本人確認書類が不要</strong></li>
+                            <li><strong>24時間いつでも申請・手続ができる</strong></li>
+                            <li><strong>無料で利用できる</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>🎯 gBizIDには3つの種類がある</h2>
+                    <p>利用目的に応じて3種類から選べます。<span class="highlight">ほとんどの場合は「gBizIDプライム」が必要</span>です。</p>
+
+                    <div class="comparison-grid">
+                        <div class="card" style="border-color: #f44336;">
+                            <div class="badge" style="background: #f44336;">おすすめ！</div>
+                            <h3 style="color: #f44336;">gBizIDプライム</h3>
+                            <p><strong>対象：</strong>法人代表者・個人事業主</p>
+                            <p><strong>できること：</strong>すべての行政サービス</p>
+                            <p><strong>取得期間：</strong>即日〜2週間</p>
+                            <p><strong>料金：</strong>無料</p>
+                        </div>
+
+                        <div class="card" style="border-color: #2196F3;">
+                            <div class="badge" style="background: #2196F3;">従業員向け</div>
+                            <h3 style="color: #2196F3;">gBizIDメンバー</h3>
+                            <p><strong>対象：</strong>従業員</p>
+                            <p><strong>できること：</strong>一部サービス</p>
+                            <p><strong>取得期間：</strong>即時</p>
+                            <p><strong>料金：</strong>無料</p>
+                        </div>
+
+                        <div class="card" style="border-color: #4CAF50;">
+                            <div class="badge" style="background: #4CAF50;">お試し</div>
+                            <h3 style="color: #4CAF50;">gBizIDエントリー</h3>
+                            <p><strong>対象：</strong>誰でも</p>
+                            <p><strong>できること：</strong>限定的</p>
+                            <p><strong>取得期間：</strong>即時</p>
+                            <p><strong>料金：</strong>無料</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>💻 gBizIDプライムの取得方法</h2>
+                    <p>取得方法は2つあります。<span class="highlight">マイナンバーカードがあれば、オンライン申請が断然おすすめ</span>です！</p>
+
+                    <div class="card-grid">
+                        <div class="card border-primary">
+                            <div class="icon">💻</div>
+                            <h3>オンライン申請</h3>
+                            <p><strong>必要なもの：</strong>マイナンバーカード</p>
+                            <p><strong>取得期間：</strong>即日</p>
+                            <p><strong>料金：</strong>無料</p>
+                            <div class="badge" style="background: #f44336; margin-top: 1rem;">おすすめ！</div>
+                        </div>
+
+                        <div class="card">
+                            <div class="icon">📮</div>
+                            <h3>書類郵送申請</h3>
+                            <p><strong>必要なもの：</strong>印鑑証明書</p>
+                            <p><strong>取得期間：</strong>約2週間</p>
+                            <p><strong>料金：</strong>無料</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📝 オンライン申請の手順</h2>
+
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>gBizID公式サイトにアクセス</h4>
+                                <p>Google検索で「gBizID」と検索し、公式サイトにアクセスします。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>「gBizIDプライム作成」を選択</h4>
+                                <p>トップページから「gBizIDプライム作成」ボタンをクリックします。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>マイナンバーカードで本人確認</h4>
+                                <p>スマートフォンまたはICカードリーダーでマイナンバーカードを読み取ります。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>申請完了・即日発行</h4>
+                                <p><span class="highlight">申請が完了すると、すぐにgBizIDが発行</span>されます！各種行政サービスが利用可能になります。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section text-center">
+                    <h2>🔗 便利なリンク</h2>
+                    <a href="https://gbiz-id.go.jp/" class="button" target="_blank">🔐 gBizID公式サイト</a>
+                </div>
+            </div>
+
+            <!-- Tab 4: SECURITY ACTION -->
+            <div class="tab-content" role="tabpanel">
+                <div class="section">
+                    <h2>⭐⭐ SECURITY ACTION二つ星取得完全ガイド</h2>
+
+                    <div class="what-is">
+                        <h3>一言で言うと...</h3>
+                        <p><strong>「中小企業が情報セキュリティ対策に取り組んでいることを自己宣言する制度」です！</strong></p>
+                        <p class="mt-small">IPA（独立行政法人 情報処理推進機構）が運営する制度で、<span class="highlight">企業が情報セキュリティ対策に取り組むことを宣言し、ロゴマークを使用できる</span>ようになります。</p>
+                    </div>
+
+                    <div class="success-box">
+                        <h4>🌟 SECURITY ACTIONのメリット</h4>
+                        <div class="card-grid">
+                            <div class="card bg-light">
+                                <h4 class="text-primary">🛡️ 信頼性アップ</h4>
+                                <p>取引先や顧客に「セキュリティ対策をしている企業」とアピールできる</p>
+                            </div>
+                            <div class="card bg-light">
+                                <h4 class="text-primary">💰 完全無料</h4>
+                                <p>申請も維持も一切費用がかからない</p>
+                            </div>
+                            <div class="card bg-light">
+                                <h4 class="text-primary">⚡ 簡単取得</h4>
+                                <p>二つ星でも数時間で取得可能</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>⭐ 一つ星 vs 二つ星</h2>
+                    <p>SECURITY ACTIONには<strong>一つ星</strong>と<strong>二つ星</strong>の2種類があります。</p>
+
+                    <div class="comparison-grid">
+                        <div class="card" style="border-color: #FFC107;">
+                            <div class="icon" style="color: #FFC107;">⭐</div>
+                            <h3 style="color: #FFC107;">一つ星</h3>
+                            <p><strong>必要なこと：</strong>「情報セキュリティ5か条」に取り組むことを宣言</p>
+                            <p><strong>取得期間：</strong>5分（即日）</p>
+                            <p><strong>費用：</strong>無料</p>
+                        </div>
+
+                        <div class="card" style="border-color: #f44336;">
+                            <div class="icon" style="color: #f44336;">⭐⭐</div>
+                            <h3 style="color: #f44336;">二つ星</h3>
+                            <p><strong>必要なこと：</strong>自社診断実施 + 基本方針策定・公開</p>
+                            <p><strong>取得期間：</strong>2〜3時間（即日可能）</p>
+                            <p><strong>費用：</strong>無料</p>
+                            <div class="badge" style="background: #f44336; margin-top: 1rem;">おすすめ！</div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>🎯 どちらを取得すべき？</h4>
+                        <p><strong>迷ったら「二つ星」をおすすめします！</strong></p>
+                        <ul>
+                            <li>一つ星と二つ星の<span class="highlight">労力の差はほとんどない</span>（2〜3時間程度）</li>
+                            <li>二つ星の方が<strong>信頼性が高く、アピール力がある</strong></li>
+                            <li>どちらも<strong>完全無料</strong>で取得できる</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📋 二つ星の取得要件</h2>
+
+                    <div class="card border-primary">
+                        <h3 class="text-primary text-center">二つ星取得に必要な2つのステップ</h3>
+
+                        <div class="mb-medium mt-medium">
+                            <h4>ステップ1：自社診断を実施</h4>
+                            <p>IPAが提供する診断ツール（25項目）で自社のセキュリティ対策状況をチェックします。</p>
+                            <p class="mt-small"><strong>所要時間：</strong>約5〜10分</p>
+                        </div>
+
+                        <div>
+                            <h4>ステップ2：基本方針を策定・公開</h4>
+                            <p>会社の情報セキュリティに対する基本的な方針を文書化し、ホームページなどで公開します。</p>
+                            <p class="mt-small"><strong>所要時間：</strong>1〜2時間</p>
+                        </div>
+                    </div>
+
+                    <div class="alert-box mt-medium">
+                        <strong>🎉 たったこれだけ！</strong>
+                        <p>この2つのステップを完了すれば、<span class="highlight">二つ星を宣言できます</span>。審査や認証機関の検査などは一切不要です。完全に<strong>自己宣言制</strong>なので、すぐに取得できます！</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📝 二つ星の取得手順</h2>
+
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>SECURITY ACTION公式サイトにアクセス</h4>
+                                <p>Google検索で「SECURITY ACTION」と検索し、IPA公式サイトにアクセスします。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>自社診断を実施</h4>
+                                <p>IPAのサイトから診断ツールにアクセスし、<strong>25項目の質問</strong>に答えます。</p>
+                                <p class="mt-small"><strong>所要時間：5〜10分</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>基本方針を作成</h4>
+                                <p>IPAが提供するテンプレート（Word形式）を自社の状況に合わせて編集します。</p>
+                                <p class="mt-small"><strong>所要時間：1〜2時間</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>基本方針を公開</h4>
+                                <p>作成した基本方針をホームページや会社案内に掲載します。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>SECURITY ACTIONに申し込む</h4>
+                                <p>公式サイトの申込フォームから申し込みます。<span class="highlight">すぐにロゴマークが使えます</span>！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section text-center">
+                    <h2>🔗 便利なリンク</h2>
+                    <a href="https://www.ipa.go.jp/security/security-action/" class="button" target="_blank">⭐ SECURITY ACTION公式サイト</a>
+                </div>
+            </div>
+
+            <!-- Tab 5: IT戦略マップ -->
+            <div class="tab-content" role="tabpanel">
+                <div class="section">
+                    <h2>🗺️ IT戦略マップ作成完全ガイド</h2>
+
+                    <div class="what-is">
+                        <h3>一言で言うと...</h3>
+                        <p><strong>「ITを活用してビジネスが成功するストーリーを可視化するツール」です！</strong></p>
+                        <p class="mt-small">経営課題や業務上の課題に対し、<span class="highlight">どのようにIT活用で解決するかを整理</span>し、具体的な戦略として表現します。中小企業基盤整備機構（中小機構）が提供する無料ツールです。</p>
+                    </div>
+
+                    <div class="success-box">
+                        <h4>🌟 IT戦略マップの5つのメリット</h4>
+                        <div class="card-grid">
+                            <div class="card bg-light">
+                                <h4 class="text-primary">📊 自社の立ち位置把握</h4>
+                                <p>同業他社と比較して、自社のIT化レベルがわかる</p>
+                            </div>
+                            <div class="card bg-light">
+                                <h4 class="text-primary">🎯 課題の明確化</h4>
+                                <p>経営課題とIT活用による解決策が見える化される</p>
+                            </div>
+                            <div class="card bg-light">
+                                <h4 class="text-primary">🚀 アクション化促進</h4>
+                                <p>具体的なIT導入・運用計画に転換できる</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>⏱ 作成にかかる時間</h2>
+
+                    <div class="alert-box">
+                        <strong>⚡ たったの5分で完成！</strong>
+                        <p>IT戦略マップは、<span class="highlight">「5分で見える化！」</span>をコンセプトに設計されています。</p>
+                        <ul>
+                            <li><strong>簡単な質問に答えるだけ</strong>で自動的にマップが作成される</li>
+                            <li><strong>専門知識不要</strong>で誰でも使える</li>
+                            <li><strong>何度でも作り直し可能</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📝 IT戦略マップの作成手順</h2>
+
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>経営課題・業務課題のヒアリング</h4>
+                                <p>自社の課題を整理します。提供されるヒアリングシート・チェックシートを使って、課題を整理できます。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>IT戦略ナビwithでマップ作成</h4>
+                                <p>Webツール「IT戦略ナビwith」で質問に答えていきます。質問に答えると、<span class="highlight">自動的にIT戦略マップが生成</span>されます。</p>
+                                <p class="mt-small"><strong>所要時間：5〜10分</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>IT化による課題解決策を検討</h4>
+                                <p>作成されたマップをもとに、具体的な解決策を検討します。マップには、自社のIT化レベル、推奨されるITツール、導入事例などが表示されます。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>具体的なIT導入・運用支援</h4>
+                                <p>マップをもとに、実際のIT導入計画を立てます。この計画は、<strong>IT導入補助金の申請</strong>にも活用できます。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>🚀 IT戦略マップの活用方法</h2>
+
+                    <div class="card-grid">
+                        <div class="card bg-light">
+                            <h4 class="text-primary">💰 補助金申請</h4>
+                            <p>IT導入補助金やものづくり補助金の申請時に、IT導入計画の根拠資料として活用できます。</p>
+                        </div>
+                        <div class="card bg-light">
+                            <h4 class="text-primary">📋 経営計画の策定</h4>
+                            <p>中期経営計画や事業計画に、IT活用戦略として組み込むことができます。</p>
+                        </div>
+                        <div class="card bg-light">
+                            <h4 class="text-primary">🤝 社内の意識統一</h4>
+                            <p>経営者、管理職、現場担当者が同じ「地図」を見ることで、IT化の方向性を共有できます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section text-center">
+                    <h2>🔗 便利なリンク</h2>
+                    <a href="https://digiwith.smrj.go.jp/it-map/" class="button" target="_blank">🗺️ IT戦略ナビwith</a>
+                    <a href="https://www.it-hojo.jp/" class="button" target="_blank">💰 IT導入補助金</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>📌 このガイドが役に立ったら、ぜひ周りの方にも教えてあげてください！</p>
+            <p class="mt-small">※ 情報は作成時点のものです。最新情報は各公式サイトでご確認ください。</p>
+        </footer>
+    </div>
+
+    <script>
+        function showTab(index) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                tab.setAttribute('aria-selected', 'false');
+            });
+
+            // Show selected tab content
+            contents[index].classList.add('active');
+
+            // Add active class to selected tab
+            tabs[index].classList.add('active');
+            tabs[index].setAttribute('aria-selected', 'true');
+
+            // Scroll to top of content
+            document.querySelector('.content').scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+            // Save current tab to localStorage
+            localStorage.setItem('activeTab', index);
+        }
+
+        // Restore last active tab on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const lastActiveTab = localStorage.getItem('activeTab');
+            if (lastActiveTab !== null) {
+                showTab(parseInt(lastActiveTab));
+            }
+        });
+
+        // Add keyboard navigation
+        document.querySelectorAll('.nav-tab').forEach((tab, index) => {
+            tab.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    showTab(index);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

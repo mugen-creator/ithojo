@@ -605,6 +605,52 @@
                 padding-right: 5rem;
             }
         }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: clamp(50px, 8vw, 60px);
+            height: clamp(50px, 8vw, 60px);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .scroll-to-top:active {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .scroll-to-top {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1004,10 +1050,10 @@
 
                 <div class="section">
                     <h2>📍 2つの取得方法</h2>
-                    <p>自分に合った方法を選びましょう！</p>
+                    <p>自分に合った方法を選びましょう！クリックすると詳細にジャンプします。</p>
 
                     <div class="card-grid">
-                        <div class="card border-primary">
+                        <div class="card border-primary" style="cursor: pointer;" onclick="scrollToSection('method-online-nozei')">
                             <div class="badge">⚡ おすすめ</div>
                             <h3>オンライン申請（e-Tax）</h3>
                             <p><strong>手数料：</strong>370円</p>
@@ -1015,7 +1061,7 @@
                             <p class="mt-small">24時間いつでも申請可能！</p>
                         </div>
 
-                        <div class="card">
+                        <div class="card" style="cursor: pointer;" onclick="scrollToSection('method-counter-nozei')">
                             <div class="badge">🏢 確実</div>
                             <h3>窓口・郵送申請</h3>
                             <p><strong>手数料：</strong>400円</p>
@@ -1059,7 +1105,7 @@
                     </div>
                 </div>
 
-                <div class="section">
+                <div class="section" id="method-online-nozei">
                     <h2>📝 方法1：オンライン申請（e-Tax）の手順</h2>
 
                     <div class="steps">
@@ -1135,7 +1181,7 @@
                     </div>
                 </div>
 
-                <div class="section">
+                <div class="section" id="method-counter-nozei">
                     <h2>🏢 方法2：窓口・郵送申請の手順</h2>
 
                     <h3>窓口での申請</h3>
@@ -1669,6 +1715,31 @@
                 });
             }
         }
+
+        // Scroll to top button
+        const scrollToTopBtn = document.createElement('button');
+        scrollToTopBtn.className = 'scroll-to-top';
+        scrollToTopBtn.innerHTML = '↑';
+        scrollToTopBtn.setAttribute('aria-label', 'トップに戻る');
+        document.body.appendChild(scrollToTopBtn);
+
+        // Show/hide scroll to top button
+        const content = document.querySelector('.content');
+        content.addEventListener('scroll', () => {
+            if (content.scrollTop > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        // Scroll to top when button is clicked
+        scrollToTopBtn.addEventListener('click', () => {
+            content.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
 </body>
 </html>

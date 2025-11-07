@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>納税証明書 | IT導入補助金申請準備完全ガイド</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #3b82f6;
+            --accent-color: #06b6d4;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --text-dark: #111827;
+            --text-medium: #374151;
+            --text-light: #6b7280;
+            --bg-gray: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #d1d5db;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+            --shadow-lg: 0 10px 24px rgba(0,0,0,0.15);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Base Styles */
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 480px) {
+            html { font-size: 14px; }
+        }
+
+        @media (min-width: 1200px) {
+            html { font-size: 18px; }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, 'メイリオ', sans-serif;
+            line-height: 1.65;
+            color: var(--text-dark);
+            background: var(--bg-gray);
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-white);
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-white);
+            color: var(--primary-color);
+            padding: clamp(1rem, 2vw, 1.5rem) clamp(1rem, 4vw, 2rem);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        header h1 {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-align: left;
+        }
+
+        header p {
+            font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+            color: var(--text-medium);
+            font-weight: 400;
+            margin: 0;
+            text-align: left;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.5rem, 1vw, 1rem);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .nav-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-tab {
+            text-decoration: none;
+            display: inline-block;
+            padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem);
+            border: none;
+            background: transparent;
+            color: var(--text-medium);
+            font-size: clamp(0.75rem, 1.3vw, 0.875rem);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            border-radius: var(--radius-sm);
+        }
+
+        .nav-tab:hover {
+            background: var(--bg-gray);
+            color: var(--secondary-color);
+        }
+
+        .nav-tab.active {
+            background: var(--secondary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .nav-tabs {
+                width: 100%;
+                overflow-x: auto;
+            }
+        }
+
+        /* Content */
+        .content {
+            padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2rem);
+            margin-top: clamp(80px, 15vw, 100px);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+        }
+
+        .section h2 {
+            color: var(--text-dark);
+            font-size: clamp(1.4rem, 3vw, 1.875rem);
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+            padding-bottom: 0;
+            border-bottom: none;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .section h3 {
+            color: var(--text-dark);
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            margin: clamp(1.25rem, 2vw, 1.75rem) 0 clamp(0.625rem, 1vw, 0.875rem) 0;
+            font-weight: 600;
+        }
+
+        .section h4 {
+            color: var(--text-dark);
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            margin: clamp(0.875rem, 1.5vw, 1.125rem) 0 clamp(0.5rem, 1vw, 0.625rem) 0;
+            font-weight: 600;
+        }
+
+        .section p {
+            margin: clamp(0.625rem, 1.5vw, 0.875rem) 0;
+            line-height: 1.7;
+            font-size: clamp(0.9375rem, 1.5vw, 1rem);
+            color: var(--text-medium);
+        }
+
+        /* Box Styles */
+        .what-is, .alert-box, .info-box, .success-box, .warning-box, .tips {
+            padding: clamp(1.125rem, 3vw, 1.5rem);
+            border-radius: var(--radius-md);
+            margin: clamp(1.25rem, 2vw, 1.75rem) 0;
+            border: 2px solid;
+        }
+
+        .what-is {
+            background: #dbeafe;
+            border-color: #3b82f6;
+        }
+
+        .alert-box {
+            background: #fef3c7;
+            border-color: #f59e0b;
+        }
+
+        .info-box {
+            background: #dbeafe;
+            border-color: #3b82f6;
+        }
+
+        .success-box {
+            background: #d1fae5;
+            border-color: #10b981;
+        }
+
+        .warning-box {
+            background: #fee2e2;
+            border-color: #ef4444;
+        }
+
+        .tips {
+            background: #d1fae5;
+            border-color: #10b981;
+        }
+
+        .what-is h3, .alert-box strong, .info-box h4, .success-box h4, .warning-box h4, .tips h4 {
+            margin-bottom: clamp(0.625rem, 1vw, 0.875rem);
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: clamp(0.75rem, 1.5vw, 1rem) 0;
+            padding-left: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        li {
+            margin: clamp(0.5rem, 1vw, 0.625rem) 0;
+            line-height: 1.7;
+        }
+
+        /* Steps */
+        .steps {
+            margin: clamp(1.25rem, 2vw, 1.75rem) 0;
+        }
+
+        .step {
+            display: flex;
+            gap: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: clamp(1.75rem, 2vw, 2.25rem);
+            padding: clamp(1.125rem, 2vw, 1.5rem);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-white);
+            align-items: flex-start;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            background: var(--secondary-color);
+            color: white;
+            width: clamp(2rem, 6vw, 2.5rem);
+            height: clamp(2rem, 6vw, 2.5rem);
+            min-width: 2rem;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(0.9375rem, 2vw, 1.125rem);
+            font-weight: 700;
+            flex-shrink: 0;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h4 {
+            margin-top: 0;
+        }
+
+        @media (max-width: 480px) {
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                align-self: flex-start;
+            }
+        }
+
+        /* Cards & Grids */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: clamp(1rem, 3vw, 1.5rem);
+            margin: clamp(1rem, 2vw, 1.5rem) 0;
+        }
+
+        @media (max-width: 480px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: clamp(1.25rem, 3vw, 1.5rem);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--secondary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card h3 {
+            color: var(--text-dark);
+            font-size: clamp(1.0625rem, 2.5vw, 1.25rem);
+            margin-bottom: clamp(0.625rem, 1.5vw, 0.875rem);
+            font-weight: 600;
+        }
+
+        .card strong {
+            color: var(--text-dark);
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: clamp(1rem, 2vw, 1.25rem) 0;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: clamp(0.75rem, 2vw, 1rem);
+            text-align: left;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            font-weight: 600;
+        }
+
+        td {
+            padding: clamp(0.75rem, 2vw, 1rem);
+            border-bottom: 1px solid var(--border-color);
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            background: var(--bg-gray);
+            color: var(--text-dark);
+            padding: clamp(0.25rem, 1vw, 0.375rem) clamp(0.625rem, 2vw, 0.75rem);
+            border-radius: var(--radius-sm);
+            font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
+            font-weight: 600;
+            margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Highlight */
+        .highlight {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        /* Button */
+        .button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: clamp(0.75rem, 2vw, 0.875rem) clamp(1.25rem, 3vw, 1.5rem);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1.5vw, 0.9375rem);
+            transition: var(--transition);
+            margin: clamp(0.5rem, 1vw, 0.625rem);
+            text-align: center;
+            border: 1px solid var(--secondary-color);
+        }
+
+        .button:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-white);
+            border-top: 1px solid var(--border-color);
+            padding: clamp(2rem, 3vw, 2.5rem);
+            text-align: center;
+            color: var(--text-light);
+            font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
+        }
+
+        footer p {
+            margin: clamp(0.5rem, 1vw, 0.75rem) 0;
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            body {
+                line-height: 1.6;
+            }
+        }
+
+        /* Smooth Scrolling for Mobile */
+        @media (max-width: 768px) {
+            .nav-tabs {
+                scrollbar-width: none;
+            }
+
+            .nav-tabs::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .nav-tabs {
+                display: none;
+            }
+
+            .tab-content {
+                display: block !important;
+                page-break-after: always;
+            }
+
+            .card:hover {
+                transform: none;
+            }
+        }
+
+        /* Accessibility */
+        .nav-tab:focus,
+        .button:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Loading Animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Custom Scrollbar for Content */
+        .content {
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-color) var(--bg-gray);
+        }
+
+        .content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: var(--bg-gray);
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 10px;
+        }
+
+        .content::-webkit-scrollbar-thumb:hover {
+            background: var(--text-light);
+        }
+
+        /* Icon Styles */
+        .icon {
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: clamp(0.75rem, 2vw, 1rem);
+        }
+
+        /* Price Display */
+        .price {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin: clamp(0.5rem, 1vw, 0.75rem) 0;
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: clamp(1.25rem, 3vw, 1.75rem);
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        @media (max-width: 480px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Vertical Spacing Utilities */
+        .mb-small { margin-bottom: clamp(0.5rem, 1vw, 0.75rem); }
+        .mb-medium { margin-bottom: clamp(1rem, 2vw, 1.5rem); }
+        .mb-large { margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+
+        .mt-small { margin-top: clamp(0.5rem, 1vw, 0.75rem); }
+        .mt-medium { margin-top: clamp(1rem, 2vw, 1.5rem); }
+        .mt-large { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+
+        /* Text Utilities */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+
+        /* Color Utilities */
+        .text-primary { color: var(--secondary-color); }
+        .text-success { color: var(--success-color); }
+        .text-warning { color: var(--warning-color); }
+        .text-danger { color: var(--accent-color); }
+
+        /* Background Utilities */
+        .bg-light { background: var(--bg-gray); }
+        .bg-white { background: var(--bg-white); }
+
+        /* Border Utilities */
+        .border-primary { border-color: var(--primary-color) !important; }
+        .border-success { border-color: var(--success-color) !important; }
+        .border-warning { border-color: var(--warning-color) !important; }
+
+        /* Extra Small Devices (275px - 360px) */
+        @media (max-width: 360px) {
+            .nav-tab {
+            text-decoration: none;
+            display: inline-block;
+                min-width: 100px;
+                font-size: 0.8rem;
+            }
+
+            .step-number {
+                width: 2rem;
+                height: 2rem;
+                min-width: 2rem;
+                font-size: 0.9rem;
+            }
+
+            .card-grid,
+            .comparison-grid {
+                gap: 0.75rem;
+            }
+
+            table {
+                min-width: 450px;
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+
+        /* Large Devices (1200px+) */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1440px;
+            }
+
+            .content {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .comparison-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+
+        /* Ultra Wide (1440px+) */
+        @media (min-width: 1440px) {
+            .content {
+                padding-left: 5rem;
+                padding-right: 5rem;
+            }
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: clamp(48px, 7vw, 56px);
+            height: clamp(48px, 7vw, 56px);
+            background: var(--secondary-color);
+            color: white;
+            border: 2px solid var(--secondary-color);
+            border-radius: var(--radius-md);
+            font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .scroll-to-top:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .scroll-to-top {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>📚 IT導入補助金申請準備完全ガイド</h1>
+                    <p>必要な書類と手続きをすべて解説</p>
+                </a>
+            </div>
+
+            <nav class="nav-tabs" role="navigation">
+                <a href="履歴事項全部証明書.html" class="nav-tab">📋 履歴事項全部証明書</a>
+                <a href="納税証明書.html" class="nav-tab">💰 納税証明書</a>
+                <a href="決算書.html" class="nav-tab">📊 決算書</a>
+                <a href="gBizID.html" class="nav-tab">🔐 gBizID</a>
+                <a href="SECURITY-ACTION.html" class="nav-tab">⭐ SECURITY ACTION</a>
+                <a href="IT戦略マップ.html" class="nav-tab">🗺️ IT戦略マップ</a>
+            </nav>
+        </header>
+
+        <div class="content">
+                <div class="section">
+                    <h2>💰 納税証明書「その2」完全ガイド</h2>
+
+                    <div class="what-is">
+                        <h3>一言で言うと...</h3>
+                        <p><strong>「会社の所得金額（利益）を証明する書類」です！</strong></p>
+                        <p class="mt-small">税務署が発行する公式な証明書で、<span class="highlight">IT導入補助金の申請に必要</span>な書類の一つです。</p>
+                    </div>
+
+                    <div class="alert-box">
+                        <strong>📌 IT導入補助金申請での役割</strong>
+                        <p>法人税の申告に基づいて、<span class="highlight">会社の所得金額（課税標準）を証明</span>する書類です。補助金事務局が、申請企業の事業実態と財務状況を確認するために使用します。</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📝 証明される内容</h2>
+
+                    <div class="card border-success">
+                        <h3 class="text-success">納税証明書「その2」に記載される情報</h3>
+                        <ul>
+                            <li><strong>所得金額</strong>：会社が稼いだ利益の額</li>
+                            <li><strong>法人税の課税標準</strong>：法人税の計算基礎となる金額</li>
+                            <li><strong>対象年度</strong>：証明する事業年度</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>💡 IT導入補助金申請での使い道</h4>
+                        <ul>
+                            <li><strong>企業の事業実態確認</strong>：法人として適切に事業を行っているか</li>
+                            <li><strong>財務状況の確認</strong>：補助金を適切に活用できる体力があるか</li>
+                            <li><strong>申告実績の証明</strong>：税務申告を適切に行っている企業か</li>
+                            <li><strong>補助対象者要件の確認</strong>：補助金の対象となる事業者かどうか</li>
+                        </ul>
+                        <p class="mt-small"><strong>※創業1期目の場合：</strong>法人税の申告がまだない場合は、開業届や定款などの代替書類が認められることがあります。詳しくは募集要項を確認してください。</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📍 2つの取得方法</h2>
+                    <p>自分に合った方法を選びましょう！クリックすると詳細にジャンプします。</p>
+
+                    <div class="card-grid">
+                        <div class="card border-primary" style="cursor: pointer;" onclick="scrollToSection('method-online-nozei')">
+                            <div class="badge">⚡ おすすめ</div>
+                            <h3>オンライン申請（e-Tax）</h3>
+                            <p><strong>手数料：</strong>370円</p>
+                            <p><strong>所要時間：</strong>即日～数日</p>
+                            <p class="mt-small">24時間いつでも申請可能！</p>
+                        </div>
+
+                        <div class="card" style="cursor: pointer;" onclick="scrollToSection('method-counter-nozei')">
+                            <div class="badge">🏢 確実</div>
+                            <h3>窓口・郵送申請</h3>
+                            <p><strong>手数料：</strong>400円</p>
+                            <p><strong>所要時間：</strong>当日～1週間</p>
+                            <p class="mt-small">税務署で直接申請</p>
+                        </div>
+                    </div>
+
+                    <div class="tips">
+                        <h4>📌 注意点</h4>
+                        <ul>
+                            <li>法人税の申告をしていない年度は発行できません</li>
+                            <li>申告から数日～2週間程度は発行できない場合があります</li>
+                            <li>最新の事業年度分を取得するのが一般的です</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>💰 料金</h2>
+
+                    <div class="card-grid">
+                        <div class="card bg-light border-primary">
+                            <h3 class="text-primary">オンライン（e-Tax）</h3>
+                            <div class="price text-primary">370円</div>
+                            <p class="text-center">1通あたり</p>
+                            <p class="mt-small text-center">✨ 書面より安い！</p>
+                        </div>
+
+                        <div class="card bg-light border-success">
+                            <h3 class="text-success">書面（窓口・郵送）</h3>
+                            <div class="price text-success">400円</div>
+                            <p class="text-center">1通あたり</p>
+                            <p class="mt-small text-center">収入印紙で支払い</p>
+                        </div>
+                    </div>
+
+                    <div class="tips">
+                        <h4>💡 お得情報</h4>
+                        <p><strong>オンライン申請（e-Tax）の方が30円安い</strong>です！複数年度分が必要な場合でも、オンラインならお得に取得できます。</p>
+                    </div>
+                </div>
+
+                <div class="section" id="method-online-nozei">
+                    <h2>📝 方法1：オンライン申請（e-Tax）の手順</h2>
+
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>e-Taxソフト（WEB版）にアクセス</h4>
+                                <p><a href="https://www.e-tax.nta.go.jp/" target="_blank">国税庁e-Tax公式サイト</a>から「e-TaxソフトWEB版」を選択します。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>ログイン</h4>
+                                <p>以下のいずれかの方法でログインします：</p>
+                                <ul>
+                                    <li><strong>マイナンバーカード方式</strong>：ICカードリーダーまたはスマホが必要</li>
+                                    <li><strong>ID・パスワード方式</strong>：税務署で発行したID/パスワード</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>「納税証明書の交付請求」を選択</h4>
+                                <p>メニューから「申請・申告」→「納税証明書の交付請求（オンライン請求・オンライン受取）」を選択します。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>証明書の種類を選択</h4>
+                                <p><strong>「その2（所得金額の証明）」</strong>を選択します。</p>
+                                <ul>
+                                    <li>証明を受けようとする年度を入力</li>
+                                    <li>必要な通数を入力</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>手数料の支払い</h4>
+                                <p><strong>370円 × 通数</strong>を以下の方法で支払います：</p>
+                                <ul>
+                                    <li>インターネットバンキング</li>
+                                    <li>クレジットカード</li>
+                                    <li>ダイレクト納付（事前登録が必要）</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>証明書のダウンロード</h4>
+                                <p>申請後、<span class="highlight">即日〜数営業日</span>でPDF形式の証明書をダウンロードできます。メッセージボックスに通知が届きます。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tips">
+                        <h4>⚠️ オンライン申請の注意点</h4>
+                        <ul>
+                            <li>法人税の申告がe-Taxで行われている必要があります</li>
+                            <li>申告直後は発行できない場合があります（数日〜2週間待機）</li>
+                            <li>PDF証明書は電子署名付きで正式な証明書として使えます</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section" id="method-counter-nozei">
+                    <h2>🏢 方法2：窓口・郵送申請の手順</h2>
+
+                    <h3>窓口での申請</h3>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>管轄の税務署を確認</h4>
+                                <p>会社の本店所在地を管轄する税務署を<a href="https://www.nta.go.jp/about/organization/access/map.htm" target="_blank">国税庁ウェブサイト</a>で確認します。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>申請書を記入</h4>
+                                <p>税務署窓口にある「納税証明書交付請求書」に記入します：</p>
+                                <ul>
+                                    <li>会社の名称・所在地・法人番号</li>
+                                    <li>証明書の種類：<strong>「その2」を選択</strong></li>
+                                    <li>証明を受けたい年度</li>
+                                    <li>必要な通数</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>手数料の支払い</h4>
+                                <p><strong>400円 × 通数</strong>分の収入印紙を購入し、申請書に貼付します。</p>
+                                <p class="mt-small">※収入印紙は税務署内または近くの郵便局で購入できます</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>証明書の受取</h4>
+                                <p><span class="highlight">即日〜数日</span>で発行されます。混雑状況により異なります。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-3">郵送での申請</h3>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>申請書をダウンロード</h4>
+                                <p><a href="https://www.nta.go.jp/" target="_blank">国税庁ウェブサイト</a>から「納税証明書交付請求書」をダウンロードして印刷・記入します。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>必要書類を準備</h4>
+                                <ul>
+                                    <li>記入済みの申請書</li>
+                                    <li>400円 × 通数分の収入印紙（貼付）</li>
+                                    <li>返信用封筒（切手を貼付、宛先を記入）</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>税務署に郵送</h4>
+                                <p>管轄の税務署宛てに郵送します。<span class="highlight">1週間程度</span>で返送されます。</p>
+                            </div>
+        </div>
+
+        <footer>
+            <p>※ 情報は作成時点のものです。最新情報は各公式サイトでご確認ください。</p>
+        </footer>
+    </div>
+
+    <script>
+        const scrollToTopBtn = document.createElement('button');
+        scrollToTopBtn.className = 'scroll-to-top';
+        scrollToTopBtn.innerHTML = '↑';
+        scrollToTopBtn.setAttribute('aria-label', 'トップに戻る');
+        document.body.appendChild(scrollToTopBtn);
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        const currentPage = window.location.pathname.split('/').pop();
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            if (tab.getAttribute('href') === currentPage) {
+                tab.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

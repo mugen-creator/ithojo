@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECURITY ACTION | IT導入補助金申請準備完全ガイド</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #3b82f6;
+            --accent-color: #06b6d4;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --text-dark: #111827;
+            --text-medium: #374151;
+            --text-light: #6b7280;
+            --bg-gray: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #d1d5db;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+            --shadow-lg: 0 10px 24px rgba(0,0,0,0.15);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Base Styles */
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 480px) {
+            html { font-size: 14px; }
+        }
+
+        @media (min-width: 1200px) {
+            html { font-size: 18px; }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, 'メイリオ', sans-serif;
+            line-height: 1.65;
+            color: var(--text-dark);
+            background: var(--bg-gray);
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-white);
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-white);
+            color: var(--primary-color);
+            padding: clamp(1rem, 2vw, 1.5rem) clamp(1rem, 4vw, 2rem);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        header h1 {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-align: left;
+        }
+
+        header p {
+            font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+            color: var(--text-medium);
+            font-weight: 400;
+            margin: 0;
+            text-align: left;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.5rem, 1vw, 1rem);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .nav-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-tab {
+            text-decoration: none;
+            display: inline-block;
+            padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem);
+            border: none;
+            background: transparent;
+            color: var(--text-medium);
+            font-size: clamp(0.75rem, 1.3vw, 0.875rem);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            border-radius: var(--radius-sm);
+        }
+
+        .nav-tab:hover {
+            background: var(--bg-gray);
+            color: var(--secondary-color);
+        }
+
+        .nav-tab.active {
+            background: var(--secondary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .nav-tabs {
+                width: 100%;
+                overflow-x: auto;
+            }
+        }
+
+        /* Content */
+        .content {
+            padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2rem);
+            margin-top: clamp(80px, 15vw, 100px);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+        }
+
+        .section h2 {
+            color: var(--text-dark);
+            font-size: clamp(1.4rem, 3vw, 1.875rem);
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+            padding-bottom: 0;
+            border-bottom: none;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .section h3 {
+            color: var(--text-dark);
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            margin: clamp(1.25rem, 2vw, 1.75rem) 0 clamp(0.625rem, 1vw, 0.875rem) 0;
+            font-weight: 600;
+        }
+
+        .section h4 {
+            color: var(--text-dark);
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            margin: clamp(0.875rem, 1.5vw, 1.125rem) 0 clamp(0.5rem, 1vw, 0.625rem) 0;
+            font-weight: 600;
+        }
+
+        .section p {
+            margin: clamp(0.625rem, 1.5vw, 0.875rem) 0;
+            line-height: 1.7;
+            font-size: clamp(0.9375rem, 1.5vw, 1rem);
+            color: var(--text-medium);
+        }
+
+        /* Box Styles */
+        .what-is, .alert-box, .info-box, .success-box, .warning-box, .tips {
+            padding: clamp(1.125rem, 3vw, 1.5rem);
+            border-radius: var(--radius-md);
+            margin: clamp(1.25rem, 2vw, 1.75rem) 0;
+            border: 2px solid;
+        }
+
+        .what-is {
+            background: #dbeafe;
+            border-color: #3b82f6;
+        }
+
+        .alert-box {
+            background: #fef3c7;
+            border-color: #f59e0b;
+        }
+
+        .info-box {
+            background: #dbeafe;
+            border-color: #3b82f6;
+        }
+
+        .success-box {
+            background: #d1fae5;
+            border-color: #10b981;
+        }
+
+        .warning-box {
+            background: #fee2e2;
+            border-color: #ef4444;
+        }
+
+        .tips {
+            background: #d1fae5;
+            border-color: #10b981;
+        }
+
+        .what-is h3, .alert-box strong, .info-box h4, .success-box h4, .warning-box h4, .tips h4 {
+            margin-bottom: clamp(0.625rem, 1vw, 0.875rem);
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: clamp(0.75rem, 1.5vw, 1rem) 0;
+            padding-left: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        li {
+            margin: clamp(0.5rem, 1vw, 0.625rem) 0;
+            line-height: 1.7;
+        }
+
+        /* Steps */
+        .steps {
+            margin: clamp(1.25rem, 2vw, 1.75rem) 0;
+        }
+
+        .step {
+            display: flex;
+            gap: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: clamp(1.75rem, 2vw, 2.25rem);
+            padding: clamp(1.125rem, 2vw, 1.5rem);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-white);
+            align-items: flex-start;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            background: var(--secondary-color);
+            color: white;
+            width: clamp(2rem, 6vw, 2.5rem);
+            height: clamp(2rem, 6vw, 2.5rem);
+            min-width: 2rem;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(0.9375rem, 2vw, 1.125rem);
+            font-weight: 700;
+            flex-shrink: 0;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h4 {
+            margin-top: 0;
+        }
+
+        @media (max-width: 480px) {
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                align-self: flex-start;
+            }
+        }
+
+        /* Cards & Grids */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: clamp(1rem, 3vw, 1.5rem);
+            margin: clamp(1rem, 2vw, 1.5rem) 0;
+        }
+
+        @media (max-width: 480px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: clamp(1.25rem, 3vw, 1.5rem);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--secondary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card h3 {
+            color: var(--text-dark);
+            font-size: clamp(1.0625rem, 2.5vw, 1.25rem);
+            margin-bottom: clamp(0.625rem, 1.5vw, 0.875rem);
+            font-weight: 600;
+        }
+
+        .card strong {
+            color: var(--text-dark);
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: clamp(1rem, 2vw, 1.25rem) 0;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: clamp(0.75rem, 2vw, 1rem);
+            text-align: left;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            font-weight: 600;
+        }
+
+        td {
+            padding: clamp(0.75rem, 2vw, 1rem);
+            border-bottom: 1px solid var(--border-color);
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            background: var(--bg-gray);
+            color: var(--text-dark);
+            padding: clamp(0.25rem, 1vw, 0.375rem) clamp(0.625rem, 2vw, 0.75rem);
+            border-radius: var(--radius-sm);
+            font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
+            font-weight: 600;
+            margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Highlight */
+        .highlight {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        /* Button */
+        .button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: clamp(0.75rem, 2vw, 0.875rem) clamp(1.25rem, 3vw, 1.5rem);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1.5vw, 0.9375rem);
+            transition: var(--transition);
+            margin: clamp(0.5rem, 1vw, 0.625rem);
+            text-align: center;
+            border: 1px solid var(--secondary-color);
+        }
+
+        .button:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-white);
+            border-top: 1px solid var(--border-color);
+            padding: clamp(2rem, 3vw, 2.5rem);
+            text-align: center;
+            color: var(--text-light);
+            font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
+        }
+
+        footer p {
+            margin: clamp(0.5rem, 1vw, 0.75rem) 0;
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            body {
+                line-height: 1.6;
+            }
+        }
+
+        /* Smooth Scrolling for Mobile */
+        @media (max-width: 768px) {
+            .nav-tabs {
+                scrollbar-width: none;
+            }
+
+            .nav-tabs::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .nav-tabs {
+                display: none;
+            }
+
+            .tab-content {
+                display: block !important;
+                page-break-after: always;
+            }
+
+            .card:hover {
+                transform: none;
+            }
+        }
+
+        /* Accessibility */
+        .nav-tab:focus,
+        .button:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Loading Animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Custom Scrollbar for Content */
+        .content {
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-color) var(--bg-gray);
+        }
+
+        .content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: var(--bg-gray);
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 10px;
+        }
+
+        .content::-webkit-scrollbar-thumb:hover {
+            background: var(--text-light);
+        }
+
+        /* Icon Styles */
+        .icon {
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: clamp(0.75rem, 2vw, 1rem);
+        }
+
+        /* Price Display */
+        .price {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin: clamp(0.5rem, 1vw, 0.75rem) 0;
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: clamp(1.25rem, 3vw, 1.75rem);
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        @media (max-width: 480px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Vertical Spacing Utilities */
+        .mb-small { margin-bottom: clamp(0.5rem, 1vw, 0.75rem); }
+        .mb-medium { margin-bottom: clamp(1rem, 2vw, 1.5rem); }
+        .mb-large { margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+
+        .mt-small { margin-top: clamp(0.5rem, 1vw, 0.75rem); }
+        .mt-medium { margin-top: clamp(1rem, 2vw, 1.5rem); }
+        .mt-large { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+
+        /* Text Utilities */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+
+        /* Color Utilities */
+        .text-primary { color: var(--secondary-color); }
+        .text-success { color: var(--success-color); }
+        .text-warning { color: var(--warning-color); }
+        .text-danger { color: var(--accent-color); }
+
+        /* Background Utilities */
+        .bg-light { background: var(--bg-gray); }
+        .bg-white { background: var(--bg-white); }
+
+        /* Border Utilities */
+        .border-primary { border-color: var(--primary-color) !important; }
+        .border-success { border-color: var(--success-color) !important; }
+        .border-warning { border-color: var(--warning-color) !important; }
+
+        /* Extra Small Devices (275px - 360px) */
+        @media (max-width: 360px) {
+            .nav-tab {
+            text-decoration: none;
+            display: inline-block;
+                min-width: 100px;
+                font-size: 0.8rem;
+            }
+
+            .step-number {
+                width: 2rem;
+                height: 2rem;
+                min-width: 2rem;
+                font-size: 0.9rem;
+            }
+
+            .card-grid,
+            .comparison-grid {
+                gap: 0.75rem;
+            }
+
+            table {
+                min-width: 450px;
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+
+        /* Large Devices (1200px+) */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1440px;
+            }
+
+            .content {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .comparison-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+
+        /* Ultra Wide (1440px+) */
+        @media (min-width: 1440px) {
+            .content {
+                padding-left: 5rem;
+                padding-right: 5rem;
+            }
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: clamp(48px, 7vw, 56px);
+            height: clamp(48px, 7vw, 56px);
+            background: var(--secondary-color);
+            color: white;
+            border: 2px solid var(--secondary-color);
+            border-radius: var(--radius-md);
+            font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .scroll-to-top:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .scroll-to-top {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>📚 IT導入補助金申請準備完全ガイド</h1>
+                    <p>必要な書類と手続きをすべて解説</p>
+                </a>
+            </div>
+
+            <nav class="nav-tabs" role="navigation">
+                <a href="履歴事項全部証明書.html" class="nav-tab">📋 履歴事項全部証明書</a>
+                <a href="納税証明書.html" class="nav-tab">💰 納税証明書</a>
+                <a href="決算書.html" class="nav-tab">📊 決算書</a>
+                <a href="gBizID.html" class="nav-tab">🔐 gBizID</a>
+                <a href="SECURITY-ACTION.html" class="nav-tab">⭐ SECURITY ACTION</a>
+                <a href="IT戦略マップ.html" class="nav-tab">🗺️ IT戦略マップ</a>
+            </nav>
+        </header>
+
+        <div class="content">
+                                <p>画面上で以下の情報を入力します（後で申請書に記載します）：</p>
+                                <ul>
+                                    <li><strong>法人番号</strong>（13桁）</li>
+                                    <li><strong>会社名</strong>（正式名称）</li>
+                                    <li><strong>本店所在地</strong></li>
+                                    <li><strong>代表者氏名</strong></li>
+                                    <li><strong>メールアドレス</strong>（ログイン時に使用）</li>
+                                    <li><strong>電話番号</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">7</div>
+                            <div class="step-content">
+                                <h4>パスワードを設定</h4>
+                                <p>gBizIDにログインする際に使用する<strong>パスワード</strong>を設定します。</p>
+                                <ul>
+                                    <li>8文字以上で、英数字と記号を組み合わせる</li>
+                                    <li>忘れないようにメモしておきましょう</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">8</div>
+                            <div class="step-content">
+                                <h4>申請書に必要事項を記入</h4>
+                                <p>ダウンロードした申請書に以下を記入します：</p>
+                                <ul>
+                                    <li>入力した法人情報を転記</li>
+                                    <li>代表者氏名を自署</li>
+                                    <li><strong>代表者印を押印</strong>（実印）</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">9</div>
+                            <div class="step-content">
+                                <h4>必要書類を準備</h4>
+                                <p>以下の書類を封筒に入れます：</p>
+                                <ul>
+                                    <li>記入・押印済みの申請書</li>
+                                    <li><strong>印鑑証明書</strong>（原本、発行から3ヶ月以内）</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">10</div>
+                            <div class="step-content">
+                                <h4>gBizID運用センターに郵送</h4>
+                                <p>画面に表示される<strong>送付先住所</strong>に郵送します。</p>
+                                <p class="mt-small">〒530-8532<br>
+                                大阪市北区大深町3-1<br>
+                                グランフロント大阪　ナレッジキャピタル　タワーC　11階<br>
+                                gBizID運用センター</p>
+                                <p class="mt-small"><span class="text-primary">💡 簡易書留での郵送を推奨します</span></p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">11</div>
+                            <div class="step-content">
+                                <h4>審査待ち（約2週間）</h4>
+                                <p>gBizID運用センターで審査が行われます。<span class="highlight">審査には約2週間</span>かかります。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">12</div>
+                            <div class="step-content">
+                                <h4>完了メールが届く</h4>
+                                <p>審査が完了すると、登録したメールアドレスに<strong>承認通知</strong>が届きます。</p>
+                                <p class="mt-small">メールに記載されたURLからログインし、IT導入補助金の申請システム（jGrants）が利用可能になります。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert-box">
+                        <strong>⚠️ 書類郵送申請の注意点</strong>
+                        <ul>
+                            <li>印鑑証明書は<strong>原本</strong>が必要です（コピー不可）</li>
+                            <li>印鑑証明書は<strong>発行から3ヶ月以内</strong>のものに限ります</li>
+                            <li>申請書の押印は<strong>代表者印（実印）</strong>を使用</li>
+                            <li>審査に約2週間かかるため、IT導入補助金の締切に注意</li>
+                            <li>書類に不備があると再提出が必要になり、さらに時間がかかります</li>
+                        </ul>
+                    </div>
+
+                    <div class="tips">
+                        <h4>💡 書類郵送申請のポイント</h4>
+                        <ul>
+                            <li>印鑑証明書は市区町村役場で取得（手数料300〜450円程度）</li>
+                            <li>申請書は必ず印刷してから記入（手書き可）</li>
+                            <li>郵送前に記入漏れ・押印漏れがないか確認</li>
+                            <li>簡易書留で郵送すると追跡できて安心</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section text-center">
+                    <h2>🔗 便利なリンク</h2>
+                    <a href="https://gbiz-id.go.jp/" class="button" target="_blank">🔐 gBizID公式サイト</a>
+                    <a href="https://www.houjin-bangou.nta.go.jp/" class="button" target="_blank">🔍 法人番号検索</a>
+                </div>
+            </div>
+
+            <!-- Tab 4: SECURITY ACTION -->
+            <div class="tab-content" role="tabpanel">
+                <div class="section">
+                    <h2>⭐⭐ SECURITY ACTION二つ星取得完全ガイド</h2>
+
+                    <div class="what-is">
+                        <h3>一言で言うと...</h3>
+                        <p><strong>「IT導入補助金の必須要件」です！</strong></p>
+                        <p class="mt-small">IPA（独立行政法人 情報処理推進機構）が運営する情報セキュリティ自己宣言制度で、<span class="highlight">IT導入補助金を申請するには必ず取得が必要</span>です。</p>
+                    </div>
+
+                    <div class="alert-box">
+                        <strong>📌 重要！IT導入補助金申請には必須</strong>
+                        <p>IT導入補助金の申請要件として、<span class="highlight">申請前にSECURITY ACTION二つ星の宣言が必須</span>です。</p>
+                    </div>
+
+                    <div class="success-box">
+                        <h4>🌟 SECURITY ACTIONを取得すると...</h4>
+                        <div class="card-grid">
+                            <div class="card bg-light">
+                                <h4 class="text-primary">✅ 申請要件クリア</h4>
+                                <p>IT導入補助金の申請が可能になる</p>
+                            </div>
+                            <div class="card bg-light">
+                                <h4 class="text-primary">💰 完全無料</h4>
+                                <p>申請も維持も一切費用がかからない</p>
+                            </div>
+                            <div class="card bg-light">
+                                <h4 class="text-primary">⚡ 即日取得可能</h4>
+                                <p>二つ星でも2〜3時間で取得完了</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📋 二つ星の取得要件</h2>
+
+                    <div class="card border-primary">
+                        <h3 class="text-primary text-center">二つ星取得に必要な2つのステップ</h3>
+
+                        <div class="mb-medium mt-medium">
+                            <h4>ステップ1：自社診断を実施</h4>
+                            <p>IPAが提供する診断ツール（25項目）で自社のセキュリティ対策状況をチェックします。</p>
+                            <p class="mt-small"><strong>所要時間：</strong>約5〜10分</p>
+                        </div>
+
+                        <div>
+                            <h4>ステップ2：基本方針を策定・公開</h4>
+                            <p>会社の情報セキュリティに対する基本的な方針を文書化し、ホームページなどで公開します。</p>
+                            <p class="mt-small"><strong>所要時間：</strong>1〜2時間</p>
+                        </div>
+                    </div>
+
+                    <div class="alert-box mt-medium">
+                        <strong>🎉 たったこれだけ！</strong>
+                        <p>この2つのステップを完了すれば、<span class="highlight">二つ星を宣言できます</span>。審査や認証機関の検査などは一切不要です。完全に<strong>自己宣言制</strong>なので、すぐに取得できます！</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📝 二つ星の取得手順</h2>
+
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>SECURITY ACTION公式サイトにアクセス</h4>
+                                <p>Google検索で「SECURITY ACTION」と検索し、IPA公式サイトにアクセスします。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>自社診断を実施</h4>
+                                <p>IPAのサイトから診断ツールにアクセスし、<strong>25項目の質問</strong>に答えます。</p>
+                                <p class="mt-small"><strong>所要時間：5〜10分</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>基本方針を作成</h4>
+                                <p>IPAが提供するテンプレート（Word形式）を自社の状況に合わせて編集します。</p>
+                                <p class="mt-small"><strong>所要時間：1〜2時間</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>基本方針を公開</h4>
+                                <p>作成した基本方針をホームページや会社案内に掲載します。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>SECURITY ACTIONに申し込む</h4>
+                                <p>公式サイト（<a href="https://www.ipa.go.jp/security/security-action/" target="_blank">https://www.ipa.go.jp/security/security-action/</a>）の申込フォームから申し込みます。</p>
+                                <ul class="mt-small">
+                                    <li>会社情報を入力</li>
+                                    <li>作成した基本方針のURL（公開場所）を入力</li>
+                                    <li>申込完了後、<span class="highlight">すぐにロゴマークが使えます</span>！</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>自己宣言IDを取得・保管</h4>
+                                <p>申込完了後、<strong>自己宣言ID</strong>が発行されます。このIDは<span class="highlight">IT導入補助金の申請時に必要</span>になります。</p>
+                                <div class="alert-box mt-small">
+                                    <strong>⚠️ 重要！</strong>
+                                    <p>自己宣言IDは<strong>必ずメモして保管</strong>してください。IT導入補助金の申請フォームで入力が求められます。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 5: IT戦略マップ -->
+            <div class="tab-content" role="tabpanel">
+                <div class="section">
+                    <h2>🗺️ IT戦略マップ作成完全ガイド</h2>
+
+                    <div class="what-is">
+                        <h3>一言で言うと...</h3>
+                        <p><strong>「IT導入補助金の加点項目として活用できる戦略整理ツール」です！</strong></p>
+                        <p class="mt-small">中小企業基盤整備機構（中小機構）が提供する無料ツールで、<span class="highlight">IT導入補助金の申請で加点が得られる</span>重要な資料です。</p>
+                    </div>
+
+                    <div class="alert-box">
+                        <strong>🎯 重要！IT導入補助金で加点項目</strong>
+                        <p>IT戦略マップは<span class="highlight">審査で加点される項目</span>です。作成することで採択率がアップします！</p>
+                        <ul>
+                            <li><strong>加点項目として評価される</strong>：審査で有利になる</li>
+                            <li><strong>申請書の説得力UP</strong>：なぜそのITツールが必要かを明確化</li>
+                            <li><strong>完全無料</strong>：費用は一切かからない</li>
+                            <li><strong>たった5分で完成</strong>：簡単な質問に答えるだけ</li>
+                        </ul>
+                    </div>
+
+                    <div class="success-box">
+                        <h4>🌟 IT戦略マップを作成すると...</h4>
+                        <div class="card-grid">
+                            <div class="card bg-light">
+                                <h4 class="text-primary">✨ 審査で加点</h4>
+                                <p>IT導入補助金の採択率がアップ</p>
+                            </div>
+                            <div class="card bg-light">
+                                <h4 class="text-primary">📝 申請書が書きやすい</h4>
+                                <p>IT導入の目的と効果を整理できる</p>
+                            </div>
+                            <div class="card bg-light">
+                                <h4 class="text-primary">⚡ たった5分で完成</h4>
+                                <p>簡単な質問に答えるだけで作成できる</p>
+                            </div>
+        </div>
+
+        <footer>
+            <p>※ 情報は作成時点のものです。最新情報は各公式サイトでご確認ください。</p>
+        </footer>
+    </div>
+
+    <script>
+        const scrollToTopBtn = document.createElement('button');
+        scrollToTopBtn.className = 'scroll-to-top';
+        scrollToTopBtn.innerHTML = '↑';
+        scrollToTopBtn.setAttribute('aria-label', 'トップに戻る');
+        document.body.appendChild(scrollToTopBtn);
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        const currentPage = window.location.pathname.split('/').pop();
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            if (tab.getAttribute('href') === currentPage) {
+                tab.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

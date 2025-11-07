@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>会社設立完全ガイド - 統合版</title>
+    <title>IT導入補助金申請準備完全ガイド</title>
     <style>
         * {
             margin: 0;
@@ -610,7 +610,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>📚 会社設立完全ガイド</h1>
+            <h1>📚 IT導入補助金申請準備完全ガイド</h1>
             <p>起業に必要なすべての手続きをわかりやすく解説</p>
         </header>
 
@@ -663,7 +663,7 @@
                     <p>自分に合った方法を選びましょう！</p>
 
                     <div class="card-grid">
-                        <div class="card border-primary">
+                        <div class="card border-primary" style="cursor: pointer;" onclick="scrollToSection('method-online-rireki')">
                             <div class="badge">⚡ 最速・便利</div>
                             <h3>オンライン申請</h3>
                             <p><strong>所要時間：</strong>最短即日</p>
@@ -671,7 +671,7 @@
                             <p class="mt-small">自宅やオフィスから24時間申請可能！</p>
                         </div>
 
-                        <div class="card">
+                        <div class="card" style="cursor: pointer;" onclick="scrollToSection('method-counter-rireki')">
                             <div class="badge">🏢 確実</div>
                             <h3>窓口申請</h3>
                             <p><strong>所要時間：</strong>当日中</p>
@@ -679,7 +679,7 @@
                             <p class="mt-small">法務局で直接申請してその場で受け取れます</p>
                         </div>
 
-                        <div class="card">
+                        <div class="card" style="cursor: pointer;" onclick="scrollToSection('method-mail-rireki')">
                             <div class="badge">📮 遠方OK</div>
                             <h3>郵送申請</h3>
                             <p><strong>所要時間：</strong>1週間程度</p>
@@ -710,7 +710,7 @@
                     </div>
                 </div>
 
-                <div class="section">
+                <div class="section" id="method-online-rireki">
                     <h2>📝 オンライン申請の手順</h2>
 
                     <div class="steps">
@@ -753,7 +753,7 @@
                     </div>
                 </div>
 
-                <div class="section">
+                <div class="section" id="method-counter-rireki">
                     <h2>🏢 方法2：窓口申請</h2>
 
                     <div class="info-box">
@@ -765,6 +765,62 @@
                         </ul>
                     </div>
 
+                    <div class="alert-box">
+                        <strong>⚡ 証明書発行機でさらに簡単＆早い！</strong>
+                        <p>一部の法務局には<strong>「登記事項証明書発行請求機」</strong>が設置されています。</p>
+                        <ul>
+                            <li><strong>手書き不要</strong>：タッチパネルで入力するだけ</li>
+                            <li><strong>最速5分</strong>：待ち時間がほとんどなし</li>
+                            <li><strong>営業時間外もOK</strong>：一部は17:15以降も利用可能</li>
+                            <li><strong>手数料：600円</strong>（窓口と同じ）</li>
+                        </ul>
+                        <p class="mt-small">発行機がある法務局は、法務局のウェブサイトで確認できます。大都市圏の法務局には設置されていることが多いです。</p>
+                    </div>
+
+                    <h3>パターンA：証明書発行機を使う場合（おすすめ）</h3>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>発行機のある法務局を確認</h4>
+                                <p>法務局のウェブサイトで「証明書発行請求機設置庁一覧」を確認し、最寄りの設置庁を探します。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>発行機の画面で会社情報を入力</h4>
+                                <p>タッチパネルで以下を入力：</p>
+                                <ul>
+                                    <li>会社の商号（正式名称）</li>
+                                    <li>会社の本店所在地</li>
+                                    <li>会社法人等番号（または検索）</li>
+                                    <li>証明書の種類：<strong>履歴事項全部証明書</strong></li>
+                                    <li>必要な通数</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>手数料を支払う</h4>
+                                <p>発行機で<strong>600円 × 通数</strong>を支払います。<br>
+                                支払い方法：現金または一部の機械ではクレジットカード・電子マネー対応</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>証明書を受け取る</h4>
+                                <p><span class="highlight">数分で証明書が発行</span>されます。待ち時間がほとんどないので、窓口より早いことが多いです！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>パターンB：窓口で申請する場合</h3>
                     <div class="steps">
                         <div class="step">
                             <div class="step-number">1</div>
@@ -819,7 +875,7 @@
                     </div>
                 </div>
 
-                <div class="section">
+                <div class="section" id="method-mail-rireki">
                     <h2>📮 方法3：郵送申請</h2>
 
                     <div class="info-box">
@@ -1454,6 +1510,17 @@
                 }
             });
         });
+
+        // Scroll to specific section
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
     </script>
 </body>
 </html>

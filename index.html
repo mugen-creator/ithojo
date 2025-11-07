@@ -12,24 +12,24 @@
         }
 
         :root {
-            --primary-color: #667eea;
-            --secondary-color: #764ba2;
-            --accent-color: #f44336;
-            --success-color: #4CAF50;
-            --warning-color: #ffc107;
-            --info-color: #2196F3;
-            --text-dark: #333;
-            --text-light: #666;
-            --bg-light: #f8f9ff;
+            --primary-color: #1a365d;
+            --secondary-color: #2563eb;
+            --accent-color: #0ea5e9;
+            --success-color: #059669;
+            --warning-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-medium: #4b5563;
+            --text-light: #6b7280;
+            --bg-gray: #f9fafb;
             --bg-white: #ffffff;
-            --border-color: #e0e0e0;
-            --shadow-sm: 0 2px 10px rgba(0,0,0,0.1);
-            --shadow-md: 0 5px 20px rgba(102, 126, 234, 0.2);
-            --shadow-lg: 0 10px 35px rgba(102, 126, 234, 0.3);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --transition: all 0.3s ease;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 24px rgba(0,0,0,0.1);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* Base Styles */
@@ -48,10 +48,10 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, 'メイリオ', sans-serif;
-            line-height: 1.7;
+            line-height: 1.65;
             color: var(--text-dark);
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            padding: clamp(0.5rem, 2vw, 1.25rem);
+            background: var(--bg-gray);
+            padding: 0;
             min-height: 100vh;
         }
 
@@ -60,29 +60,31 @@
             max-width: 1200px;
             margin: 0 auto;
             background: var(--bg-white);
-            border-radius: var(--radius-lg);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            min-height: 100vh;
             overflow: hidden;
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: clamp(1.5rem, 5vw, 2.5rem) clamp(1rem, 4vw, 2rem);
+            background: var(--bg-white);
+            color: var(--primary-color);
+            padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2rem);
             text-align: center;
             position: relative;
+            border-bottom: 1px solid var(--border-color);
         }
 
         header h1 {
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 0.75rem;
             font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         header p {
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            opacity: 0.9;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            color: var(--text-medium);
+            font-weight: 400;
         }
 
         /* Navigation Tabs */
@@ -90,46 +92,46 @@
             display: flex;
             flex-wrap: wrap;
             background: var(--bg-white);
-            border-bottom: 2px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
+            padding: 0 clamp(1rem, 2vw, 1.5rem);
         }
 
         .nav-tabs::-webkit-scrollbar {
-            height: 4px;
+            height: 3px;
         }
 
         .nav-tabs::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
+            background: var(--border-color);
             border-radius: 10px;
         }
 
         .nav-tab {
             flex: 1 1 auto;
-            min-width: clamp(120px, 20vw, 180px);
-            padding: clamp(0.75rem, 2vw, 1rem) clamp(0.5rem, 2vw, 1.25rem);
+            min-width: clamp(110px, 18vw, 160px);
+            padding: clamp(0.875rem, 2vw, 1.125rem) clamp(0.75rem, 2vw, 1rem);
             border: none;
             background: transparent;
             color: var(--text-light);
-            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
-            font-weight: 600;
+            font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
+            font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
-            border-bottom: 3px solid transparent;
+            border-bottom: 2px solid transparent;
             white-space: nowrap;
             text-align: center;
         }
 
         .nav-tab:hover {
-            background: var(--bg-light);
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         .nav-tab.active {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
-            background: var(--bg-light);
+            color: var(--secondary-color);
+            border-bottom-color: var(--secondary-color);
+            font-weight: 600;
         }
 
         /* Content */
@@ -153,79 +155,83 @@
 
         /* Section */
         .section {
-            margin-bottom: clamp(2rem, 5vw, 3rem);
+            margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
         }
 
         .section h2 {
-            color: var(--primary-color);
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
-            margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
-            padding-bottom: clamp(0.5rem, 1vw, 0.625rem);
-            border-bottom: 3px solid var(--primary-color);
+            color: var(--text-dark);
+            font-size: clamp(1.4rem, 3vw, 1.875rem);
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+            padding-bottom: 0;
+            border-bottom: none;
             font-weight: 700;
+            letter-spacing: -0.01em;
         }
 
         .section h3 {
             color: var(--text-dark);
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            margin: clamp(1rem, 2vw, 1.5rem) 0 clamp(0.5rem, 1vw, 0.75rem) 0;
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            margin: clamp(1.25rem, 2vw, 1.75rem) 0 clamp(0.625rem, 1vw, 0.875rem) 0;
             font-weight: 600;
         }
 
         .section h4 {
             color: var(--text-dark);
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            margin: clamp(0.75rem, 1.5vw, 1rem) 0 clamp(0.5rem, 1vw, 0.625rem) 0;
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            margin: clamp(0.875rem, 1.5vw, 1.125rem) 0 clamp(0.5rem, 1vw, 0.625rem) 0;
             font-weight: 600;
         }
 
         .section p {
-            margin: clamp(0.5rem, 1.5vw, 0.75rem) 0;
-            line-height: 1.8;
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            margin: clamp(0.625rem, 1.5vw, 0.875rem) 0;
+            line-height: 1.7;
+            font-size: clamp(0.9375rem, 1.5vw, 1rem);
+            color: var(--text-medium);
         }
 
         /* Box Styles */
         .what-is, .alert-box, .info-box, .success-box, .warning-box, .tips {
-            padding: clamp(1rem, 3vw, 1.5rem);
+            padding: clamp(1.125rem, 3vw, 1.5rem);
             border-radius: var(--radius-md);
-            margin: clamp(1rem, 2vw, 1.25rem) 0;
-            border-left: 5px solid;
+            margin: clamp(1.25rem, 2vw, 1.75rem) 0;
+            border: 1px solid var(--border-color);
+            background: var(--bg-gray);
         }
 
         .what-is {
-            background: var(--bg-light);
-            border-left-color: var(--primary-color);
+            background: #f0f9ff;
+            border-color: #bae6fd;
         }
 
         .alert-box {
-            background: #fff3cd;
-            border-left-color: var(--warning-color);
+            background: #fffbeb;
+            border-color: #fed7aa;
         }
 
         .info-box {
-            background: #e3f2fd;
-            border-left-color: var(--info-color);
+            background: #eff6ff;
+            border-color: #bfdbfe;
         }
 
         .success-box {
-            background: #e8f5e9;
-            border-left-color: var(--success-color);
+            background: #f0fdf4;
+            border-color: #bbf7d0;
         }
 
         .warning-box {
-            background: #ffebee;
-            border-left-color: var(--accent-color);
+            background: #fef2f2;
+            border-color: #fecaca;
         }
 
         .tips {
-            background: #e8f5e9;
-            border-left-color: var(--success-color);
+            background: #f0fdf4;
+            border-color: #bbf7d0;
         }
 
         .what-is h3, .alert-box strong, .info-box h4, .success-box h4, .warning-box h4, .tips h4 {
-            margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: clamp(0.625rem, 1vw, 0.875rem);
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            color: var(--text-dark);
         }
 
         /* Lists */
@@ -241,40 +247,38 @@
 
         /* Steps */
         .steps {
-            background: var(--bg-light);
-            padding: clamp(1.25rem, 3vw, 1.75rem);
-            border-radius: var(--radius-md);
-            margin: clamp(1rem, 2vw, 1.25rem) 0;
+            margin: clamp(1.25rem, 2vw, 1.75rem) 0;
         }
 
         .step {
             display: flex;
-            gap: clamp(0.75rem, 2vw, 1.25rem);
-            margin-bottom: clamp(1.25rem, 2vw, 1.5rem);
-            padding-bottom: clamp(1.25rem, 2vw, 1.5rem);
-            border-bottom: 1px dashed var(--border-color);
+            gap: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: clamp(1.75rem, 2vw, 2.25rem);
+            padding: clamp(1.125rem, 2vw, 1.5rem);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-white);
             align-items: flex-start;
         }
 
         .step:last-child {
-            border-bottom: none;
             margin-bottom: 0;
-            padding-bottom: 0;
         }
 
         .step-number {
-            background: var(--primary-color);
-            color: white;
-            width: clamp(2.5rem, 8vw, 3rem);
-            height: clamp(2.5rem, 8vw, 3rem);
-            min-width: 2.5rem;
-            border-radius: 50%;
+            background: var(--bg-gray);
+            color: var(--primary-color);
+            width: clamp(2rem, 6vw, 2.5rem);
+            height: clamp(2rem, 6vw, 2.5rem);
+            min-width: 2rem;
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-size: clamp(0.9375rem, 2vw, 1.125rem);
             font-weight: 700;
             flex-shrink: 0;
+            border: 1px solid var(--border-color);
         }
 
         .step-content {
@@ -311,23 +315,22 @@
 
         .card {
             background: var(--bg-white);
-            border: 2px solid var(--border-color);
+            border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: clamp(1.25rem, 3vw, 1.75rem);
+            padding: clamp(1.25rem, 3vw, 1.5rem);
             transition: var(--transition);
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color);
+            border-color: var(--secondary-color);
+            box-shadow: var(--shadow-md);
         }
 
         .card h3 {
-            color: var(--primary-color);
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-            margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
-            text-align: center;
+            color: var(--text-dark);
+            font-size: clamp(1.0625rem, 2.5vw, 1.25rem);
+            margin-bottom: clamp(0.625rem, 1.5vw, 0.875rem);
+            font-weight: 600;
         }
 
         /* Tables */
@@ -370,50 +373,51 @@
         /* Badge */
         .badge {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 1rem);
-            border-radius: 20px;
-            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            background: var(--bg-gray);
+            color: var(--text-dark);
+            padding: clamp(0.25rem, 1vw, 0.375rem) clamp(0.625rem, 2vw, 0.75rem);
+            border-radius: var(--radius-sm);
+            font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
             font-weight: 600;
             margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+            border: 1px solid var(--border-color);
         }
 
         /* Highlight */
         .highlight {
-            background: linear-gradient(transparent 60%, #ffeb3b 60%);
+            color: var(--secondary-color);
             font-weight: 600;
-            padding: 2px 4px;
         }
 
         /* Button */
         .button {
             display: inline-block;
-            background: var(--primary-color);
+            background: var(--secondary-color);
             color: white;
-            padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
-            border-radius: 30px;
+            padding: clamp(0.75rem, 2vw, 0.875rem) clamp(1.25rem, 3vw, 1.5rem);
+            border-radius: var(--radius-sm);
             text-decoration: none;
             font-weight: 600;
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            font-size: clamp(0.9rem, 1.5vw, 0.9375rem);
             transition: var(--transition);
             margin: clamp(0.5rem, 1vw, 0.625rem);
             text-align: center;
+            border: 1px solid var(--secondary-color);
         }
 
         .button:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            background: var(--primary-color);
+            border-color: var(--primary-color);
         }
 
         /* Footer */
         footer {
-            background: #f5f5f5;
-            padding: clamp(1.5rem, 3vw, 2rem);
+            background: var(--bg-white);
+            border-top: 1px solid var(--border-color);
+            padding: clamp(2rem, 3vw, 2.5rem);
             text-align: center;
             color: var(--text-light);
-            font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+            font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
         }
 
         footer p {
@@ -475,20 +479,24 @@
         /* Custom Scrollbar for Content */
         .content {
             scrollbar-width: thin;
-            scrollbar-color: var(--primary-color) var(--bg-light);
+            scrollbar-color: var(--border-color) var(--bg-gray);
         }
 
         .content::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
 
         .content::-webkit-scrollbar-track {
-            background: var(--bg-light);
+            background: var(--bg-gray);
         }
 
         .content::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
+            background: var(--border-color);
             border-radius: 10px;
+        }
+
+        .content::-webkit-scrollbar-thumb:hover {
+            background: var(--text-light);
         }
 
         /* Icon Styles */
@@ -535,13 +543,13 @@
         .font-semibold { font-weight: 600; }
 
         /* Color Utilities */
-        .text-primary { color: var(--primary-color); }
+        .text-primary { color: var(--secondary-color); }
         .text-success { color: var(--success-color); }
         .text-warning { color: var(--warning-color); }
         .text-danger { color: var(--accent-color); }
 
         /* Background Utilities */
-        .bg-light { background: var(--bg-light); }
+        .bg-light { background: var(--bg-gray); }
         .bg-white { background: var(--bg-white); }
 
         /* Border Utilities */
@@ -611,13 +619,13 @@
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            width: clamp(50px, 8vw, 60px);
-            height: clamp(50px, 8vw, 60px);
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: clamp(1.5rem, 3vw, 2rem);
+            width: clamp(44px, 7vw, 48px);
+            height: clamp(44px, 7vw, 48px);
+            background: var(--bg-white);
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -625,8 +633,8 @@
             box-shadow: var(--shadow-md);
             opacity: 0;
             visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
+            transform: translateY(10px);
+            transition: var(--transition);
             z-index: 1000;
         }
 
@@ -637,12 +645,12 @@
         }
 
         .scroll-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
         }
 
         .scroll-to-top:active {
-            transform: translateY(-2px);
+            transform: scale(0.95);
         }
 
         @media (max-width: 768px) {
@@ -1824,17 +1832,18 @@
 
                     <div class="what-is">
                         <h3>一言で言うと...</h3>
-                        <p><strong>「IT導入補助金申請の添付資料として活用できるIT戦略整理ツール」です！</strong></p>
-                        <p class="mt-small">中小企業基盤整備機構（中小機構）が提供する無料ツールで、<span class="highlight">IT導入補助金の申請書作成時に、自社のIT戦略を整理</span>するために役立ちます。</p>
+                        <p><strong>「IT導入補助金の加点項目として活用できる戦略整理ツール」です！</strong></p>
+                        <p class="mt-small">中小企業基盤整備機構（中小機構）が提供する無料ツールで、<span class="highlight">IT導入補助金の申請で加点が得られる</span>重要な資料です。</p>
                     </div>
 
                     <div class="alert-box">
-                        <strong>📌 IT導入補助金申請での活用方法</strong>
-                        <p>IT戦略マップは<span class="highlight">申請の必須要件ではありません</span>が、以下の用途で活用できます：</p>
+                        <strong>🎯 重要！IT導入補助金で加点項目</strong>
+                        <p>IT戦略マップは<span class="highlight">審査で加点される項目</span>です。作成することで採択率がアップします！</p>
                         <ul>
-                            <li><strong>申請書の記入に役立つ</strong>：経営課題とIT活用の関係を整理できる</li>
-                            <li><strong>事業計画の説得力UP</strong>：なぜそのITツールが必要かを明確化</li>
-                            <li><strong>社内での合意形成</strong>：IT導入の目的を社員と共有</li>
+                            <li><strong>加点項目として評価される</strong>：審査で有利になる</li>
+                            <li><strong>申請書の説得力UP</strong>：なぜそのITツールが必要かを明確化</li>
+                            <li><strong>完全無料</strong>：費用は一切かからない</li>
+                            <li><strong>たった5分で完成</strong>：簡単な質問に答えるだけ</li>
                         </ul>
                     </div>
 
@@ -1842,12 +1851,12 @@
                         <h4>🌟 IT戦略マップを作成すると...</h4>
                         <div class="card-grid">
                             <div class="card bg-light">
-                                <h4 class="text-primary">📝 申請書が書きやすい</h4>
-                                <p>IT導入の目的と効果を整理できる</p>
+                                <h4 class="text-primary">✨ 審査で加点</h4>
+                                <p>IT導入補助金の採択率がアップ</p>
                             </div>
                             <div class="card bg-light">
-                                <h4 class="text-primary">💡 導入ツールが明確に</h4>
-                                <p>どのITツールが必要か判断しやすい</p>
+                                <h4 class="text-primary">📝 申請書が書きやすい</h4>
+                                <p>IT導入の目的と効果を整理できる</p>
                             </div>
                             <div class="card bg-light">
                                 <h4 class="text-primary">⚡ たった5分で完成</h4>
@@ -1858,81 +1867,190 @@
                 </div>
 
                 <div class="section">
-                    <h2>⏱ 作成にかかる時間</h2>
+                    <h2>📝 IT戦略マップ作成手順（超詳しく解説）</h2>
 
-                    <div class="alert-box">
-                        <strong>⚡ たったの5分で完成！</strong>
-                        <p>IT戦略マップは、<span class="highlight">「5分で見える化！」</span>をコンセプトに設計されています。</p>
+                    <div class="info-box mb-medium">
+                        <h4>📋 準備するもの</h4>
                         <ul>
-                            <li><strong>簡単な質問に答えるだけ</strong>で自動的にマップが作成される</li>
-                            <li><strong>専門知識不要</strong>で誰でも使える</li>
-                            <li><strong>何度でも作り直し可能</strong></li>
+                            <li><strong>会社情報</strong>：会社名、業種、従業員数、事業内容など</li>
+                            <li><strong>経営課題の把握</strong>：自社が抱えている課題を整理しておく（後で選択式で選べます）</li>
+                            <li><strong>PC環境</strong>：インターネット接続可能なパソコン（スマホでも可能ですがPCを推奨）</li>
+                            <li><strong>メールアドレス</strong>：結果を受け取るためのメールアドレス（任意）</li>
                         </ul>
+                        <p class="mt-small"><strong>所要時間：</strong>5〜10分で完了！</p>
                     </div>
-                </div>
-
-                <div class="section">
-                    <h2>📝 IT戦略マップの作成手順</h2>
 
                     <div class="steps">
                         <div class="step">
                             <div class="step-number">1</div>
                             <div class="step-content">
-                                <h4>経営課題・業務課題のヒアリング</h4>
-                                <p>自社の課題を整理します。提供されるヒアリングシート・チェックシートを使って、課題を整理できます。</p>
+                                <h4>「IT戦略ナビwith」公式サイトにアクセス</h4>
+                                <p><strong>URL：</strong><a href="https://digiwith.smrj.go.jp/it-map/" target="_blank">https://digiwith.smrj.go.jp/it-map/</a></p>
+                                <p class="mt-small">中小機構が運営する公式サイトです。Google検索で「IT戦略ナビwith」と検索しても見つかります。</p>
+                                <div class="alert-box mt-small">
+                                    <p><strong>💡 ポイント：</strong>アカウント登録は不要！すぐに診断を始められます。</p>
+                                </div>
                             </div>
                         </div>
 
                         <div class="step">
                             <div class="step-number">2</div>
                             <div class="step-content">
-                                <h4>IT戦略ナビwithでマップ作成</h4>
-                                <p>Webツール「IT戦略ナビwith」で質問に答えていきます。質問に答えると、<span class="highlight">自動的にIT戦略マップが生成</span>されます。</p>
-                                <p class="mt-small"><strong>所要時間：5〜10分</strong></p>
+                                <h4>「診断を始める」ボタンをクリック</h4>
+                                <p>トップページに表示されている<strong>「診断を始める」</strong>または<strong>「IT戦略マップを作成する」</strong>ボタンをクリックします。</p>
+                                <p class="mt-small">すぐに診断画面に移動します。登録やログインは一切不要です！</p>
                             </div>
                         </div>
 
                         <div class="step">
                             <div class="step-number">3</div>
                             <div class="step-content">
-                                <h4>IT化による課題解決策を検討</h4>
-                                <p>作成されたマップをもとに、具体的な解決策を検討します。マップには、自社のIT化レベル、推奨されるITツール、導入事例などが表示されます。</p>
+                                <h4>会社の基本情報を入力</h4>
+                                <p>以下の情報を入力します（<strong>すべて選択式</strong>なので簡単！）：</p>
+                                <ul class="mt-small">
+                                    <li><strong>業種</strong>：製造業、小売業、サービス業など（選択）</li>
+                                    <li><strong>従業員数</strong>：5人以下、6〜20人、21〜50人など（選択）</li>
+                                    <li><strong>売上規模</strong>：1千万円未満、5千万円未満など（選択）</li>
+                                    <li><strong>IT化の状況</strong>：ほとんど紙、一部PC、ほぼPC化など（選択）</li>
+                                </ul>
+                                <p class="mt-small"><strong>所要時間：</strong>1〜2分</p>
                             </div>
                         </div>
 
                         <div class="step">
                             <div class="step-number">4</div>
                             <div class="step-content">
-                                <h4>具体的なIT導入・運用支援</h4>
-                                <p>マップをもとに、実際のIT導入計画を立てます。この計画は、<strong>IT導入補助金の申請</strong>にも活用できます。</p>
+                                <h4>経営課題を選択</h4>
+                                <p>自社が抱えている<strong>経営課題</strong>を選択します（複数選択可）：</p>
+                                <ul class="mt-small">
+                                    <li>□ 売上を伸ばしたい</li>
+                                    <li>□ コストを削減したい</li>
+                                    <li>□ 業務を効率化したい</li>
+                                    <li>□ 人手不足を解消したい</li>
+                                    <li>□ 在庫管理を改善したい</li>
+                                    <li>□ 顧客管理を強化したい</li>
+                                    <li>□ 情報共有を改善したい</li>
+                                    <li>その他、15〜20項目から選択可能</li>
+                                </ul>
+                                <div class="info-box mt-small">
+                                    <p><strong>💡 ヒント：</strong>迷ったら3〜5個選んでください。後から変更して作り直すこともできます。</p>
+                                </div>
+                                <p class="mt-small"><strong>所要時間：</strong>2〜3分</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>業務課題を選択</h4>
+                                <p>具体的な<strong>業務上の課題</strong>を選択します（複数選択可）：</p>
+                                <ul class="mt-small">
+                                    <li>□ 受発注業務が煩雑</li>
+                                    <li>□ 在庫が把握できていない</li>
+                                    <li>□ 顧客情報が整理されていない</li>
+                                    <li>□ 社内の情報共有が不十分</li>
+                                    <li>□ 経理業務に時間がかかる</li>
+                                    <li>□ 勤怠管理が手作業</li>
+                                    <li>□ 営業活動が見える化されていない</li>
+                                    <li>その他、20〜30項目から選択可能</li>
+                                </ul>
+                                <p class="mt-small"><strong>所要時間：</strong>2〜3分</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>「診断結果を見る」ボタンをクリック</h4>
+                                <p>すべての質問に回答したら、<strong>「診断結果を見る」</strong>ボタンをクリックします。</p>
+                                <p class="mt-small">これで<span class="highlight">IT戦略マップが自動生成</span>されます！</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">7</div>
+                            <div class="step-content">
+                                <h4>IT戦略マップを確認</h4>
+                                <p>画面に<strong>IT戦略マップ</strong>が表示されます。以下の情報が含まれています：</p>
+                                <ul class="mt-small">
+                                    <li><strong>自社のIT化レベル</strong>：現在どのレベルにいるか</li>
+                                    <li><strong>推奨されるITツール</strong>：課題解決に役立つツールの提案</li>
+                                    <li><strong>導入効果</strong>：ITツール導入による期待効果</li>
+                                    <li><strong>導入事例</strong>：同業他社の成功事例</li>
+                                    <li><strong>ロードマップ</strong>：段階的なIT化の進め方</li>
+                                </ul>
+                                <div class="success-box mt-small">
+                                    <p><strong>🎉 これで完成！</strong>ここまで約5〜10分で完了します。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">8</div>
+                            <div class="step-content">
+                                <h4>マップをダウンロード・保存</h4>
+                                <p>作成したIT戦略マップを保存します：</p>
+                                <ul class="mt-small">
+                                    <li><strong>PDF形式でダウンロード</strong>：画面右上の「PDFダウンロード」ボタンをクリック</li>
+                                    <li><strong>メールで送信</strong>：メールアドレスを入力すると結果が送られてくる（任意）</li>
+                                    <li><strong>印刷</strong>：ブラウザの印刷機能で印刷も可能</li>
+                                </ul>
+                                <div class="alert-box mt-small">
+                                    <p><strong>💾 重要：</strong>このPDFファイルを<span class="highlight">IT導入補助金の申請時に添付</span>します。必ず保存しておきましょう！</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">9</div>
+                            <div class="step-content">
+                                <h4>IT導入補助金申請で活用</h4>
+                                <p>保存したIT戦略マップを<strong>IT導入補助金の申請</strong>で活用します：</p>
+                                <div class="card-grid mt-small">
+                                    <div class="card bg-light">
+                                        <h4>📄 申請書の添付資料として提出</h4>
+                                        <p>PDFファイルを申請システムにアップロード</p>
+                                    </div>
+                                    <div class="card bg-light">
+                                        <h4>✍️ 申請書の記入に活用</h4>
+                                        <p>「導入目的」「期待効果」欄の記入に役立つ</p>
+                                    </div>
+                                    <div class="card bg-light">
+                                        <h4>⭐ 加点項目として評価</h4>
+                                        <p>審査で高評価を得られる</p>
+                                    </div>
+                                </div>
+                                <div class="success-box mt-medium">
+                                    <h4>🎯 これで加点ゲット！</h4>
+                                    <p>IT戦略マップを作成・提出することで、<span class="highlight">IT導入補助金の審査で加点</span>されます。採択率アップにつながります！</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="section">
-                    <h2>🚀 IT戦略マップの活用方法</h2>
+                    <h2>💡 よくある質問</h2>
 
-                    <div class="card-grid">
-                        <div class="card bg-light">
-                            <h4 class="text-primary">💰 補助金申請</h4>
-                            <p>IT導入補助金やものづくり補助金の申請時に、IT導入計画の根拠資料として活用できます。</p>
-                        </div>
-                        <div class="card bg-light">
-                            <h4 class="text-primary">📋 経営計画の策定</h4>
-                            <p>中期経営計画や事業計画に、IT活用戦略として組み込むことができます。</p>
-                        </div>
-                        <div class="card bg-light">
-                            <h4 class="text-primary">🤝 社内の意識統一</h4>
-                            <p>経営者、管理職、現場担当者が同じ「地図」を見ることで、IT化の方向性を共有できます。</p>
-                        </div>
+                    <div class="card bg-light mb-small">
+                        <h4>Q1: IT戦略マップは何度も作り直せますか？</h4>
+                        <p><strong>A:</strong> はい、何度でも無料で作り直せます。回答を変更して、より良いマップを作成してください。</p>
                     </div>
-                </div>
 
-                <div class="section text-center">
-                    <h2>🔗 便利なリンク</h2>
-                    <a href="https://digiwith.smrj.go.jp/it-map/" class="button" target="_blank">🗺️ IT戦略ナビwith</a>
-                    <a href="https://www.it-hojo.jp/" class="button" target="_blank">💰 IT導入補助金</a>
+                    <div class="card bg-light mb-small">
+                        <h4>Q2: 作成したマップは保存されますか？</h4>
+                        <p><strong>A:</strong> アカウント登録していない場合は保存されません。必ずPDFをダウンロードして保存してください。</p>
+                    </div>
+
+                    <div class="card bg-light mb-small">
+                        <h4>Q3: スマホでも作成できますか？</h4>
+                        <p><strong>A:</strong> はい、スマホでも作成できます。ただし、画面が大きいPCでの作成を推奨します。</p>
+                    </div>
+
+                    <div class="card bg-light">
+                        <h4>Q4: IT戦略マップは必須ですか？</h4>
+                        <p><strong>A:</strong> 必須ではありませんが、<strong>加点項目</strong>なので作成を強く推奨します。たった5分で採択率がアップします！</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1337,69 +1337,335 @@
 
                 <div class="section">
                     <h2>💻 gBizIDプライムの取得方法</h2>
-                    <p>取得方法は2つあります。<span class="highlight">マイナンバーカードがあれば、オンライン申請が断然おすすめ</span>です！</p>
+                    <p>取得方法は2つあります。<span class="highlight">マイナンバーカードがあれば、オンライン申請が断然おすすめ</span>です！クリックすると詳細手順にジャンプします。</p>
 
                     <div class="card-grid">
-                        <div class="card border-primary">
+                        <div class="card border-primary" style="cursor: pointer;" onclick="scrollToSection('method-online-gbizid')">
+                            <div class="badge" style="background: #f44336;">おすすめ！</div>
                             <div class="icon">💻</div>
-                            <h3>オンライン申請</h3>
-                            <p><strong>必要なもの：</strong>マイナンバーカード</p>
-                            <p><strong>取得期間：</strong>即日</p>
-                            <p><strong>料金：</strong>無料</p>
-                            <div class="badge" style="background: #f44336; margin-top: 1rem;">おすすめ！</div>
+                            <h3>オンライン申請（マイナンバーカード方式）</h3>
+                            <p><strong>必要なもの：</strong>マイナンバーカード + スマホ（またはICカードリーダー）</p>
+                            <p><strong>取得期間：</strong>即日発行</p>
+                            <p><strong>おすすめ度：</strong>★★★★★</p>
+                            <p class="mt-small">すぐに使える！郵送不要で超簡単</p>
                         </div>
 
-                        <div class="card">
+                        <div class="card" style="cursor: pointer;" onclick="scrollToSection('method-mail-gbizid')">
+                            <div class="badge">📮 郵送</div>
                             <div class="icon">📮</div>
                             <h3>書類郵送申請</h3>
-                            <p><strong>必要なもの：</strong>印鑑証明書</p>
+                            <p><strong>必要なもの：</strong>印鑑証明書 + 申請書</p>
                             <p><strong>取得期間：</strong>約2週間</p>
-                            <p><strong>料金：</strong>無料</p>
+                            <p><strong>おすすめ度：</strong>★★★☆☆</p>
+                            <p class="mt-small">マイナンバーカードがない方向け</p>
                         </div>
+                    </div>
+
+                    <div class="alert-box">
+                        <strong>⚠️ 重要：取得には時間がかかります</strong>
+                        <ul>
+                            <li><strong>オンライン申請：</strong>即日発行されますが、マイナンバーカードの準備が必要</li>
+                            <li><strong>書類郵送申請：</strong>審査に約2週間かかります</li>
+                            <li><strong>IT導入補助金の申請締切を考慮</strong>して、早めに取得しましょう！</li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="section">
-                    <h2>📝 オンライン申請の手順</h2>
+                <div class="section" id="method-online-gbizid">
+                    <h2>📝 方法1：オンライン申請（マイナンバーカード方式）の手順</h2>
+
+                    <div class="info-box">
+                        <h4>🎯 この方法がおすすめな人</h4>
+                        <ul>
+                            <li>マイナンバーカードを持っている</li>
+                            <li>スマホ（または ICカードリーダー）がある</li>
+                            <li>すぐにgBizIDを使いたい</li>
+                        </ul>
+                    </div>
 
                     <div class="steps">
                         <div class="step">
                             <div class="step-number">1</div>
                             <div class="step-content">
-                                <h4>gBizID公式サイトにアクセス</h4>
-                                <p>Google検索で「gBizID」と検索し、公式サイトにアクセスします。</p>
+                                <h4>準備するもの</h4>
+                                <ul>
+                                    <li><strong>マイナンバーカード</strong>（本人確認に使用）</li>
+                                    <li><strong>マイナンバーカードの4桁パスワード</strong>（署名用電子証明書パスワード）</li>
+                                    <li><strong>スマートフォン</strong>（NFC機能付き）またはICカードリーダー</li>
+                                    <li><strong>会社情報</strong>：法人番号、会社名、所在地など</li>
+                                </ul>
+                                <p class="mt-small"><span class="text-primary">💡 スマホで読み取る場合、マイナポータルアプリのインストールが必要です</span></p>
                             </div>
                         </div>
 
                         <div class="step">
                             <div class="step-number">2</div>
                             <div class="step-content">
-                                <h4>「gBizIDプライム作成」を選択</h4>
-                                <p>トップページから「gBizIDプライム作成」ボタンをクリックします。</p>
+                                <h4>gBizID公式サイトにアクセス</h4>
+                                <p><a href="https://gbiz-id.go.jp/" target="_blank">https://gbiz-id.go.jp/</a> にアクセスします。</p>
+                                <p class="mt-small">または、Google検索で「gBizID」と検索して公式サイトに移動します。</p>
                             </div>
                         </div>
 
                         <div class="step">
                             <div class="step-number">3</div>
                             <div class="step-content">
-                                <h4>マイナンバーカードで本人確認</h4>
-                                <p>スマートフォンまたはICカードリーダーでマイナンバーカードを読み取ります。</p>
+                                <h4>「gBizIDプライム作成」ボタンをクリック</h4>
+                                <p>トップページの<strong>「gBizIDプライム作成」</strong>ボタンをクリックします。</p>
+                                <p class="mt-small">※「エントリー」や「メンバー」ではなく、<span class="highlight">必ず「プライム」を選択</span>してください</p>
                             </div>
                         </div>
 
                         <div class="step">
                             <div class="step-number">4</div>
                             <div class="step-content">
-                                <h4>申請完了・即日発行</h4>
-                                <p><span class="highlight">申請が完了すると、すぐにgBizIDが発行</span>されます！各種行政サービスが利用可能になります。</p>
+                                <h4>「マイナンバーカードで申請」を選択</h4>
+                                <p>申請方法の選択画面で、<strong>「マイナンバーカードで申請」</strong>を選びます。</p>
                             </div>
                         </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>法人情報を入力</h4>
+                                <p>以下の情報を画面の指示に従って入力します：</p>
+                                <ul>
+                                    <li><strong>法人番号</strong>（13桁）</li>
+                                    <li><strong>会社名</strong>（正式名称）</li>
+                                    <li><strong>本店所在地</strong></li>
+                                    <li><strong>代表者氏名</strong></li>
+                                    <li><strong>メールアドレス</strong>（ログイン時に使用）</li>
+                                    <li><strong>電話番号</strong></li>
+                                </ul>
+                                <p class="mt-small"><span class="text-primary">💡 法人番号は国税庁の法人番号公表サイトで検索できます</span></p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>パスワードを設定</h4>
+                                <p>gBizIDにログインする際に使用する<strong>パスワード</strong>を設定します。</p>
+                                <ul>
+                                    <li>8文字以上で、英数字と記号を組み合わせる</li>
+                                    <li>忘れないようにメモしておきましょう</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">7</div>
+                            <div class="step-content">
+                                <h4>マイナンバーカードで本人確認</h4>
+                                <p>画面の指示に従って、マイナンバーカードを読み取ります：</p>
+                                <ul>
+                                    <li><strong>スマホの場合：</strong>カードをスマホの背面に当てて読み取り</li>
+                                    <li><strong>ICカードリーダーの場合：</strong>リーダーにカードをセット</li>
+                                    <li><strong>4桁のパスワード</strong>を入力（署名用電子証明書パスワード）</li>
+                                </ul>
+                                <p class="mt-small"><span class="highlight">⚠️ パスワードを3回間違えるとロックされるので注意！</span></p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">8</div>
+                            <div class="step-content">
+                                <h4>申請内容を確認して送信</h4>
+                                <p>入力した内容を確認し、問題なければ<strong>「申請する」</strong>ボタンをクリックします。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">9</div>
+                            <div class="step-content">
+                                <h4>完了！gBizIDプライムが発行されます</h4>
+                                <p><span class="highlight">申請が完了すると、即座にgBizIDプライムが発行</span>されます！</p>
+                                <p class="mt-small">登録したメールアドレスに通知が届きます。すぐにIT導入補助金の申請システム（jGrants）にログインできるようになります。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tips">
+                        <h4>💡 オンライン申請のポイント</h4>
+                        <ul>
+                            <li>マイナンバーカードの署名用電子証明書パスワード（4桁）を事前に確認</li>
+                            <li>スマホで読み取る場合は、マイナポータルアプリをインストール</li>
+                            <li>法人番号は<a href="https://www.houjin-bangou.nta.go.jp/" target="_blank">国税庁法人番号公表サイト</a>で検索可能</li>
+                            <li>申請は10〜15分程度で完了します</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section" id="method-mail-gbizid">
+                    <h2>📮 方法2：書類郵送申請の手順</h2>
+
+                    <div class="info-box">
+                        <h4>🎯 この方法がおすすめな人</h4>
+                        <ul>
+                            <li>マイナンバーカードを持っていない</li>
+                            <li>スマホやICカードリーダーがない</li>
+                            <li>書類での申請に慣れている</li>
+                        </ul>
+                        <p class="mt-small"><strong>⏰ 注意：</strong>審査に<span class="highlight">約2週間かかります</span>。IT導入補助金の締切に間に合うよう、早めに申請しましょう。</p>
+                    </div>
+
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>準備するもの</h4>
+                                <ul>
+                                    <li><strong>印鑑証明書</strong>（発行から3ヶ月以内のもの）</li>
+                                    <li><strong>会社の印鑑</strong>（代表者印）</li>
+                                    <li><strong>会社情報</strong>：法人番号、会社名、所在地など</li>
+                                    <li><strong>代表者の連絡先</strong>：メールアドレス、電話番号</li>
+                                </ul>
+                                <p class="mt-small"><span class="text-primary">💡 印鑑証明書は市区町村役場または法務局で取得できます</span></p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>gBizID公式サイトにアクセス</h4>
+                                <p><a href="https://gbiz-id.go.jp/" target="_blank">https://gbiz-id.go.jp/</a> にアクセスします。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>「gBizIDプライム作成」を選択</h4>
+                                <p>トップページの<strong>「gBizIDプライム作成」</strong>ボタンをクリックします。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>「書類で申請」を選択</h4>
+                                <p>申請方法の選択画面で、<strong>「書類で申請」</strong>を選びます。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>申請書をダウンロード</h4>
+                                <p>画面に表示される<strong>「申請書」</strong>をダウンロードして印刷します。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>法人情報を入力</h4>
+                                <p>画面上で以下の情報を入力します（後で申請書に記載します）：</p>
+                                <ul>
+                                    <li><strong>法人番号</strong>（13桁）</li>
+                                    <li><strong>会社名</strong>（正式名称）</li>
+                                    <li><strong>本店所在地</strong></li>
+                                    <li><strong>代表者氏名</strong></li>
+                                    <li><strong>メールアドレス</strong>（ログイン時に使用）</li>
+                                    <li><strong>電話番号</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">7</div>
+                            <div class="step-content">
+                                <h4>パスワードを設定</h4>
+                                <p>gBizIDにログインする際に使用する<strong>パスワード</strong>を設定します。</p>
+                                <ul>
+                                    <li>8文字以上で、英数字と記号を組み合わせる</li>
+                                    <li>忘れないようにメモしておきましょう</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">8</div>
+                            <div class="step-content">
+                                <h4>申請書に必要事項を記入</h4>
+                                <p>ダウンロードした申請書に以下を記入します：</p>
+                                <ul>
+                                    <li>入力した法人情報を転記</li>
+                                    <li>代表者氏名を自署</li>
+                                    <li><strong>代表者印を押印</strong>（実印）</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">9</div>
+                            <div class="step-content">
+                                <h4>必要書類を準備</h4>
+                                <p>以下の書類を封筒に入れます：</p>
+                                <ul>
+                                    <li>記入・押印済みの申請書</li>
+                                    <li><strong>印鑑証明書</strong>（原本、発行から3ヶ月以内）</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">10</div>
+                            <div class="step-content">
+                                <h4>gBizID運用センターに郵送</h4>
+                                <p>画面に表示される<strong>送付先住所</strong>に郵送します。</p>
+                                <p class="mt-small">〒530-8532<br>
+                                大阪市北区大深町3-1<br>
+                                グランフロント大阪　ナレッジキャピタル　タワーC　11階<br>
+                                gBizID運用センター</p>
+                                <p class="mt-small"><span class="text-primary">💡 簡易書留での郵送を推奨します</span></p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">11</div>
+                            <div class="step-content">
+                                <h4>審査待ち（約2週間）</h4>
+                                <p>gBizID運用センターで審査が行われます。<span class="highlight">審査には約2週間</span>かかります。</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">12</div>
+                            <div class="step-content">
+                                <h4>完了メールが届く</h4>
+                                <p>審査が完了すると、登録したメールアドレスに<strong>承認通知</strong>が届きます。</p>
+                                <p class="mt-small">メールに記載されたURLからログインし、IT導入補助金の申請システム（jGrants）が利用可能になります。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert-box">
+                        <strong>⚠️ 書類郵送申請の注意点</strong>
+                        <ul>
+                            <li>印鑑証明書は<strong>原本</strong>が必要です（コピー不可）</li>
+                            <li>印鑑証明書は<strong>発行から3ヶ月以内</strong>のものに限ります</li>
+                            <li>申請書の押印は<strong>代表者印（実印）</strong>を使用</li>
+                            <li>審査に約2週間かかるため、IT導入補助金の締切に注意</li>
+                            <li>書類に不備があると再提出が必要になり、さらに時間がかかります</li>
+                        </ul>
+                    </div>
+
+                    <div class="tips">
+                        <h4>💡 書類郵送申請のポイント</h4>
+                        <ul>
+                            <li>印鑑証明書は市区町村役場で取得（手数料300〜450円程度）</li>
+                            <li>申請書は必ず印刷してから記入（手書き可）</li>
+                            <li>郵送前に記入漏れ・押印漏れがないか確認</li>
+                            <li>簡易書留で郵送すると追跡できて安心</li>
+                        </ul>
                     </div>
                 </div>
 
                 <div class="section text-center">
                     <h2>🔗 便利なリンク</h2>
                     <a href="https://gbiz-id.go.jp/" class="button" target="_blank">🔐 gBizID公式サイト</a>
+                    <a href="https://www.houjin-bangou.nta.go.jp/" class="button" target="_blank">🔍 法人番号検索</a>
                 </div>
             </div>
 

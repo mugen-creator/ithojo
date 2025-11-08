@@ -24,6 +24,11 @@
                 <a href="security-action.html" class="nav-tab">⭐ SECURITY ACTION</a>
                 <a href="it-strategy-map.html" class="nav-tab">🗺️ IT戦略マップ</a>
             </nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </header>
 
         <div class="content">
@@ -415,6 +420,13 @@
                 behavior: 'smooth'
             });
         });
+
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navTabs = document.querySelector('.nav-tabs');
+            hamburger.classList.toggle('active');
+            navTabs.classList.toggle('active');
+        }
 
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);

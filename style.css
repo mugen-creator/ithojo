@@ -533,7 +533,7 @@ footer {
     }
 
     body {
-        line-height: 1.7;
+        line-height: 1.625;
     }
 
     header {
@@ -542,11 +542,13 @@ footer {
     }
 
     header h1 {
-        font-size: 1rem;
+        font-size: 0.875rem; /* 14px */
+        line-height: 1.25;
     }
 
     header p {
-        font-size: 0.8125rem;
+        font-size: 0.75rem; /* 12px - ヘッダーサブテキストのみ例外 */
+        line-height: 1.625;
     }
 
     .hamburger {
@@ -580,10 +582,11 @@ footer {
         text-align: left;
         padding: 16px 20px;
         border-radius: 8px;
-        font-size: 1rem;
+        font-size: 1rem; /* 16px */
         min-height: 48px;
         display: flex;
         align-items: center;
+        line-height: 1.625;
     }
 
     .nav-tab.active::after {
@@ -605,9 +608,10 @@ footer {
     }
 
     .section h2 {
-        font-size: 1.5rem;
+        font-size: 1.25rem; /* 20px */
         margin-bottom: 24px;
         padding-left: 16px;
+        line-height: 1.25;
     }
 
     .section h2::before {
@@ -615,19 +619,21 @@ footer {
     }
 
     .section h3 {
-        font-size: 1.25rem;
+        font-size: 1.125rem; /* 18px */
         margin: 32px 0 16px 0;
+        line-height: 1.25;
     }
 
     .section h4 {
-        font-size: 1.0625rem;
+        font-size: 1rem; /* 16px */
         margin: 24px 0 12px 0;
+        line-height: 1.25;
     }
 
     .section p {
-        font-size: 1rem;
+        font-size: 1rem; /* 16px */
         margin: 16px 0;
-        line-height: 1.75;
+        line-height: 1.625;
     }
 
     .what-is,
@@ -645,7 +651,16 @@ footer {
     .info-box h4,
     .success-box h4,
     .tips h4 {
-        font-size: 1rem;
+        font-size: 1rem; /* 16px */
+        line-height: 1.25;
+    }
+
+    .what-is p,
+    .info-box p,
+    .success-box p,
+    .tips p {
+        font-size: 1rem; /* 16px */
+        line-height: 1.625;
     }
 
     ul, ol {
@@ -653,9 +668,9 @@ footer {
     }
 
     li {
-        font-size: 1rem;
+        font-size: 1rem; /* 16px */
         margin: 12px 0;
-        line-height: 1.7;
+        line-height: 1.625;
     }
 
     .step {
@@ -669,12 +684,18 @@ footer {
         width: 40px;
         height: 40px;
         min-width: 40px;
-        font-size: 0.9375rem;
+        font-size: 0.875rem; /* 14px */
         border-width: 2px;
     }
 
     .step-content h4 {
-        font-size: 1.0625rem;
+        font-size: 1rem; /* 16px */
+        line-height: 1.25;
+    }
+
+    .step-content p {
+        font-size: 1rem; /* 16px */
+        line-height: 1.625;
     }
 
     .card-grid {
@@ -688,23 +709,36 @@ footer {
     }
 
     .card h3 {
-        font-size: 1.0625rem;
+        font-size: 1.125rem; /* 18px */
+        line-height: 1.25;
     }
 
     .card p {
-        font-size: 1rem;
+        font-size: 1rem; /* 16px */
+        line-height: 1.625;
     }
 
     .price-card {
         padding: 28px 20px;
     }
 
+    .price-card h3 {
+        font-size: 0.875rem; /* 14px */
+        line-height: 1.25;
+    }
+
     .price {
-        font-size: 2.25rem;
+        font-size: 2.25rem; /* 36px */
+        line-height: 1;
+    }
+
+    .price-unit {
+        font-size: 0.875rem; /* 14px */
+        line-height: 1.625;
     }
 
     .badge {
-        font-size: 0.75rem;
+        font-size: 0.75rem; /* 12px - 例外的に許可（UI要素） */
         padding: 6px 10px;
     }
 
@@ -716,12 +750,13 @@ footer {
     }
 
     table {
-        font-size: 0.9375rem;
+        font-size: 0.875rem; /* 14px */
     }
 
     th, td {
         padding: 12px 16px;
-        font-size: 0.9375rem;
+        font-size: 0.875rem; /* 14px */
+        line-height: 1.625;
     }
 
     .scroll-to-top {
@@ -729,7 +764,25 @@ footer {
         right: 20px;
         width: 48px;
         height: 48px;
-        font-size: 1.125rem;
+        font-size: 1.125rem; /* 18px */
+    }
+
+    footer {
+        font-size: 0.875rem; /* 14px */
+        line-height: 1.625;
+    }
+
+    strong {
+        line-height: inherit;
+    }
+
+    .card-button {
+        font-size: 1rem; /* 16px */
+        line-height: 1.625;
+    }
+
+    a {
+        line-height: inherit;
     }
 }
 
@@ -743,13 +796,27 @@ footer {
         padding: 16px 16px;
     }
 
+    header h1 {
+        font-size: 0.8125rem; /* 13px - 小画面用 */
+    }
+
+    header p {
+        font-size: 0.6875rem; /* 11px - 小画面用、UI要素として例外 */
+    }
+
     .content {
         padding: 32px 16px;
     }
 
     .section h2 {
-        font-size: 1.375rem;
+        font-size: 1.25rem; /* 20px */
         padding-left: 14px;
+        line-height: 1.25;
+    }
+
+    .section h3 {
+        font-size: 1.125rem; /* 18px */
+        line-height: 1.25;
     }
 
     .what-is,
@@ -768,6 +835,14 @@ footer {
 
     .card {
         padding: 20px;
+    }
+
+    .card h3 {
+        font-size: 1.0625rem; /* 17px */
+    }
+
+    .price {
+        font-size: 2rem; /* 32px */
     }
 }
 

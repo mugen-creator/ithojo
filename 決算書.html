@@ -704,31 +704,12 @@
                 <a href="納税証明書.html" class="nav-tab">💰 納税証明書</a>
                 <a href="決算書.html" class="nav-tab active">📊 決算書</a>
                 <a href="gBizID.html" class="nav-tab">🔐 gBizID</a>
-                <a href="SECURITY ACTION.html" class="nav-tab">⭐ SECURITY ACTION</a>
+                <a href="SECURITY-ACTION.html" class="nav-tab">⭐ SECURITY ACTION</a>
                 <a href="IT戦略マップ.html" class="nav-tab">🗺️ IT戦略マップ</a>
             </nav>
         </header>
 
         <div class="content">
-                    <div class="alert-box">
-                        <strong>📌 窓口・郵送申請の注意点</strong>
-                        <ul>
-                            <li>税務署の受付時間：平日 8:30〜17:00（土日祝は休み）</li>
-                            <li>代理人が申請する場合は委任状が必要</li>
-                            <li>法人番号がわからない場合は、会社名と所在地で検索できます</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="section text-center">
-                    <h2>🔗 便利なリンク</h2>
-                    <a href="https://www.e-tax.nta.go.jp/" class="button" target="_blank">💻 e-Tax</a>
-                    <a href="https://www.nta.go.jp/about/organization/access/map.htm" class="button" target="_blank">🏢 税務署を調べる</a>
-                </div>
-            </div>
-
-            <!-- 決算書 -->
-            <div class="tab-content" role="tabpanel">
                 <div class="section">
                     <h2>📊 決算書の準備</h2>
 
@@ -855,6 +836,26 @@
                     <div class="info-box mt-medium">
                         <h4>❓ 販売費及び一般管理費の明細が見当たらない場合は？</h4>
                         <p>損益計算書に「販売費及び一般管理費」という項目があれば、その<strong>内訳明細</strong>が必要です。税理士に依頼するか、会計ソフトで「販管費明細」または「一般管理費明細」を出力してください。</p>
+                    </div>
+
+                    <div class="info-box mt-medium">
+                        <h4>❓ 個人事業主の場合は？</h4>
+                        <p>個人事業主の場合は、<strong>確定申告書（青色申告決算書または収支内訳書）</strong>を提出します。こちらにも売上や経費の明細が記載されています。</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="success-box">
+                        <h4>📌 まとめ</h4>
+                        <ul>
+                            <li><strong>必要な書類：</strong>貸借対照表、損益計算書、販売費及び一般管理費の明細</li>
+                            <li><strong>入手方法：</strong>税理士に依頼するのが最も確実</li>
+                            <li><strong>準備のコツ：</strong>「IT導入補助金申請用」と伝えれば必要な書類が揃います</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <footer>
@@ -863,7 +864,6 @@
     </div>
 
     <script>
-        // Scroll to top button
         const scrollToTopBtn = document.createElement('button');
         scrollToTopBtn.className = 'scroll-to-top';
         scrollToTopBtn.innerHTML = '↑';
@@ -885,7 +885,6 @@
             });
         });
 
-        // Scroll to specific section
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {

@@ -118,8 +118,6 @@
         }
 
         .nav-tab {
-            text-decoration: none;
-            display: inline-block;
             padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem);
             border: none;
             background: transparent;
@@ -587,8 +585,6 @@
         /* Extra Small Devices (275px - 360px) */
         @media (max-width: 360px) {
             .nav-tab {
-            text-decoration: none;
-            display: inline-block;
                 min-width: 100px;
                 font-size: 0.8rem;
             }
@@ -708,7 +704,7 @@
                 <a href="納税証明書.html" class="nav-tab">💰 納税証明書</a>
                 <a href="決算書.html" class="nav-tab">📊 決算書</a>
                 <a href="gBizID.html" class="nav-tab">🔐 gBizID</a>
-                <a href="SECURITY-ACTION.html" class="nav-tab">⭐ SECURITY ACTION</a>
+                <a href="SECURITY ACTION.html" class="nav-tab">⭐ SECURITY ACTION</a>
                 <a href="IT戦略マップ.html" class="nav-tab">🗺️ IT戦略マップ</a>
             </nav>
         </header>
@@ -994,6 +990,7 @@
     </div>
 
     <script>
+        // Scroll to top button
         const scrollToTopBtn = document.createElement('button');
         scrollToTopBtn.className = 'scroll-to-top';
         scrollToTopBtn.innerHTML = '↑';
@@ -1015,12 +1012,16 @@
             });
         });
 
-        const currentPage = window.location.pathname.split('/').pop();
-        document.querySelectorAll('.nav-tab').forEach(tab => {
-            if (tab.getAttribute('href') === currentPage) {
-                tab.classList.add('active');
+        // Scroll to specific section
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
-        });
+        }
     </script>
 </body>
 </html>
